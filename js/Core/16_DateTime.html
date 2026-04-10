@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript Date Functions</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    // New date object banaya
+    var today = new Date();//
+
+    // current date and time
+    document.write("<b>Current Date & Time => </b>" + today + "<br>");
+
+    // getFullYear() => current year deta hai
+    document.write("<b>Year => </b>" + today.getFullYear() + "<br>");
+
+    // getMonth() => month deta hai (0=January, 11=December)
+    document.write("<b>Month (0-11) => </b>" + today.getMonth() + "<br>");
+
+    // getDate() => date deta hai (1-31)
+    document.write("<b>Date => </b>" + today.getDate() + "<br>");
+
+    // getDay() => week ka din deta hai (0=Sunday, 6=Saturday)
+    document.write("<b>Day (0-6) => </b>" + today.getDay() + "<br>");
+
+    // getHours() => current hour deta hai (0-23)
+    document.write("<b>Hours => </b>" + today.getHours() + "<br>");
+
+    // getMinutes() => current minute deta hai (0-59)
+    document.write("<b>Minutes => </b>" + today.getMinutes() + "<br>");
+
+    // getSeconds() => current second deta hai (0-59)
+    document.write("<b>Seconds => </b>" + today.getSeconds() + "<br>");
+
+    // getMilliseconds() => current millisecond deta hai (0-999)
+    document.write("<b>Milliseconds => </b>" + today.getMilliseconds() + "<br>");
+
+    // getTime() => 1 Jan 1970 se ab tak ka milliseconds deta hai
+    document.write("<b>Time since Jan 1, 1970 (in ms) => </b>" + today.getTime() + "<br>");
+
+    // toDateString() => sirf date ko readable format me deta hai
+    document.write("<b>Date String => </b>" + today.toDateString() + "<br>");
+
+    // toTimeString() => sirf time ko readable format me deta hai
+    document.write("<b>Time String => </b>" + today.toTimeString() + "<br>");
+
+    // toLocaleDateString() => local date format me deta hai
+    document.write("<b>Locale Date String => </b>" + today.toLocaleDateString() + "<br>");
+
+    // toLocaleTimeString() => local time format me deta hai
+    document.write("<b>Locale Time String => </b>" + today.toLocaleTimeString() + "<br>");
+
+    // toISOString() => ISO format me date time deta hai
+    document.write("<b>ISO String => </b>" + today.toISOString() + "<br>");
+
+    // setFullYear() => year set karta hai
+    today.setFullYear(2025);
+    document.write("<b>Set Year 2025 => </b>" + today + "<br>");
+
+    // setMonth() => month set karta hai (0-11)
+    today.setMonth(11); // December
+    document.write("<b>Set Month December => </b>" + today + "<br>");
+
+    // setDate() => date set karta hai (1-31)
+    today.setDate(25);
+    document.write("<b>Set Date 25 => </b>" + today + "<br>");
+
+    // setHours() => hour set karta hai (0-23)
+    today.setHours(10);
+    document.write("<b>Set Hours 10 => </b>" + today + "<br>");
+
+    // setMinutes() => minute set karta hai (0-59)
+    today.setMinutes(30);
+    document.write("<b>Set Minutes 30 => </b>" + today + "<br>");
+
+    // setSeconds() => second set karta hai (0-59)
+    today.setSeconds(45);
+    document.write("<b>Set Seconds 45 => </b>" + today + "<br>");
+
+    // Date.parse() => string date ko milliseconds me convert karta hai
+    var ms = Date.parse("April 18, 2025");
+    document.write("<b>Date.parse('April 18, 2025') => </b>" + ms + "<br>");
+
+    // Date.now() => abhi ka time milliseconds me deta hai
+    document.write("<b>Date.now() => </b>" + Date.now() + "<br>");
+
+</script>
+
+</body>
+</html>

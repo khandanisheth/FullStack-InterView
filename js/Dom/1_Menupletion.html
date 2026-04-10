@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .headcls {
+        color: red;
+        background-color: blue;
+      }
+      .box {
+        background-color: red;
+        color: blue;
+      }
+      .pera {
+        background-color: yellow;
+        color: black;
+      }
+
+      span {
+        background-color: black;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="head1" class="headcls">H1 Heading</h1>
+    <h2 id="head2" class="headcls">H2 Heading</h2>
+
+    <div class="box" id="box">First Box</div>
+    <p id="Peragraph" class="pera">Peragraph Text</p>
+    <span>Span Tag</span>
+    <script>
+      let xh1 = document.getElementById("head1");
+      console.log(xh1);
+      console.dir(xh1);
+      let yh1 = document.getElementsByClassName("headcls");
+      console.log(yh1);
+      console.dir(yh1);
+      let zh1 = document.getElementsByTagName("h1");
+      console.log(zh1);
+      console.dir(zh1);
+    </script>
+  </body>
+</html>

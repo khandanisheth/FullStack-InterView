@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".btn1").click(function () {
+          $("p").remove();
+        });
+        $(".btn2").click(function () {
+          $("p").empty();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button class="btn1">Remove</button>
+    <button class="btn2">Empty</button> <br />
+
+    <p style="width: 200px; height: 200px; background-color: yellow">Jai Shri Ram</p>
+  </body>
+</html>

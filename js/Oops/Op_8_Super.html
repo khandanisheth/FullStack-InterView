@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 👑 Base Class
+      class Car {
+        constructor(modal = "-------------oooooooooo", car_name = "-------------------pppppp") {
+          this.base_car_modal = modal;
+          this.base_car_name = car_name;
+
+          if (modal === "-------------oooooooooo" && car_name === "-------------------pppppp") {
+            console.log("Base Class Car Constructor Called "); // 1
+          }
+        }
+      }
+
+      // 🚗 Brand class extends Car
+      class Brand extends Car {
+        constructor(modal, car_name) {
+          if (modal && car_name) {
+            super(modal, car_name); // Call parameterized constructor of Car
+          } else {
+            super(); // Call default constructor
+            console.log("Derived Class Brand Constructor Called "); // 2
+          }
+
+          // Child class variables (shadowing parent)
+          this.car_name = "lab";
+          this.car_modal = "2011";
+        }
+
+        baseDisplay() {
+          // 🔽 Displaying child class's variables
+          console.log("Base Class Car Name ->1 " + this.car_name);
+          console.log("Base Class Car Modal ->2 " + this.car_modal);
+
+          // 🔼 Accessing base class variables (since super.field is not valid in JS)
+          console.log("Derived Class Car Name ->3 " + this.base_car_name);
+          console.log("Derived Class Car Modal ->4 " + this.base_car_modal);
+        }
+      }
+
+      // 🧪 Check class extends Brand
+      class Check extends Brand {
+        constructor(modal, car_name) {
+          //thar 2023
+          if (modal && car_name) {
+            super(modal, car_name); // Parameterized constructor
+          } else {
+            super(); // Default constructor
+            console.log("Check Constructor Called "); // 3
+          }
+        }
+
+        display() {
+          // Displaying current object's own properties
+          console.log("Check Class Car Name ->5 " + this.car_name);
+          console.log("Check Class Car Modal ->6 " + this.car_modal);
+
+          super.baseDisplay(); // 4
+        }
+      }
+
+      // 🚀 Main Execution
+      const c = new Check(); // Default constructor chain
+      const cc = new Check("thar", "2023"); // Parameterized constructor
+
+      // Show output
+      c.display();
+      cc.baseDisplay();
+    </script>
+  </body>
+</html>

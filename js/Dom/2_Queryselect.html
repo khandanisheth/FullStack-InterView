@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .headcls {
+        color: red;
+        background-color: blue;
+      }
+      .box {
+        background-color: red;
+        color: blue;
+      }
+      .pera {
+        background-color: yellow;
+        color: black;
+      }
+      span {
+        background-color: black;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 3 heading elements with same class but different ids -->
+    <h1 id="head1" class="headcls">H1 Heading</h1>
+    <h1 id="head11" class="headcls">H1 Heading</h1>
+    <h2 id="head2" class="headcls">H2 Heading</h2>
+    <!-- div with class and id -->
+    <div class="box" id="box">First Box</div>
+
+    <!-- paragraph tag with class and id -->
+    <p id="Peragraph" class="pera">Peragraph Text</p>
+
+    <!-- span tag without any id or class -->
+    <span>Span Tag</span>
+
+    <script>
+      // ✅ 1. Select element by ID using querySelector (CSS selector style)
+      let xh1 = document.querySelector("#head1"); // Selects element with id="head1"
+      console.log(xh1);
+      console.dir(xh1);
+
+      // ✅ 2. Select element by Class using querySelector
+      let yh1 = document.querySelector(".headcls"); // Selects FIRST element with class="headcls"
+      console.log(yh1);
+      console.dir(yh1);
+
+      // ✅ 3. Select element by Tag using querySelector
+      let zh1 = document.querySelector("h1"); // Selects FIRST <h1> tag on page
+      console.log(zh1);
+      console.dir(zh1);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JavaScript Number Functions</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var num1 = 123.45678;
+
+      // toPrecision() -> Number ko specified total significant digits tak round kar deta hai
+      document.write("<b>num1.toPrecision(4) => </b>" + num1.toPrecision(40) + "<br>");
+      // Output: 123.5 (4 significant digits)
+
+      document.write("<b>num1.toPrecision(2) => </b>" + num1.toPrecision(2) + "<br>");
+      // Output: 1.2e+2 (2 significant digits in scientific notation)
+
+      // Number.isInteger() -> Check karta hai ki kya value ek integer (whole number) hai
+      document.write("<b>Number.isInteger(123) => </b>" + Number.isInteger(123) + "<br>");
+      // Output: true (123 ek integer hai)
+
+      document.write("<b>Number.isInteger(123.45) => </b>" + Number.isInteger(123.45) + "<br>");
+      // Output: false (kyunki 123.45 ek decimal hai)
+
+      document.write("<b>Number.isInteger('123') => </b>" + Number.isInteger("123") + "<br>");
+      // Output: false (kyunki string hai number nahi)
+
+      // Number.isFinite() -> Check karta hai ki kya value ek finite number hai
+      document.write("<b>Number.isFinite(500) => </b>" + Number.isFinite(500) + "<br>");
+      // Output: true (500 ek finite number hai)
+
+      document.write("<b>Number.isFinite(Infinity) => </b>" + Number.isFinite(Infinity) + "<br>");
+      // Output: false (Infinity finite nahi hota)
+
+      document.write("<b>Number.isFinite(NaN) => </b>" + Number.isFinite(NaN) + "<br>");
+      // Output: false (NaN ek number nahi hota)
+
+      document.write("<b>Number.isFinite('123') => </b>" + Number.isFinite("123") + "<br>");
+      // Output: false (kyunki string hai, number nahi)
+    </script>
+  </body>
+</html>

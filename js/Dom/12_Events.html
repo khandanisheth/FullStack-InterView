@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JavaScript Events Example</title>
+
+    <style>
+      #dragMe {
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+        margin: 20px;
+      }
+      #dropHere {
+        width: 200px;
+        height: 200px;
+        border: 2px dashed #333;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Mouse Events</h2>
+
+    <!-- onclick => jab button pe click hoga -->
+    <input type="button" value="onclick" onclick="abc();" /><br /><br />
+
+    <!-- ondblclick => jab button pe double click hoga -->
+    <input type="button" value="ondblclick" ondblclick="abc();" /><br /><br />
+
+    <!-- onmousedown => jab mouse ka button press hote hi chalega -->
+    <input type="button" value="onmousedown" onmousedown="abc();" /><br /><br />
+
+    <!-- onmouseenter => jab mouse button ke upar enter karega (sirf ek baar jab enter kare) -->
+    <input type="button" value="onmouseenter" onmouseenter="abc();" /><br /><br />
+
+    <!-- onmouseover => jab mouse button ke upar aaye (bar bar chalega jab cursor andar andar move kare) -->
+    <input type="button" value="onmouseover" onmouseover="abc();" /><br /><br />
+
+    <!-- onmousemove => jab mouse move kare button ke upar (continuous) -->
+    <input type="button" value="onmousemove" onmousemove="abc();" /><br /><br />
+
+    <!-- onmouseleave => jab mouse button se bahar nikal jaaye -->
+    <input type="button" value="onmouseleave" onmouseleave="abc();" /><br /><br />
+
+    <!-- onmousewheel => jab mouse wheel scroll kare (ye thoda deprecated hai, addEventListener se karte hain ab) -->
+    <input type="button" value="onmousewheel" onwheel="abc();" /><br /><br />
+
+    <h2>Keyboard Events</h2>
+
+    <!-- onkeydown => jab koi key dabayi jaye (press hote hi chalega) -->
+    <input type="text" placeholder="onkeydown" onkeydown="abc();" /><br /><br />
+
+    <!-- onkeyup => jab key chhodi jaye (release pe chalega) -->
+    <input type="text" placeholder="onkeyup" onkeyup="abc();" /><br /><br />
+
+    <!-- onkeypress => jab printable character press hoga (deprecated hai modern browsers me) -->
+    <input type="text" placeholder="onkeypress" onkeypress="abc();" /><br /><br />
+
+    <h2>Keyboard Events</h2>
+    <input type="text" placeholder="Type Something" onkeydown="console.log('Key Down')" onkeyup="console.log('Key Up')" onkeypress="console.log('Key Press')" />
+
+    <h2>Form Events</h2>
+    <form onsubmit="showAlert('Form Submitted!'); return false;" onreset="showAlert('Form Reset!')">
+      <input type="text" onfocus="console.log('Focus aaya')" onblur="console.log('Focus gaya')" oninput="console.log('Typing...')" />
+      <br /><br />
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </form>
+
+    <h2>Clipboard Events</h2>
+    <input type="text" oncopy="showAlert('Copy kiya!')" oncut="showAlert('Cut kiya!')" onpaste="showAlert('Paste kiya!')" />
+
+    <h2>Drag & Drop Events</h2>
+    <div id="dragMe" draggable="true" ondragstart="dragStart(event)">Drag Me</div>
+    <div id="dropHere" ondrop="drop(event)" ondragover="allowDrop(event)">Drop Here</div>
+
+    <script>
+      // ek function jo alert karega
+      function abc() {
+        alert("Hello Event Triggered!");
+      }
+      function showAlert(msg) {
+        alert(msg);
+      }
+
+      function allowDrop(event) {
+        event.preventDefault();
+      }
+
+      function dragStart(event) {
+        event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+      }
+    </script>
+  </body>
+</html>

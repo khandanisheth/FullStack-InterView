@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Create Example</title>
+  </head>
+  <body>
+    <h2>Create Example</h2>
+    <button onclick="createParagraph()">Create Paragraph</button>
+    <button onclick="createUser()">Create Object</button>
+    <button onclick="createArray()">Create Array</button>
+    <button onclick="createLocalStorage()">Create LocalStorage</button>
+    <button onclick="createElementInDOM()">Create Element in DOM</button>
+
+    <div id="output" style="margin-top: 20px"></div>
+
+    <div class="box" id="boxx" style="height: 400px; width: 400px; background-color: aqua">Check Insert Operation</div>
+
+    <span class="in" id="b1">Append</span>
+    <span class="in" id="b2">Prepend</span>
+    <span class="in" id="b3">After</span>
+    <span class="in" id="b4">Before</span>
+    <script>
+      // 1. Create Paragraph Element Dynamically
+      function createParagraph() {
+        const para = document.createElement("p");
+        para.innerText = "This is a new paragraph created using JavaScript.";
+        document.getElementById("output").appendChild(para);
+      }
+
+      // 2. Create Object
+      function createUser() {
+        const user = {
+          name: "Danish",
+          age: 22,
+          course: "MCA",
+        };
+        console.log("User Object Created:", user);
+        alert("User object created. Check console.");
+      }
+
+      // 3. Create Array
+      function createArray() {
+        const colors = ["Red", "Green", "Blue"];
+        console.log("Array Created:", colors);
+        alert("Array created. Check console.");
+      }
+
+      // 4. Create LocalStorage Item
+      function createLocalStorage() {
+        localStorage.setItem("language", "JavaScript");
+        alert("LocalStorage item created: language = JavaScript");
+      }
+
+      // 5. Create Element and Add to DOM
+      function createElementInDOM() {
+        const div = document.createElement("div");
+        div.innerHTML = "<strong>This is a new <em>div</em> element.</strong>";
+        div.style.color = "blue";
+        div.style.marginTop = "10px";
+        document.getElementById("output").appendChild(div);
+      }
+      // Insert Operation
+      let div = document.querySelector(".box");
+      let app = document.getElementById("b1"); // ✅ Remove dot
+      let pre = document.getElementById("b2");
+      let af = document.getElementById("b3");
+      let bf = document.getElementById("b4");
+
+      div.append(app); // Adds inside at end
+      div.prepend(pre); // Adds inside at start
+      div.after(af); // Adds outside after div
+      div.before(bf); // Adds outside before div
+    </script>
+  </body>
+</html>

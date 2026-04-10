@@ -1,0 +1,298 @@
+🧠 1. Kya hota hai Asynchronous Programming?
+Normally JavaScript line by line (synchronously) code run karta hai. Lekin kuch kaam jaise:
+    Server se data lana
+    File read karna
+    Timer set karna
+
+ye time lete hain. Isiliye JS unhe background me run karta hai aur result baad me deta hai → 
+isko hum asynchronous programming kehte hain.
+
+🔹 Promise kya hota hai?
+Promise ek object hai jo future me complete hone wale kisi asynchronous operation ka result represent karta hai.
+
+🔥 Real-life Example:
+Socho aapne Zomato se food order kiya.
+Order diya → Promise ban gaya
+Order ban raha hai → Pending state
+Order mil gaya → Resolved (fulfilled)
+Order cancel ho gaya → Rejected
+
+🔹 Promise ke 3 States hote hain:
+State	Matlab
+Pending	    Kaam abhi ho raha hai (e.g., data fetch ho raha hai)
+Resolved	Kaam successfully ho gaya (e.g., data mil gaya)
+Rejected	Kaam fail ho gaya (e.g., error aa gaya)
+
+
+🔹 Promise ke 3 States hote hain:
+| State      | Matlab                                               |
+| ---------- | ---------------------------------------------------- |
+| `Pending`  | Kaam abhi ho raha hai (e.g., data fetch ho raha hai) |
+| `Resolved` | Kaam successfully ho gaya (e.g., data mil gaya)      |
+| `Rejected` | Kaam fail ho gaya (e.g., error aa gaya)              |
+---------------------------------------------------------------------
+
+🔹 Summary Table:
+| Keyword     | Role                                    |
+| ----------- | --------------------------------------- |
+| `Promise`   | Asynchronous ka result handle karta hai |
+| `resolve()` | Jab kaam success ho jaaye               |
+| `reject()`  | Jab kaam fail ho jaaye                  |
+| `then()`    | Jab promise resolve hota hai            |
+| `catch()`   | Jab promise reject hota hai             |
+
+
+🔍 await Kya Hota Hai? – Simple Hindi Mein Samjhaav
+await JavaScript ka keyword hai jo sirf async function ke andar hi use hota hai. Iska matlab hota hai:
+"Ruko, jab tak yeh kaam (Promise) complete nahi ho jaata."
+🔧 await Kaam Kaise Karta Hai?
+Jab hum kisi asynchronous operation (jaise API call, database fetch, file read) ke liye await ka use karte hain,
+to JavaScript us operation ke complete hone ka intezaar karti hai, bina poore program ko roke hue.Wo operation 
+promise return karta hai, aur await uska result milne tak rukta hai.
+
+📦 Real-Life Example (Restaurant Analogy):
+Tumne food order kiya – (Asynchronous operation start hua)
+Tum waiter ko kehte ho: "Jab tak khaana aaye, main wait karunga." – await
+Jab khaana aata hai, tab tum usse khaate ho – (result milta hai)
+
+
+🔄 Problem Kya Tha
+JavaScript mein hum jab asynchronous kaam karte hain (jaise API call, file load, ya database se data lana),
+ to wo turant complete nahi hote. Pehle hum callbacks aur promises ka use karte the, jo thoda complex lagte the,
+  especially jab multiple asynchronous kaam ek saath karne hote the.
+
+✅ Async/Await Kya Hai?
+Async/Await JavaScript ka modern feature hai jo asynchronous code ko likhne ka asaan aur readable tareeqa deta hai
+async keyword se function ko asynchronous banaya jaata hai.
+
+await keyword ka use kisi promise ke response ka intezaar (wait) karne ke liye hota hai — bina pura code block
+ ki execution roke hue.
+
+💡 Simple Example Socho:
+Tum ek restaurant mein ho aur tum waiter ko order dete ho. Tumhare khaane ke aane mein time lagega,
+lekin tum wahan khade hokar uska intezaar nahi karte. Tum baaki kaam karte ho, aur jab khaana aata hai, tab tum khaate ho.
+Yahan:
+Order dena = Function call
+Khaane ka intezaar = await
+Khaana milne par action lena = Result milne ke baad ka kaam
+
+🔁 Kya Fayda Hua?
+Code simple aur readable ban gaya.
+then() aur catch() ke chain ki jagah, try aur catch block se error handle kar sakte hain.
+Asynchronous code bhi synchronous jaisa dikhne laga.
+
+
+
+🔁 Bina await ke:
+let data = fetch("url");  // Ye turant execute ho jaata hai
+console.log(data);        // Output: Promise { <pending> }
+
+✅ await ke saath:
+let data = await fetch("url");  
+console.log(data);  // Ab wait karega response aane tak, fir data dikhayega
+
+
+| Feature        | Callback        | Promise      | Async/Await         |
+| -------------- | --------------- | ------------ | ------------------- |
+| Readability    | ❌ Poor (nested) | ✅ Better     | ✅✅ Best (sync-like) |
+| Error Handling | ❌ Manual        | ✅ `.catch()` | ✅ `try...catch`     |
+| Chaining       | ❌ Complex       | ✅ Easy       | ✅ Very Easy         |
+| Debugging      | ❌ Difficult     | ✅ Easier     | ✅ Best              |
+
+
+
+
+🔹 IIFE Kya Hota Hai?
+IIFE ka full form hai:
+
+Immediately Invoked Function Expression
+
+Ye ek aisa JavaScript function hota hai jo turant execute ho jaata hai jaise hi define kiya jaata hai.
+
+🔧 Syntax:
+// standard IIFE
+(function () {
+  // statements…
+})();
+
+// arrow function variant
+(() => {
+  // statements…
+})();
+
+// async IIFE
+(async () => {
+  // statements…
+})();
+
+
+
+
+
+💦 Fetch API kya hoti hai?
+  Fetch API JavaScript ka ek built-in function hai jo web server
+   se data fetch (laane) ke liye use hota hai — jaise API se JSON data.
+
+   ✅ Real-Life Analogy:
+Socho aapne Zomato pe order kiya:
+fetch("url") → aapne order diya.
+response → order aa gaya (lekin packet band hai).
+response.json() → packet khola, data mila.
+then() → data mila, ab use display kiya.
+catch() → agar order cancel ho gaya/error aa gaya.
+
+
+
+🔷 Fetch API kya hoti hai? (Simple Hindi mein)
+Fetch API JavaScript ka ek tarika hai jisse hum server se data le ya bhej sakte hain.
+Jaise aap Google se kuch data mangte ho, ya kisi app me weather ya user info laate ho — 
+sab kuch Fetch API se ho sakta hai.
+
+
+
+🔁 Fetch ka use kahan hota hai?
+✅ Weather app me
+✅ Login system me
+✅ Product list dikhane me
+✅ News ya YouTube data dikhane me
+✅ Real-time data (API) lene me
+
+
+
+📌 Important Points:
+| Feature            | Description                                   |
+| ------------------ | --------------------------------------------- |
+| `fetch(url)`       | Server se request bhejta hai                  |
+| `.then()`          | Jab response milta hai, tab chalta hai        |
+| `response.json()`  | JSON format me convert karta hai              |
+| `.catch()`         | Error aane par chalta hai                     |
+| `await fetch(url)` | Await laga kar async function me use hota hai |
+
+
+
+
+🔷 1. JSON Kya Hota Hai?
+JSON ka full form:
+📦 JavaScript Object Notation
+
+✅ Simple Definition:
+JSON ek data format hai, jo text ki tarah hota hai, lekin JavaScript objects jaisa dikhta hai.
+ Iska use server aur browser ke beech data exchange (bhejne/lene) ke liye hota hai.
+
+ 💨 JSON Exemple :
+ {
+  "name": "Danish",
+  "age": 22,
+  "city": "Jaipur"
+}
+✔💠 JSON Key Points:
+
+| Feature        | Description                                |
+| -------------- | ------------------------------------------ |
+| Text-based     | JSON text format hota hai                  |
+| Lightweight    | Bahut halka aur fast hai                   |
+| Human readable | Aam aadmi bhi padh sakta hai               |
+| Universal      | Har programming language use kar sakti hai |
+
+
+
+🔷 2. AJAX Kya Hota Hai?
+AJAX ka full form:
+⚙️ Asynchronous JavaScript and XML
+
+✅ Simple Definition:
+AJAX ek technique hai jisse web page server se bina reload kiye data fetch ya send kar sakta hai.
+
+📌 Real Life Example:
+🛒 Flipkart par product list me neeche scroll karte hi naye products aa jaate hain — lekin page reload nahi hota.
+👉 Ye kaam AJAX se hota hai.
+
+📦 AJAX Kya Karta Hai?
+| Kaam                       | Description                                       |
+| -------------------------- | ------------------------------------------------- |
+| Server se data maangta hai | e.g. fetch("data.json")                           |
+| Bina page reload kiye      | Data background me aata hai                       |
+| JSON me data laata hai     | Mostly JSON format use hota hai                   |
+| UI ko update karta hai     | New data se page refresh kare bina show karta hai |
+
+
+
+✅ Difference Between JSON and AJAX:
+
+
+| Feature     | JSON                                     | AJAX                                               |
+| ----------- | ---------------------------------------- | -------------------------------------------------- |
+| Kya hai?    | Data format hai                          | Technique hai data bhejne/lene ki                  |
+| Use         | Data ko store/send/receive karne ke liye | Web page aur server ke beech data exchange ke liye |
+| Alone kaam? | JSON akela kuch nahi karta               | AJAX JSON ka use karke kaam karta hai              |
+| Example     | `{ "name": "Danish" }`                   | fetch(), XMLHttpRequest(), etc.                    |
+
+
+
+🔚 Summary:
+✅ JSON → Sirf data hota hai (store/share karne ke liye)
+✅ AJAX → Tareeka hota hai server se bina reload kiye data lene ka
+✅ Dono ek dusre ke saathi hain → AJAX mostly JSON ka hi use karta hai
+
+
+
+
+✅ 1. Request aur Response kya hota hai?
+🔹 Request (Mangna / Bhejna):
+Jab browser ya JavaScript (fetch se) server se koi data maangta hai, to wo hoti hai request.
+
+🔸Example:
+Tum https://jsonplaceholder.typicode.com/posts pe jaake data mangte ho —
+Ye ek HTTP request hai.
+
+🔹 Response (Jawaab):
+Jab server aapki request ka jawab deta hai (data ya error), usse response kehte hain.
+
+🔸Example:
+Server ne JSON format me 100 posts bheje — wo response hai.
+
+✅ 2. HTTP Verbs (Methods) – Server se baat karne ke tareeqe
+
+| Method   | Matlab (Real Life Example)                   |
+| -------- | -------------------------------------------- |
+| `GET`    | Data **le kar aana** (e.g., fetch post list) |
+| `POST`   | Data **bhejna** (e.g., new user register)    |
+| `PUT`    | Purana data **poora update** karna           |
+| `PATCH`  | Data ka **thoda part update** karna          |
+| `DELETE` | Data **delete** karna                        |
+
+
+🧠 Zindagi ke example se samjho:
+
+| Action                   | HTTP Verb |
+| ------------------------ | --------- |
+| Pizza ka menu mangwana   | GET       |
+| Naya order dena          | POST      |
+| Poori order update karna | PUT       |
+| Sirf address badalna     | PATCH     |
+| Order cancel karna       | DELETE    |
+
+
+✅ 3. Response Status Codes (Server ka jawab ka status)
+
+| Code | Matlab (Apni Bhasha Me)                         |
+| ---- | ----------------------------------------------- |
+| 200  | ✅ OK – Sab kuch sahi gaya, data mil gaya        |
+| 201  | ✅ Created – Naya data successful create hua     |
+| 400  | ❌ Bad Request – Galat request bheji hai         |
+| 401  | 🔒 Unauthorized – Login zaroori hai             |
+| 403  | 🚫 Forbidden – Tumhare paas permission nahi hai |
+| 404  | ❓ Not Found – Data ya page nahi mila            |
+| 500  | 💥 Server Error – Server ki taraf problem hai   |
+
+🔁 Summary Table:
+
+| Term             | Bhasha me Matlab                 |
+| ---------------- | -------------------------------- |
+| Request          | Server se data maangna ya bhejna |
+| Response         | Server ka jawab                  |
+| HTTP Verb - GET  | Data lana                        |
+| HTTP Verb - POST | Data bhejna                      |
+| Status Code 200  | Success – sab theek hai          |
+| Status Code 404  | Galat URL – data nahi mila       |
+| Status Code 500  | Server ki galti                  |

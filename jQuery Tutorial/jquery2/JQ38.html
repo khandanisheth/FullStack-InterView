@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$(".btn1").click(function()
+			{
+			   	// $("h1").parent().css({"border":"6px solid green"});
+
+			   	//  $("h1").parents().css({"border":"6px solid green"});
+
+			   	// $("h1").parentsUntil("#dd").css({"border":"6px solid green"});
+
+				// $("body").children().css({"border":"6px solid green"});
+				
+				$("body").find("p").css({"border":"6px solid green"});
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		.pp
+		{
+			width: 200px;
+			padding: 0px;
+			margin: 50px;
+			border: 10px solid red;
+		}
+
+	</style>
+</head>
+<body id="dd">
+
+	<button class="btn1">Set</button>
+
+	<div class="pp" >
+
+		<div class="pp">
+			<p>Jai Shri Ram</p>
+		</div>
+
+		<div class="pp">
+		      <h1 class="pp">Jai Shri Ram</h1> 
+		</div>
+   </div>
+
+
+
+
+
+
+
+	<div class="pp">
+		<p>Jai Shri Ram</p>
+	</div>
+
+	<div class="pp">
+			<p>Jai Shri Ram</p>
+	</div>
+
+
+    <div class="pp">
+			<p>Jai Shri Ram</p>
+	</div>
+
+
+    <div class="pp">
+			<p>Jai Shri Ram</p>
+    </div>
+
+
+
+</body>
+</html>

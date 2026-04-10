@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>eval() Demo</title>
+  </head>
+  <body>
+    <input type="text" id="nameInput" placeholder="Enter JavaScript code" />
+    <button onclick="executeCode()">Execute</button>
+    <div id="output"></div>
+
+    <script>
+      function executeCode() {
+        const code = document.getElementById("nameInput").value;
+        const output = document.getElementById("output");
+
+        const result = eval(code);
+        output.innerHTML = "Result: " + result;
+      }
+    </script>
+  </body>
+</html>

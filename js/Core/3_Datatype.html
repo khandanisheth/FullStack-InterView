@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Data Types</title>
+  </head>
+  <body>
+    <h2>Open Console to See Output</h2>
+
+    <script>
+      /* =========================
+     PRIMITIVE DATA TYPES
+     ========================= */
+
+      // 1️⃣ Number (integer + float)
+      let n1 = 10; // integer number
+      let n2 = 10.5; // floating number
+      let n3 = Infinity; // infinite value
+      let n4 = "text" / 2; // invalid calculation → NaN
+
+      console.log("Number Examples:");
+      console.log(n1); // 10
+      console.log(n2); // 10.5
+      console.log(n3); // Infinity
+      console.log(n4); // NaN
+
+      // 2️⃣ String (text data)
+      let s1 = "Hello"; // double quotes
+      let s2 = "World"; // single quotes
+      let s3 = `Hello ${s2}`; // template literal (backticks)
+
+      console.log("\nString Examples:");
+      console.log(s1); // Hello
+      console.log(s2); // World
+      console.log(s3); // Hello World
+
+      // 3️⃣ Boolean (true / false)
+      let isLogin = true; // boolean value
+      let isAdmin = false; //   boolean value
+
+      console.log("\nBoolean Examples:");
+      console.log(isLogin); // true
+      console.log(isAdmin); // false
+
+      // 4️⃣ Null (intentional empty value)
+      let userAge = null;
+
+      console.log("\nNull Example:");
+      console.log(userAge); // null
+
+      // 5️⃣ Undefined (declared but no value)
+      let userCity;
+
+      console.log("\nUndefined Example:");
+      console.log(userCity); // undefined
+
+      // 6️⃣ Symbol (unique value – ES6)
+      let sym1 = Symbol("id"); // symbol creation
+      let sym2 = Symbol("id"); // another symbol with same description
+
+      console.log("\nSymbol Examples:");
+      console.log(sym1 === sym2); // false (always unique)
+
+      // 7️⃣ BigInt (very large number – ES2020)
+      let bigNumber = 123456789012345678901234567890n;
+
+      console.log("\nBigInt Example:");
+      console.log(bigNumber);
+
+      /* =========================
+     NON-PRIMITIVE DATA TYPES
+     ========================= */
+
+      // 8️⃣ Object (key-value pairs)
+      let user = {
+        name: "Danish",
+        age: 22,
+        city: "Jaipur",
+      };
+
+      console.log("\nObject Example:");
+      console.log(user);
+      console.log(user.name); // access property
+
+      // 9️⃣ Array (ordered collection)
+      let numbers = [1, 2, 3, 4, 5];
+      let mixedArray = [1, "two", true, { role: "admin" }];
+
+      console.log("\nArray Examples:");
+      console.log(numbers); // [1, 2, 3, 4, 5]
+      console.log(mixedArray); // [1, "two", true, { role: "admin" }]
+      console.log(numbers[2]); // access element (3)
+
+      // 🔟 Function (reusable code block)
+      function greet(name) {
+        // function definition
+        return "Hello, " + name; //  function return value
+      }
+
+      console.log("\nFunction Example:");
+      console.log(greet("Ajay")); // Hello, Ajay
+
+      // 1️⃣1️⃣ Date Object
+      let today = new Date();
+
+      console.log("\nDate Example:");
+      console.log(today); /// current date and time
+
+      // 1️⃣2️⃣ Regular Expression (pattern matching)
+      let pattern = /hello/;
+
+      console.log("\nRegExp Example:");
+      console.log(pattern.test("Hello World")); // false (case-sensitive)
+
+      /* =========================
+     INTERESTING FACTS
+     ========================= */
+
+      // JavaScript is Dynamically Typed
+      let x = 10; // number
+      console.log("\nDynamic Typing:");
+      console.log(x); // 10
+
+      x = "Hello"; // string
+      console.log(x); // Hello
+
+      x = [1, 2, 3]; // array
+      console.log(x); // [1, 2, 3]
+
+      // NaN is not equal to itself
+      console.log("\nNaN Check:");
+      console.log(typeof NaN); // number
+      console.log(NaN === NaN); // false
+
+      // Character is also a string
+      let ch = "A";
+      console.log("\nCharacter Example:");
+      console.log(typeof ch); // string
+      console.log(ch); // A
+    </script>
+  </body>
+</html>
+
+<!-- Primitive → Number, String, Boolean, Undefined, Null, BigInt, Symbol
+Reference → Object, Array, Function
+ -->

@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JavaScript Function Concepts</title>
+  </head>
+  <body>
+    <h2>Open Console (F12)</h2>
+
+    <script>
+      /* =====================================================
+1. NORMAL FUNCTION
+Reusable block of code
+===================================================== */
+      function greet(name) {
+        //  name = parameter
+        return "Hello " + name;
+      }
+      console.log(greet("Aman")); // argument passed
+
+      /* =====================================================
+2. CURRYING FUNCTION
+Function returning another function
+===================================================== */
+      function multiply(a) {
+        // a = first parameter
+        return function (b) {
+          // b = second parameter
+          return a * b; //   return product
+        };
+      }
+      console.log(multiply(2)(3)); // 6
+
+      /* =====================================================
+3. ANONYMOUS FUNCTION
+Function without name
+===================================================== */
+      const sayHi = function () {
+        // no name
+        console.log("Hi from anonymous function");
+      };
+      sayHi(); // call the function
+
+      /* =====================================================
+4. CALLING FUNCTION FROM HTML
+Used with onclick (see HTML button usually)
+===================================================== */
+      function showAlert() {
+        alert("Called from HTML");
+      }
+      // <button onclick="showAlert()">Click</button>
+
+      /* =====================================================
+5. setTimeout()
+Runs code after delay (milliseconds)
+===================================================== */
+      setTimeout(() => {
+        console.log("Runs after 2 seconds");
+      }, 2000);
+
+      /* =====================================================
+6. CHECK NaN & FINITE
+===================================================== */
+      console.log(isNaN("abc")); // true (Not a Number)
+      console.log(Number.isFinite(10)); // true
+
+      /* =====================================================
+7. ENCODE & DECODE URL
+===================================================== */
+      let url = "https://site.com?name=hello world";
+      let encoded = encodeURIComponent(url); //  ENCODE
+      let decoded = decodeURIComponent(encoded); // decode
+
+      console.log(encoded); // Encoded URL
+      console.log(decoded); //   Decoded URL
+
+      /* =====================================================
+8. OPTIONAL PARAMETER (DEFAULT VALUE)
+===================================================== */
+      function welcome(name = "Guest") {
+        // default value
+        return "Welcome " + name;
+      }
+      console.log(welcome());
+      console.log(welcome("Ravi"));
+
+      /* =====================================================
+9. DYNAMIC PARAMETERS (REST)
+===================================================== */
+      function sum(...numbers) {
+        // rest parameter
+        return numbers.reduce((a, b) => a + b, 0);
+      }
+      console.log(sum(1, 2, 3, 4));
+
+      /* =====================================================
+10. FUNCTION DECLARATION vs EXPRESSION
+===================================================== */
+      // Declaration (hoisted)
+      function add(a, b) {
+        // parameters
+        return a + b;
+      }
+
+      // Expression (not hoisted)
+      const sub = function (a, b) {
+        // parameters
+        return a - b;
+      };
+
+      console.log(add(5, 3));
+      console.log(sub(5, 3));
+
+      /* =====================================================
+11. call() vs apply()
+Used to change `this`
+===================================================== */
+      function intro(city) {
+        console.log(this.name + " from " + city);
+      }
+      const user = { name: "Aman" };
+
+      intro.call(user, "Jaipur"); // arguments normally
+      intro.apply(user, ["Jaipur"]); // arguments as array
+
+      /* =====================================================
+12. bind()
+Returns new function with fixed this & arguments
+===================================================== */
+      const boundFn = intro.bind(user, "Delhi");
+      boundFn();
+
+      /* =====================================================
+13. CALLBACK FUNCTION
+Function passed as argument
+===================================================== */
+      function calculate(a, b, callback) {
+        return callback(a, b);
+      }
+
+      console.log(calculate(2, 3, add));
+
+      /* =====================================================
+14. CALL FUNCTION N TIMES
+===================================================== */
+      function repeat(n, cb) {
+        for (let i = 1; i <= n; i++) {
+          cb(i);
+        }
+      }
+      repeat(3, console.log);
+
+      /* =====================================================
+15. REMOVE KEY FROM OBJECT
+===================================================== */
+      const obj = { a: 1, b: 2, c: 3 };
+      delete obj.b;
+      console.log(obj);
+
+      /* =====================================================
+16. CALL FUNCTION BY NAME (STRING)
+===================================================== */
+      function hello() {
+        console.log("Hello called by string");
+      }
+      window["hello"]();
+
+      /* =====================================================
+17. CHECK FUNCTION EXISTS
+===================================================== */
+      if (typeof hello === "function") {
+        hello();
+      }
+
+      /* =====================================================
+18. MEASURE FUNCTION EXECUTION TIME
+===================================================== */
+      console.time("loop");
+      for (let i = 0; i < 1000000; i++) {}
+      console.timeEnd("loop");
+
+      /* =====================================================
+19. PROMISE + ASYNC/AWAIT
+===================================================== */
+      async function fetchData() {
+        let result = await Promise.resolve("Data Loaded");
+        return result;
+      }
+      fetchData().then(console.log);
+
+      /* =====================================================
+20. GLOBAL VARIABLE CHANGE
+===================================================== */
+      let count = 0;
+      function increment() {
+        count++;
+      }
+      increment();
+      console.log(count); // 1
+
+      /* =====================================================
+21. FASTEST FUNCTION INDEX
+===================================================== */
+      const funcs = [
+        () => {
+          for (let i = 0; i < 1e6; i++);
+        },
+        () => {
+          for (let i = 0; i < 1e5; i++);
+        },
+      ];
+
+      let times = funcs.map((fn) => {
+        let start = performance.now();
+        fn();
+        return performance.now() - start;
+      });
+
+      console.log("Fastest function index:", times.indexOf(Math.min(...times)));
+
+      /* =====================================================
+22. FADE IN / FADE OUT (Concept)
+===================================================== */
+      // element.style.transition = "opacity 1s";
+      // element.style.opacity = 0; // fade-out
+      // element.style.opacity = 1; // fade-in
+
+      /* =====================================================
+23. setTimeout EVENT LOOP EXAMPLE
+===================================================== */
+      console.log("Start");
+
+      setTimeout(() => {
+        console.log("Async Task");
+      }, 0);
+
+      console.log("End");
+    </script>
+  </body>
+</html>

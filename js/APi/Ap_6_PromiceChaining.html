@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function prochain(dataid) {
+      //     return new Promise((res, rej) => {
+      //       setTimeout(() => {
+      //         console.log("Work is Done ", dataid);
+      //         res("Success");
+      //       }, 4000);
+      //     });
+      //   }
+      //   console.log("Data 1 Is Fatching ....");
+      //   prochain(1).then((res) => {
+      //     console.log(res);
+      //     console.log("Data 2 Is Fatching ....");
+      //     prochain(2).then((res) => {
+      //       console.log(res);
+      //       console.log("Data 3 Is Fatching ....");
+      //       prochain(3).then((res) => {
+      //         console.log(res);
+      //       });
+      //     });
+      //   });
+
+      // ✅ Simulated async function that returns a Promise
+      function getData(id) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log(`User Data for ID: ${id}`);
+            if (resolve) {
+              resolve("Success");
+            } else {
+              reject("Error");
+            }
+          }, 1000); // 2 seconds delay
+        });
+      }
+
+      // ✅ Promise chaining
+      getData(1)
+        .then(() => getData(2))
+        .then(() => getData(3))
+        .then(() => getData(4))
+        .then(() => getData(5))
+        .then((res) => {
+          getData(6);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("Error occurred:", err);
+        });
+    </script>
+  </body>
+</html>

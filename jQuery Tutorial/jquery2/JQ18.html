@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#txtName").keydown(function () {
+          $("#txtName").css("background-color", "yellow");
+        });
+
+        $("#txtName").keyup(function () {
+          $("#txtName").css("background-color", "red");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="txtName" />
+    <button class="btnClick">Click</button>
+  </body>
+</html>

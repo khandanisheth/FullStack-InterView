@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      let cities = ["Jaipur", "Delhi", "Mumbai", "Kolkata"];
+
+      cities.forEach(function (city, i, value) {
+        document.writeln(i + ": " + city + "<br>");
+        document.writeln(value[i] + "<br>");
+      });
+      document.writeln("<h3>Simple forEach Loop Example</h3>");
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      arr.forEach((arr) => {
+        document.writeln(arr * arr + "<br>");
+      });
+
+      cities.forEach((cities) => {
+        console.log(cities.toUpperCase());
+      });
+
+      //  ye return nhi kartha he
+
+      var arrr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var y = arrr.forEach((x) => {
+        return x * x;
+      });
+      document.writeln(y); //  undefined ayega kyoki forEach return nhi kartha he
+    </script>
+  </body>
+</html>

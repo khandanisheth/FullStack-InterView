@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggel It Use</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      body {
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mb-4 text-center">
+      <button class="btn btn-danger slidedown me-3">Slide Down</button>
+      <button class="btn btn-success slideUp">Slide Up</button>
+
+      <button class="btn btn-success toggel">Slide toggle</button>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="/img/BreakstatementinCforloop-660x462.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the bulk of the card’s content.
+        </p>
+      </div>
+    </div>
+    <!-- ✅ Bootstrap JS (required for some features, like modals if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slidedown").click(function () {
+          $(".card").slideDown(2000);
+        });
+
+        $(".slideUp").click(function () {
+          $(".card").slideUp(2000);
+        });
+
+        $(".toggel").click(function () {
+          $(".card").slideToggle(2000);
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!--  
+| Use Case       | Detail                      |
+| -------------- | --------------------------- |
+| FAQ section    | Answer slideDown/Up         |
+| Accordion      | Collapsible menus           |
+| Sidebar toggle | Mobile menu hide/show       |
+| Filters panel  | Advanced filters open/close |
+-->
+

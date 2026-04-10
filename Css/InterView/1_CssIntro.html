@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Examples with Comments</title>
+
+    <!-- ================= CSS START ================= -->
+    <style>
+      /* --------------------------------------------
+       CLASS SELECTOR EXAMPLE
+       .box applies style to elements having class="box"
+    --------------------------------------------- */
+      .box {
+        background: yellow; /* yellow background */
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* --------------------------------------------
+       TAG SELECTOR EXAMPLE
+       Applies to all <p> tags
+    --------------------------------------------- */
+      p {
+        color: blue; /* text color blue */
+      }
+
+      /* --------------------------------------------
+       ID SELECTOR EXAMPLE
+       Applies to element with id="header"
+    --------------------------------------------- */
+      #header {
+        height: 60px; /* fixed height */
+        background: lightgray;
+        text-align: center;
+        line-height: 60px;
+        margin-bottom: 10px;
+      }
+
+      /* --------------------------------------------
+       COMBINATOR SELECTOR (descendant)
+       Styles <p> inside <div>
+    --------------------------------------------- */
+      div p {
+        color: red; /* overrides blue for p inside div */
+      }
+
+      /* --------------------------------------------
+       ATTRIBUTE SELECTOR
+       Targets input where type="text"
+    --------------------------------------------- */
+      input[type="text"] {
+        border: 1px solid rgb(102, 9, 253);
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      /* --------------------------------------------
+       PSEUDO-CLASS :hover
+       Applies when mouse is over the button
+    --------------------------------------------- */
+      button:hover {
+        background: green;
+        color: white;
+      }
+
+      /* --------------------------------------------
+       PSEUDO-ELEMENT ::first-letter
+       Styles first letter of paragraph
+    --------------------------------------------- */
+      p::first-letter {
+        font-size: 60px;
+        color: rgb(150, 1, 88);
+      }
+
+      /* --------------------------------------------
+       :nth-child() EXAMPLE
+       Targets 2nd list item only
+    --------------------------------------------- */
+      li:nth-child(2) {
+        color: red;
+        font-weight: bold;
+      }
+
+      /* --------------------------------------------
+       :not() SELECTOR
+       Targets all <p> except class="active"
+    --------------------------------------------- */
+      p:not(.active) {
+        opacity: 0.5;
+      }
+
+      /* --------------------------------------------
+       ::before PSEUDO-ELEMENT
+       Adds content before element
+    --------------------------------------------- */
+      h2::before {
+        content: "👉 ";
+      }
+
+      /* --------------------------------------------
+       ::after PSEUDO-ELEMENT
+       Adds content after element
+    --------------------------------------------- */
+      h2::after {
+        content: " ✔";
+        color: green;
+      }
+
+      /* --------------------------------------------
+       :first-child PSEUDO-CLASS
+       Styles first child only
+    --------------------------------------------- */
+      ul li:first-child {
+        background: rgb(226, 226, 36);
+      }
+
+      /* --------------------------------------------
+       :focus PSEUDO-CLASS
+       Applies when input is focused
+    --------------------------------------------- */
+      input:focus {
+        outline: 2px solid blue;
+      }
+    </style>
+    <!-- ================= CSS END ================= -->
+  </head>
+  <body>
+    <!-- ID SELECTOR -->
+    <div id="header">Header Section</div>
+
+    <!-- CLASS SELECTOR -->
+    <div class="box">This is a div with class box</div>
+
+    <!-- TAG + COMBINATOR SELECTOR -->
+    <div>
+      <p>This paragraph is inside div (red)</p>
+    </div>
+
+    <p class="active">This is active paragraph (full opacity)</p>
+    <p>This is normal paragraph (opacity 0.5)</p>
+
+    <!-- ATTRIBUTE SELECTOR -->
+    <input type="text" placeholder="Text input" />
+
+    <!-- PSEUDO-CLASS :hover -->
+    <br /><br />
+    <button>Hover Me</button>
+
+    <!-- PSEUDO-ELEMENT ::before & ::after -->
+    <h2>Heading with before & after</h2>
+
+    <!-- nth-child & first-child -->
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </body>
+</html>

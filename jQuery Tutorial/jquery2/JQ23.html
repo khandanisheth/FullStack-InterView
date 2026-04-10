@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".btnFadeIn").click(function () {
+          $("p").fadeIn(1000);
+        });
+        $(".btnFadeOut").click(function () {
+          $("p").fadeOut(1000);
+        });
+        $(".btnToggle").click(function () {
+          $("p").fadeToggle(1000);
+        });
+        $(".btnFadeTo").click(function () {
+          $("p").fadeTo(1000, 0.2);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button class="btnFadeIn">Fade In</button>
+    <button class="btnFadeOut">Fade Out</button>
+    <button class="btnToggle">Fade Toggle</button>
+    <button class="btnFadeTo">Fade To</button>
+
+    <p style="background-color: red; width: 300px; border: 10px dotted green">
+      Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri
+      Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai
+      Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram
+      Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri
+      Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai Shri Ram Jai
+      Shri Ram
+    </p>
+  </body>
+</html>
+
+<!--
+_-_____________________________________________________________________________________________________
+| Event    | Trigger Point                              | Action                                       |
+| -------- | ------------------------------------------ | -------------------------------------------- |
+| `scroll` | Jab `#scrollBox` ke andar scroll hota hai  | Background color `yellow` ho jata hai        |
+| `resize` | Jab browser window ka size change hota hai | Alert aata hai + `body` ka background change |
+|______________________________________________________________________________________________________|
+ -->

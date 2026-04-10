@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let str = "Danish";
+      let strre;
+      let reversedStr = str.split("").reverse().join("");//66
+
+      document.writeln(reversedStr + "<br>"); // hsinaD
+
+      for (let i = str.length - 1; i >= 0; i--) {
+        strre += str[i];
+      }
+
+      document.writeln(strre + "<br>"); // hsinaD
+    </script>
+  </body>
+</html>
+<!-- 
+ Kaise kaam karta hai?
+split("") → string ko character array me todta hai
+"Danish" → ["D", "a", "n", "i", "s", "h"]
+
+reverse() → array ko reverse karta hai
+["h", "s", "i", "n", "a", "D"]
+
+join("") → wapas string me jodta hai
+"hsinaD" -->

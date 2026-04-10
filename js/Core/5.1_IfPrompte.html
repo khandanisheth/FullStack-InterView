@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      let age = prompt("Enter your age:");
+      if (age >= 18) {
+        document.writeln("You are eligible for voting. ✅");
+      } else {
+        document.writeln("Sorry, you are not eligible for voting. ❌");
+      }
+
+      let marks = prompt("Enter your marks (0-100):");
+
+      if (marks >= 90) {
+        document.writeln("Grade: A+ 🎉");
+      } else if (marks >= 80) {
+        document.writeln("Grade: A 👏");
+      } else if (marks >= 70) {
+        document.writeln("Grade: B 🙂");
+      } else if (marks >= 60) {
+        document.writeln("Grade: C 😐");
+      } else if (marks >= 50) {
+        document.writeln("Grade: D 😟");
+      } else {
+        document.writeln("Fail ❌");
+      }
+
+      let num = prompt("Enter a number:");
+
+      let result = num % 2 == 0 ? "Even Number ✅" : "Odd Number ❌"; // this is ternary Statement Examples
+
+      document.writeln(result);
+    </script>
+    <img src="img/if.png" alt="" />
+  </body>
+</html>

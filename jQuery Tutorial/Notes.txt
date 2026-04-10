@@ -1,0 +1,131 @@
+1. What is jQuery? 
+
+jQuery ek fast, small, aur feature-rich JavaScript library hai. Iska use karke aap HTML DOM traversal,
+event handling, AJAX, aur animations ko simple bana sakte ho
+
+2. Q: What are jQuery selectors?
+jQuery selectors DOM elements ko select karne ke liye use hote hain.
+$("#id")        // ID selector
+$(".class")     // Class selector
+$("p")          // Tag selector
+
+
+3. Events in jQuery
+Common Events:
+    click()
+    dblclick()
+    mouseenter() / mouseleave()
+    keydown() / keyup()
+
+4. Effects / Animations
+    hide(), show(), toggle()
+    fadeIn(), fadeOut(), fadeToggle()
+    slideUp(), slideDown(), slideToggle()
+
+5. jQuery CSS and DOM Manipulation
+    css()
+    html() / text()
+    val()
+    addClass() / removeClass()
+
+
+
+
+ 1. $(document).ready() ka kya use hai?
+🔹 Jab browser HTML page completely load kar leta hai (DOM ready ho jata hai), tab jQuery code chalana chahiye. 
+Isliye hum $(document).ready() use karte hain.
+
+✅ 2. jQuery vs JavaScript me kya difference hai?
+| Feature              | JavaScript                       | jQuery (Library of JS)           |
+| -------------------- | -------------------------------- | -------------------------------- |
+| Syntax               | Thoda lengthy & complex          | Short & simple                   |
+| Cross-browser issues | Handle karna padta hai manually  | Automatically handle karta hai   |
+| DOM manipulation     | Tedious (e.g., `getElementById`) | Easy (`$("#id")`)                |
+| AJAX                 | XMLHTTPRequest likhna padta hai  | Simple methods (`$.ajax()`)      |
+| Animation            | Manual coding                    | Built-in effects like `fadeIn()` |
+✅ Note: jQuery = JavaScript ka shortcut + cross-browser solution
+
+
+
+✅ 3. jQuery me DOM Manipulation kaise karte hain?
+DOM = Document Object Model = HTML structure
+jQuery me DOM elements ko select, change, ya update karna bahut easy hai.
+🔹 Common Methods:
+.html() – set or get HTML
+.text() – set or get plain text
+.val() – set or get form value
+.attr() – get/set attributes
+.css() – styling change
+
+$("#para").text("Hello jQuery!");
+$("#box").css("background-color", "blue");
+$("#link").attr("href", "https://google.com");
+
+
+ 4. Event Delegation kya hota hai jQuery me?
+Jab kisi parent element ke through uske child elements ke events ko handle kiya jata hai,
+ use event delegation kehte hain.
+🔹 Kyun use karte hain?
+Jab dynamically elements add hote hain (like list items), tab direct event binding kaam nahi karta.
+Event delegation efficient hota hai.
+
+ 5. AJAX kya hai? jQuery me AJAX call kaise likhte hain?
+AJAX: Asynchronous JavaScript and XML
+Page reload kiye bina server se data lena ya bhejna.
+
+6. Hide all data ho jata he 
+
+ $(document).ready(function () {
+        $(".hide").click(function () {
+          $("*").hide(1000);
+        });
+      });
+
+7. Hide ho jata per jis par laga ho  this key usi element par
+  $(document).ready(function () {
+        $(".hide").click(function () {
+          $(this).hide(1000);
+        });
+        $(".show").click(function () {
+          $(".hide").show(1000);
+        });
+      });
+
+
+8.🧩 jQuery Effects – Fading
+✅ Definition:
+Fading effects jQuery me aise visual effects hote hain jo kisi element ki visibility ko dheere-dheere change
+karte hain — yaani ekdum hide/show na ho kar smooth transition ke saath fade in ya fade out hote hain.
+Ye opacity (transparency) ke through kaam karte hain.
+✅ jQuery Fading Methods:
+| Method         | Description                                               |
+| -------------- | --------------------------------------------------------- |
+| `fadeIn()`     | Dheere-dheere element **visible** banata hai              |
+| `fadeOut()`    | Dheere-dheere element **invisible** banata hai            |
+| `fadeToggle()` | Show/hide ko **toggle** karta hai with fade effect        |
+| `fadeTo()`     | Element ki **opacity ko set** karta hai (0 to 1 range me) |
+
+✅ Syntax:
+$(selector).fadeIn(speed);
+$(selector).fadeOut(speed);
+$(selector).fadeToggle(speed);
+$(selector).fadeTo(speed, opacity);
+________________________________________________________________________
+| Parameter |                 Use                                      |
+| --------- | -------------------------------------------------------  |
+| `speed`   | Optional — time in milliseconds (e.g., 1000 = 1 sec)     |
+| `opacity` | Only in `fadeTo()` — 0 (invisible) to 1 (fully visible)  |
+|______________________________________________________________________|
+
+
+Q:9 .on() function ka kya use hai?
+🟢 Aap bol sakte ho:
+jQuery ka .on() method multiple events ko ek hi selector par handle karne ke liye use hota hai. 
+Yeh method cleaner aur organized code likhne me help karta hai, especially jab hume ek element par click,
+mouseenter, mouseleave, dblclick jaise events handle karne ho.
+
+Q:10 submit() event ka use kya hota hai jQuery me?
+🟢 Aap bol sakte ho:
+.submit() ka use kisi form ke submit hone ke time per custom action perform karne ke liye hota hai. 
+Jaise input field validation, color change, ya AJAX call bhejna. 
+Hum e.preventDefault() ka use karke default page reload hone se bhi rok sakte hain.

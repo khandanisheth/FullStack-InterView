@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [10, 20, 30, 40, 50, 60];
+      console.log("Original Array:", arr);
+
+      // 1️⃣ Print Alternates
+      console.log("Alternate Elements:");
+      for (let i = 0; i < arr.length; i += 2) {
+        console.log(arr[i]);
+      }
+
+      // 2️⃣ Linear Search
+      function linearSearch(arr, key) {
+        // 40
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === key) {
+            return i;
+          }
+        }
+        return -1;
+      }
+      console.log("Linear Search 30:", linearSearch(arr, 30)); // index or -1
+
+      //   let arr = [10, 20, 30, 40, 50, 60];
+      // 3️⃣ Largest Element
+      function getLargest(arr) {
+        let max = arr[0]; //20
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > max) {
+            // 20>10
+            max = arr[i]; // 20
+          }
+        }
+        return max;
+      }
+      console.log("Largest Element:", getLargest(arr));
+
+      // 4️⃣ Second Largest let arr = [10, 20,60, 30, 40, 50, 60];
+      function getSecondLargest(arr) {
+        let largest = -Infinity;
+        let secondLargest = -Infinity;
+        for (let num of arr) {
+          if (num > largest) {
+            secondLargest = largest; // output 20 10-20-30-40-50
+            largest = num; //60         
+          } else if (num > secondLargest && num < largest) {
+            //30 >20 &&  30<60
+            secondLargest = num;
+          }
+        }
+        return secondLargest;
+      }
+      console.log("Second Largest:", getSecondLargest(arr));
+
+      // 5️⃣ Remove Duplicates from Sorted Array
+      let sortedArr = [10, 20, 20, 30, 30, 40, 50, 50];
+      function removeDuplicates(arr) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] !== arr[i + 1]) {
+            result.push(arr[i]); //10
+          }
+        }
+        return result;
+      }
+      console.log("Without Duplicates:", removeDuplicates(sortedArr));/// [10,20,30,40,50]
+
+      // 6️⃣ Generate all Subarrays
+      console.log("All Subarrays:");
+      function printSubarrays(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i; j < arr.length; j++) {
+            let subArray = [];
+            for (let k = i; k <= j; k++) {
+              subArray.push(arr[k]);
+            }
+            console.log(subArray);
+          }
+        }
+      }
+      printSubarrays(arr);
+
+      // 7️⃣ Reverse an Array
+      function reverseArray(arr) {
+        let start = 0,
+          end = arr.length - 1;
+        while (start < end) {
+          // swap
+          let temp = arr[start];
+          arr[start] = arr[end];
+          arr[end] = temp;
+          start++;
+          end--;
+        }
+        return arr;
+      }
+      console.log("Reversed Array:", reverseArray([...arr]));
+
+      // 8️⃣ Rotate an Array by 1
+      function rotateByOne(arr) {
+        let last = arr[arr.length - 1];
+        for (let i = arr.length - 1; i > 0; i--) {
+          arr[i] = arr[i - 1];
+        }
+        arr[0] = last;
+        return arr;
+      }
+      console.log("Rotated by 1:", rotateByOne([...arr]));// [60,10,20,30,40,50]
+    </script>
+  </body>
+</html>

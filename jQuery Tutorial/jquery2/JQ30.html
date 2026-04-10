@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".btn1").click(function () {
+          $("a").attr("href", "http://google.com");
+          $("a").text("google.com");
+        });
+
+        $(".btn2").click(function () {
+          $("a").attr("title", "hello jaipur");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button class="btn1">btn1</button>
+
+    <button class="btn2">btn2</button>
+
+    <a href="http://yahoo.com" title="Jai Shri Ram">Yahoo</a>
+
+    <br />
+  </body>
+</html>

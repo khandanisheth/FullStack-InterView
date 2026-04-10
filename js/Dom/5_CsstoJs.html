@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- HTML document ki character encoding set karta hai -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsive design ke liye -->
+    <title>Document</title>
+    <style>
+      body {
+        background-color: bisque; /* Page ka background color bisque set kiya gaya hai */
+      }
+      div {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(163, 126, 70); /* Sabhi <div> ka size aur color set kiya gaya hai */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pehla box jiska class "box1" hai aur name attribute "hello" hai -->
+    <div class="box1" name="hello"><p>Hello</p></div>
+
+    <!-- Dusra box jiska class "box2" hai -->
+    <div class="box2"><p>Hello</p></div>
+
+    <!-- Teesra box jiska class "box3" hai -->
+    <div class="box3"><p>Hello</p></div>
+    <script>
+      // box1 element ko class selector se select kiya gaya hai
+      let box1 = document.querySelector(".box1");
+      // box2 element ko bhi class selector se select kiya gaya hai
+      let box2 = document.querySelector(".box2");
+      // box1 ka "class" attribute console me print karega (output: box1)
+      console.log(box1.getAttribute("class"));
+      // box1 ka "name" attribute console me print karega (output: hello)
+      console.log(box1.getAttribute("name"));
+      // box1 ka class attribute change karke "dk" set karega
+      console.log(box1.setAttribute("class", "dk"));
+      // box2 ka background color red set karega
+      box2.style.background = "red";
+      // box2 ke andar ke text ka font size 24px set karega
+      box2.style.fontSize = "24px";
+    </script>
+  </body>
+</html>

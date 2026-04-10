@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Events Full Demo</title>
+    <style>
+      #dragMe {
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+        margin: 20px;
+      }
+      #dropHere {
+        width: 200px;
+        height: 200px;
+        border: 2px dashed #333;
+        margin: 20px;
+      }
+    </style>
+    <script>
+      function showAlert(msg) {
+        alert(msg);
+      }
+
+      function allowDrop(event) {
+        event.preventDefault();
+      }
+
+      function dragStart(event) {
+        event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+      }
+    </script>
+  </head>
+  <body onload="showAlert('Page Loaded!')">
+    <h2>Mouse Events</h2>
+    <button onclick="showAlert('Button Clicked!')">Click</button>
+    <button ondblclick="showAlert('Double Clicked!')">Double Click</button>
+    <button onmouseenter="showAlert('Mouse Enter!')">Mouse Enter</button>
+    <button onmouseleave="showAlert('Mouse Leave!')">Mouse Leave</button>
+
+    <h2>Keyboard Events</h2>
+    <input type="text" placeholder="Type Something" onkeydown="console.log('Key Down')" onkeyup="console.log('Key Up')" onkeypress="console.log('Key Press')" />
+
+    <h2>Form Events</h2>
+    <form onsubmit="showAlert('Form Submitted!'); return false;" onreset="showAlert('Form Reset!')">
+      <input type="text" onfocus="console.log('Focus aaya')" onblur="console.log('Focus gaya')" oninput="console.log('Typing...')" />
+      <br /><br />
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </form>
+
+    <h2>Clipboard Events</h2>
+    <input type="text" oncopy="showAlert('Copy kiya!')" oncut="showAlert('Cut kiya!')" onpaste="showAlert('Paste kiya!')" />
+
+    <h2>Drag & Drop Events</h2>
+    <div id="dragMe" draggable="true" ondragstart="dragStart(event)">Drag Me</div>
+    <div id="dropHere" ondrop="drop(event)" ondragover="allowDrop(event)">Drop Here</div>
+  </body>
+</html>

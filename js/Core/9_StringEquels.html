@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Comparison in JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // String Object and String Primitive banaye gaye hain
+      let str1 = new String("InterviewBit"); // String Object (reference type)
+      let str2 = "InterviewBit"; // String Primitive (primitive type)
+      let str3 = "InterviewBit"; // String Primitive (primitive type)
+
+      document.writeln(typeof str1 + "<br>"); // obj
+      document.writeln(typeof str2 + "<br>"); // str
+      document.writeln(typeof str3 + "<br>"); // str
+
+      // == sirf value compare karta hai, str1 object ko primitive me convert kar deta hai
+      document.write((str1 == str2) + "<br>"); // true
+
+      // === value ke sath type bhi compare karta hai
+      document.write((str1 === str2) + "<br>"); // false (ek object hai, ek primitive)
+
+      // str2 aur str3 dono primitive hain aur value bhi same hai
+      document.write((str2 === str3) + "<br>"); // true
+
+      // str1.valueOf() primitive value deta hai object ka
+      document.write((str1.valueOf() === str2) + "<br>"); // true
+
+      document.write("<br>"); // Line break
+
+      // String Object bana kar uska reference dusre variable me diya
+      let sb1 = new String("Hello"); // Object 1
+      let sb2 = sb1; // Same reference (pointing to same object) 1
+      let sb3 = new String("Hello"); // Naya Object 2
+
+      // sb1 aur sb2 same reference ko point karte hain
+      document.write((sb1 == sb2) + "<br>"); // true
+      document.write((sb1 === sb2) + "<br>"); // true (reference same)
+
+      // sb1 aur sb3 ki value same hai, lekin reference alag hai
+      document.write((sb1 == sb3) + "<br>"); // true (value compare)
+      document.write((sb1 === sb3) + "<br>"); // false (reference alag)
+
+      // valueOf() primitive value nikalta hai object ka
+      document.write((sb1.valueOf() === sb2.valueOf()) + "<br>"); // true
+      document.write((sb1.valueOf() === sb3.valueOf()) + "<br>"); // true
+    </script>
+  </body>
+</html>

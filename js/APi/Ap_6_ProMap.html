@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Promise Chaining with map()</title>
+    <style>
+      .user-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Users Data</h2>
+    <div class="datafatch"></div>
+    <script>
+      const url = `https://jsonplaceholder.typicode.com/users`;
+      const container = document.querySelector(".datafatch");
+      // Chaining style
+      fetch(url)
+        .then((response) => {
+          // Step 1: Convert to JSON
+          return response.json();
+        })
+        .then((users) => {
+          // Step 2: Convert data to HTML array
+          return users.map((user) => {
+            return `
+              <div class="user-card">
+                <h4>User ID: ${user.id}</h4>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Username:</strong> ${user.username}</p>
+                <p><strong>Street:</strong> ${user.address.street}</p>
+              </div>
+            `;
+          });
+          //   // Insert into container
+          //     container.innerHTML = allUsersHTML.join("");  ese bhi kar sakthe he
+        })
+        .then((allUsersHTML) => {
+          // Step 3: Insert into page
+          container.innerHTML = allUsersHTML.join("");
+        })
+        .catch((error) => {
+          console.log("Something went wrong:", error);
+        });
+    </script>
+  </body>
+</html>

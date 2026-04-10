@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      function getData(dataid, callback) {
+        setTimeout(() => {
+          console.log(`This is ${dataid} Data User`);
+          if (callback) {
+            callback();
+          }
+        }, 2000);
+      }
+
+      getData(1, () => {
+        getData(2, () => {
+          getData(3, () => {
+            getData(4, () => {
+              getData(5, () => {
+                console.log("hhhh");
+              });
+            });
+          });
+        });
+      }); // output after every 2 second this is 1 data user, this is 2 data user, this is 3 data user, this is 4 data user, this is 5 data user, hhhh
+
+      setTimeout(() => {
+        console.log(`This is`);
+      }, 2000);
+
+      // function printData(index) {
+      //   if (index < arr.length) {
+      //     getData(arr[index], () => {
+      //       printData(index + 1);
+      //     });
+      //   }
+      // }
+
+      // printData(0);
+    </script>
+  </body>
+</html>

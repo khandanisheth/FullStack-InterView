@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ek student object banaya gaya hai jisme name, age, aur male naam ke properties hain
+      // aur ek method 'data' hai jo student ke details console me print karta hai.
+      const st = {
+        name: "dk",
+        age: 29,
+        male: true,
+        data() {
+          console.log(`Name -> ${this.name} age ->${this.age} Male ->${this.male}`);
+        },
+      };
+      // method call karne ka example — abhi comment kiya hua hai
+      // st.data();
+
+      // ek employee object banaya gaya hai jisme caltax() method hai
+      const emp = {
+        caltax() {
+          console.log("tax rate is 10 % ");
+        },
+      };
+
+      // ek user object banaya gaya hai jisme sel (salary) property hai
+      const user = {
+        sel: 5000,
+      };
+
+      // yahan emp object ka prototype user object se set kiya gaya hai
+      // iska matlab agar emp object me koi property nahi milegi,
+      // to JavaScript user object me us property ko dhoondhega
+      emp.__proto__ = user;
+
+      // agar ab hum emp.sel access karein, to wo 5000 dega
+      // kyunki emp ke prototype me user object set ho gaya hai
+      console.log(emp.sel); // Output: 5000
+
+      // emp ka caltax method call karein
+      emp.caltax(); // Output: tax rate is 10 %
+    </script>
+  </body>
+</html>

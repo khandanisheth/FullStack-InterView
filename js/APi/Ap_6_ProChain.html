@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Data</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .user-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Fetched Users from API</h2>
+    <div id="users"></div>
+
+    <script>
+      const url = `https://jsonplaceholder.typicode.com/users`;
+      const container = document.getElementById("users");
+
+      const dataFetch = (id) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            fetch(`${url}/${id}`)
+              .then((res) => res.json())
+              .then((data) => {
+                const userHTML = `
+              <div class="user-card">
+                <h4>User ID: ${data.id}</h4>
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Username:</strong> ${data.username}</p>
+                <p><strong>Street:</strong> ${data.address.street}</p>
+              </div>
+            `;
+                container.innerHTML += userHTML;
+                resolve("Success");
+              })
+              .catch((err) => {
+                console.log("Error:", err);
+                reject(err);
+              });
+          }, 2000);
+        });
+      };
+
+      // ✅ Promise chaining (now it works)
+      dataFetch(1)
+        .then(() => dataFetch(2))
+        .then(() => dataFetch(3))
+        .then(() => dataFetch(4))
+        .then(() => dataFetch(5))
+        .then(() => {
+          console.log("All users fetched!");
+        })
+        .catch((err) => {
+          console.log("Error occurred:", err);
+        });
+    </script>
+  </body>
+</html>

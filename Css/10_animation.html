@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      animation-name: colorChange; /* animation ka naam */
+      animation-duration: 2s;  
+      animation-delay: 12s;
+          /* kitni der chalega */
+      animation-iteration-count: infinite; /* baar baar chalega */
+    }
+
+    /* @keyframes banake animation ka pattern set karte hain */
+    @keyframes colorChange {
+      0%   { background-color: red; }
+      50%  { background-color: yellow; }
+      100% { background-color: green; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box"></div>
+
+</body>
+</html>
+<!-- 
+
+
+📌 CSS Animation Properties
+
+Property	                             Kaam
+
+animation-name	                ||      Kaunsa @keyframes use hoga
+animation-duration	            ||    Kitne seconds me complete hoga
+animation-timing-function	    ||    Speed curve (ease, linear etc.)
+animation-delay	                ||    Kitni der baad start hoga
+animation-iteration-count	    ||    Kitni baar chalega (ya infinite)
+animation-direction	normal,     ||    reverse, alternate
+animation-fill-mode	            ||    animation ke baad element ki kya state rahegi-->

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Document ki character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Mobile responsive design ke liye -->
+    <title>Document</title>
+    <style>
+      div {
+        height: 200px; /* Har div ki height 200px */
+        width: 200px; /* Har div ki width 200px */
+        color: rgb(155, 139, 139); /* Text color */
+        background-color: aqua; /* Background color */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 3 div elements hain, sabka class "box1" hai, aur har ek ke andar <p>Hello</p> hai -->
+    <div class="box1"><p>Hello</p></div>
+    <div class="box1"><p>Hello</p></div>
+    <div class="box1"><p>Hello</p></div>
+    <script>
+      // Saare div elements ko NodeList me store kiya gaya hai
+      let div = document.querySelectorAll("div");
+      // Saare <p> elements ko bhi NodeList me store kiya gaya hai
+      let p = document.querySelectorAll("p");
+      // Console me div aur p NodeLists ka structure dikha rahe hain
+      console.dir(div);
+      console.dir(p);
+      // Saare div ka background red kar diya gaya hai
+      // Lekin ek chhoti galti hai: color me "black" likhna tha, aapne "balck" likh diya (spelling mistake)
+      for (d of div) {
+        d.style.background = "red";
+        d.style.color = "balck"; // 🛑 Typo error: should be "black"
+      }
+      // Paragraphs ke liye: unka text color black set kiya gaya hai
+      // Aur unka inner text change karke "Data Text Change 0/1/2" kiya gaya hai
+      let i = 0;
+      for (d of p) {
+        d.style.color = "black";
+        d.innerText = `Data Text Change ${i}`;
+        i++;
+      }
+    </script>
+  </body>
+</html>

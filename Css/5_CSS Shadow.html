@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Body ka basic style */
+body {
+  background-color: #222;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: white;
+}
+
+/* Common style for all boxes */
+.box {
+  width: 300px;
+  height: 150px;
+  margin: 20px auto;
+  border-radius: 15px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #444;
+  color: white;
+}
+
+/* Text shadow ke liye heading ka style */
+h1 {
+  /* x-axis, y-axis, blur radius, color */
+  text-shadow: 2px 2px 9px #ff6600;
+}
+
+/* Pehla box — simple Box Shadow */
+.shadow1 {
+  /* x-axis, y-axis, blur, color */
+  box-shadow: 5px 5px 15px #ff6600;
+}
+
+/* Dusra box — multiple shadows */
+.shadow2 {
+  /* Pehla shadow: 5px 5px 15px #00ff99
+     Dusra shadow: -5px -5px 10px #3399ff */
+  box-shadow: 5px 5px 15px #00ff99, -5px -5px 10px #3399ff;
+}
+
+/* Teesra box — inset (andar ki taraf shadow) */
+.shadow3 {
+  /* Inset shadow andar ki taraf lagta hai */
+  box-shadow: inset 5px 5px 15px #ff0099;
+}
+</style>
+</head>
+<body>
+
+<!-- Heading with Text Shadow -->
+<h1>CSS Shadow Effects Demo</h1>
+
+<!-- Box 1: Simple Box Shadow -->
+<div class="box shadow1">Simple Box Shadow</div>
+
+<!-- Box 2: Multiple Shadows -->
+<div class="box shadow2">Multiple Shadows</div>
+
+<!-- Box 3: Inset Shadow -->
+<div class="box shadow3">Inset Box Shadow</div>
+
+</body>
+</html>
+
+<!-- 
+x-offset |  y-offset |   Result
+    5px  |     5px   | Shadow right-bottom
+    -5px |     5px   | Shadow left-bottom
+    5px  |     -5px  | Shadow right-top
+    -5px |     -5px  | Shadow left-top -->

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery + Bootstrap Example</title>
+
+    <!-- ✅ Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ✅ jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // 🔘 Click event - hides even rows
+            $(".btnClick").click(function () {
+                $("tr:even").hide();
+            });
+
+            // 🔘 Double Click event - shows even rows
+            $(".btndblClick").dblclick(function () {
+                $("tr:even").show();
+            });
+
+            // 🔘 Mouse enter - hides even rows
+            $(".btnMouseEnter").mouseenter(function () {
+                $("tr:even").hide();
+            });
+
+            // 🔘 Mouse leave - shows even rows
+            $(".btnMouseEnter").mouseleave(function () {
+                $("tr:even").show();
+            });
+
+            // 🔘 Mouse down on table - hides even rows
+            $("#tbl1").mousedown(function () {
+                $("tr:even").hide();
+            });
+
+            // 🔘 Mouse up on table - shows even rows
+            $("#tbl1").mouseup(function () {
+                $("tr:even").show();
+            });
+
+            // ⚠️ Note: `hover()` called twice unnecessarily
+            // ✅ Fixed: Use hover with 2 functions (in, out)
+            $("#tbl1").hover(
+                function () {
+                    $("tr:even").hide();
+                },
+                function () {
+                    $("tr:even").show();
+                }
+            );
+        });
+    </script>
+</head>
+<body class="bg-light p-4">
+
+    <!-- 🔘 Bootstrap-styled Buttons -->
+    <div class="mb-3">
+        <button class="btn btn-primary btnClick">Click</button>
+        <button class="btn btn-danger btndblClick">Double Click</button>
+        <button class="btn btn-warning btnMouseEnter">Mouse Enter</button>
+    </div>
+
+    <!-- 🔘 Bootstrap Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped" id="tbl1">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1Name</td>
+                    <td>City</td>
+                </tr>
+                <tr>
+                    <td>2Name</td>
+                    <td>City</td>
+                </tr>
+                <tr>
+                    <td>3Name</td>
+                    <td>City</td>
+                </tr>
+                <tr>
+                    <td>4Name</td>
+                    <td>City</td>
+                </tr>
+                <tr>
+                    <td>5Name</td>
+                    <td>City</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

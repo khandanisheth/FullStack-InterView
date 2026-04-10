@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$(".btn1").click(function()
+			{
+				$("p").animate({left:'900px',width:'500px',height:'500px'},5000);	
+			});
+
+			$(".btn2").click(function()
+			{
+				$("p").animate({width:'700px',height:'700px',opacity:'.5'},5000);	
+			});
+
+
+			$(".btn3").click(function()
+			{
+				$("p").animate({height:'toggle',width:'toggle'},5000);	
+			});
+
+			$(".btn4").click(function()
+			{
+				$("p").stop();	
+			});
+		});
+
+	</script>
+</head>
+<body>
+<button class="btn1">btn1</button>
+<button class="btn2">btn2</button>
+<button class="btn3">btn3</button>
+<button class="btn4">Stop</button>
+
+<p style="background-color: red;width: 100px;height:100px; border: 10px dotted green;position: absolute;"></p>
+</body>
+</html>

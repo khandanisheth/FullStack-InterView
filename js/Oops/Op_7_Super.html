@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+
+        speak() {
+          console.log(`${this.name} makes a sound.`);
+        }
+      }
+
+      class Dog extends Animal {
+        constructor(name, breed) {
+          super(name); // Call parent constructor
+          this.breed = breed;
+        }
+
+        speak() {
+          super.speak(); // Call parent method
+          console.log(`${this.name} barks. (${this.breed})`);
+        }
+      }
+
+      const dog = new Dog("Tommy", "Labrador");
+      dog.speak();
+    </script>
+  </body>
+</html>

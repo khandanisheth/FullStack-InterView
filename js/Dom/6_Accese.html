@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Access Example</title>
+  </head>
+  <body>
+    <h1 id="title">Welcome to Access Example</h1>
+    <p class="info">This is a paragraph.</p>
+    <button class="btn" onclick="handleClick()">Click Me</button>
+
+    <br /><br />
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button onclick="getInputValue()">Submit</button>
+
+    <script>
+      // 1. Accessing DOM Elements
+      const title = document.getElementById("title");
+      console.log("Title Text:", title.innerText);
+
+      const paragraph = document.getElementsByClassName("info")[0];
+      console.log("Paragraph Text:", paragraph.innerText);
+
+      const button = document.querySelector(".btn");
+      console.log("Button Text:", button.innerText);
+
+      // 2. Accessing Object Properties
+      const user = {
+        name: "Mohammad Danish",
+        age: 22,
+        course: "MCA",
+      };
+
+      console.log("User Name:", user.name); // Dot notation
+      console.log("User Age:", user["age"]); // Bracket notation
+
+      // 3. Accessing Arrays
+      const fruits = ["Apple", "Banana", "Mango"];
+      console.log("First Fruit:", fruits[0]);
+      console.log("All Fruits:", fruits);
+
+      // 4. Accessing LocalStorage
+      localStorage.setItem("username", "danish123");
+      const storedUser = localStorage.getItem("username");
+      console.log("LocalStorage Username:", storedUser);
+
+      // 5. Accessing Form Input
+      function getInputValue() {
+        const input = document.getElementById("nameInput").value;
+        console.log("Input Value:", input);
+      }
+
+      // 6. Button Click Access Example
+      function handleClick() {
+        alert("Button clicked!");
+      }
+    </script>
+  </body>
+</html>

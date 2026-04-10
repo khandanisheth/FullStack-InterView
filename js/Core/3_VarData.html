@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ===== Variables Declaration =====
+
+      // 'var' se variable bana sakte hain (purana tarika)
+      var name = "Danish";
+
+      // 'let' se variable banate hain (modern, block scope)
+      let age = 23;
+
+      // 'const' se constant variable banate hain (jo change nahi hota)
+      const country = "India";
+
+      // ===== Data Types =====
+
+      // String - text ke liye
+      var myName = "Mohammad Danish";
+
+      // Number - integer ya decimal dono ke liye
+      var myAge = 23;
+      var price = 99.99;
+
+      // Boolean - true ya false
+      var isStudent = true;
+      var isLoggedIn = false;
+
+      // Undefined - jis variable ko value assign nahi kiya
+      var city;
+      console.log(city); // undefined
+
+      // Null - khud se intentionally khali value
+      var car = null;
+      console.log(car);
+
+      // Object - multiple properties ek saath
+      var person = {
+        firstName: "Mohammad",
+        lastName: "Danish",
+        age: 23,
+      };
+
+      // Array - ek hi variable me multiple values
+      var colors = ["Red", "Green", "Blue"];
+
+      // Symbol (unique value ke liye)
+      var id = Symbol("id");
+
+      // BigInt (bade number ke liye)
+      var bigNumber = 1234567890123456789012345678901234567890n;
+
+      // ===== typeof Operator =====
+      console.log(typeof myName); // string
+      console.log(typeof myAge); // number
+      console.log(typeof isStudent); // boolean
+      console.log(typeof city); // undefined
+      console.log(typeof car); // object (special case)
+      console.log(typeof person); // object
+      console.log(typeof colors); // object (array bhi object hi hota hai JS me)
+      console.log(typeof id); // symbol
+      console.log(typeof bigNumber); // bigint
+    </script>
+  </body>
+</html>

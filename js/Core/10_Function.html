@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Normal function with a simple message
+      function myFun() {
+        document.write("Hello JS! This is my first function.<br>");
+      }
+      myFun(); // Calling the first function
+
+      // Function with return type
+      function myFunWithReturn() {
+        return "This is function with return type.<br>";
+      }
+      document.write(myFunWithReturn()); // Calling function and displaying return value
+
+      // Function with parameters
+      function add(num1, num2, num3) {
+        return num1 + num2 + num3;
+      }
+      document.write(`Addition of 23, 56, 67 is: ${add(23, 56, 67)}<br>`);
+
+      // Function with default parameters
+      function paramFun(param = "Default Value") {
+        document.write(param + "<br>");
+      }
+      paramFun(); // Calling function without passing any value
+      paramFun("Passed Value"); // Calling function with a value
+
+      // Function with variable-length arguments (using arguments object)
+      function testFun() {// no defined parameters  
+        document.write(`Total passed arguments: ${arguments.length} <br>`);
+        for (let index in arguments) {
+          document.write(`Index ${index} Value: ${arguments[index]} <br>`);
+        }
+        document.write(`First argument: ${arguments[0]} <br>`);
+      }
+      testFun(46767, 67, 678, 8, 8, 6532); // Passing multiple arguments
+
+      // Function with rest parameters
+      function testFunRest(...args) {
+        document.write(`Total passed arguments: ${args.length} <br>`);
+        for (let index in args) {
+          document.write(`Index ${index} Value: ${args[index]} <br>`);
+        }
+      }
+      testFunRest(46767, 67, 678, 8, 8, 6532); // Passing multiple arguments
+
+      // Anonymous function
+      let anonymousFun = function () {
+        document.write(`First Name: ${arguments[0]} <br> Last Name: ${arguments[1]}<br>`);
+      };
+      anonymousFun("Rahul", "Rajput"); // Calling anonymous function
+
+      // Arrow function with single expression
+      let arrowFunc = () => "Hello Arrow Function!<br>";
+      document.write(arrowFunc());
+
+      // Arrow function with parameters
+      let arrowFuncWithParams = (name, age, address) => {
+        return `Name: ${name} <br> Age: ${age} <br> Address: ${address}<br>`;
+      };
+      document.write(arrowFuncWithParams("Rahul Rajput", 27, "Jaipur"));
+
+      // Assigning a function to a variable and calling it
+      var greet = function () {
+        document.write("Hello Danish!<br>");
+      };
+      var sayHello = greet; // Assigning function to variable
+      sayHello(); // Calling the function through variable
+
+      // IIFE (Immediately Invoked Function Expression)
+      (function () {
+        document.write("This is an IIFE (Immediately Invoked Function Expression).<br>");
+      })(); // IIFE runs immediately after its definition
+
+      // Function Expression (Function assigned to a variable)
+      const multiply = function (a, b) {
+        return a * b;
+      };
+      document.write(`Multiplication of 6 and 7: ${multiply(6, 7)}<br>`);
+
+      // Callback Function (Function passed as an argument)
+      function greetPerson(name, callback) {
+        document.write(`Hello, ${name}!<br>`);
+        callback(); // Calling the callback function passed as argument
+      }
+      function thankYou() {
+        document.write("Thank you for using our service.<br>");
+      }
+      greetPerson("Danish", thankYou); // Passing the callback function
+
+      // Recursive Function (Function calling itself)
+      function factorial(n) {
+        if (n === 0 || n === 1) {
+          return 1;
+        }
+        return n * factorial(n - 1); // Recursively calling factorial
+      }
+      document.write(`Factorial of 5 is: ${factorial(5)}<br>`);
+
+      // Object with method
+      // Object with method
+      let person = {
+        name: "Danish",
+        greet: function () {
+          return "Hello " + this.name;
+        },
+        x: 10,
+      };
+
+      console.log(person.greet());
+      console.log(person.x); // Accessing property
+    </script>
+  </body>
+</html>
+<!-- 
+Summary of All Types of Functions:
+Normal Function: Basic functions jo parameters aur return type handle karte hain.
+
+Function with Return Type: Functions jo kuch return karte hain.
+
+Default Parameter Function: Jo default values ke sath kaam karte hain.
+
+Variable Length Arguments Function: Functions jo multiple arguments ko handle karte hain.
+
+Anonymous Function: Functions jo variable me store hote hain.
+
+Arrow Function: Shorter syntax for functions, with lexical this.
+
+IIFE: Immediately Invoked Function Expression.
+
+Function Expression: Function stored in a variable.
+
+Callback Function: Functions passed as arguments to other functions.
+
+Recursive Function: Functions calling themselves to solve problems like factorials. -->

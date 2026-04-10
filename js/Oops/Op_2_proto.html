@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        greet: function () {
+          console.log("Hello!");
+        },
+      };
+
+      const student = {
+        name: "Danish",
+      };
+
+      student.__proto__ = person;
+      student.greet(); // Output: Hello!
+
+      // <!-- __proto__ Kya Hota Hai?
+      //     __proto__ ek reference hota hai jo object ke parent (prototype) ko point karta hai.
+      //     Iska use JavaScript me inheritance aur method/property lookup ke liye hota hai.
+
+      // ✅ Simple Definition:
+      //     __proto__ ek object ki prototype chain ka part hai jiska use dusre object ke methods
+      //     ya properties access karne ke liye hota hai.
+
+      // 🔍 Kaise hua?
+      //     student object me greet() method nahi hai.
+
+      //     JavaScript ne student.__proto__ (yaani person) me jaake greet() dhunda.
+
+      //     Wahan mil gaya, to use run kar diya.
+
+      //     student -> person -> Object -> null
+      //        |            |
+      //      __proto__     greet()
+
+      //   jab kisi obj me prototype bna the khud ka function bana the he
+
+      //     🔷 Behind the Scenes:
+      // Jab aap ye likhte ho:
+      // javascript
+      // const s = {};
+      // To actually JavaScript is tarah karta hai:
+
+      // javascript
+      // s.__proto__ === Object.prototype // true
+      // Matlab har object ka parent hota hai Object.prototype jab tak aap manually kisi aur object ko __proto__ nahi bana dete.
+
+      //  -->
+    </script>
+  </body>
+</html>

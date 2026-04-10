@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const fragment = document.createDocumentFragment();
+      const li = fragment.appendChild(document.createElement("section")).appendChild(document.createElement("ul")).appendChild(document.createElement("li"));
+      li.textContent = "hello world";
+
+      li.style.listStyleType = "none";
+      let a = document.createElement("li");
+      li.after(a);
+      a.innerText = "lll";
+      document.body.appendChild(fragment);
+    </script>
+
+    <script>
+      // Step 1: Create a Document Fragment
+      const fr = document.createDocumentFragment();
+
+      // Step 2: Create section > ul > li
+      const section = document.createElement("section");
+      const ul = document.createElement("ul");
+      const li1 = document.createElement("li");
+      li1.textContent = "Hello World";
+      li1.style.listStyleType = "none";
+
+      // Step 3: Append li1 to ul, and ul to section
+      ul.appendChild(li1);
+
+      // Step 4: Create another <li> and insert after li1
+      const li2 = document.createElement("li");
+      li2.textContent = "lll";
+      li2.style.listStyleType = "none";
+      li1.after(li2); // Insert after li1
+
+      // Step 5: Append ul to section and section to fragment
+      section.appendChild(ul);
+      fr.appendChild(section);
+
+      // Step 6: Finally append fragment to body
+      document.body.appendChild(fr);
+    </script>
+  </body>
+</html>
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fixed DOM Fragment Example</title>
+</head>
+<body>
+
+<script>
+  // Step 1: Create a Document Fragment
+  const fragment = document.createDocumentFragment();
+
+  // Step 2: Create section > ul > li
+  const section = document.createElement("section");
+  const ul = document.createElement("ul");
+  const li1 = document.createElement("li");
+  li1.textContent = "Hello World";
+  li1.style.listStyleType = "none";
+
+  // Step 3: Append li1 to ul, and ul to section
+  ul.appendChild(li1);
+
+  // Step 4: Create another <li> and insert after li1
+  const li2 = document.createElement("li");
+  li2.textContent = "lll";
+  li2.style.listStyleType = "none";
+  li1.after(li2); // Insert after li1
+
+  // Step 5: Append ul to section and section to fragment
+  section.appendChild(ul);
+  fragment.appendChild(section);
+
+  // Step 6: Finally append fragment to body
+  document.body.appendChild(fragment);
+</script>
+
+</body>
+</html>
+ -->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Class A define ki gayi hai
+      class A {
+        // Constructor method (yeh tab call hota hai jab object banate hain)
+        constructor() {
+          // Yahan manually ek custom method call kiya gaya hai jo ek parameter accept karta hai
+          this.constructorWithOneParam(5);
+
+          // Yeh line uske baad chalegi
+          console.log("Default Constructor");
+        }
+
+        // Ek custom method banaya gaya hai jise naam diya gaya hai: constructorWithOneParam
+        constructorWithOneParam(x) {
+          // Is method ke andar ek aur method call kiya gaya hai jisme do parameter pass kiye gaye hain
+          this.constructorWithTwoParams(21, "Dk");
+
+          // Yeh line uske baad chalegi
+          console.log("Parameter Raised Constructor");
+          console.log("Value Of x -> " + x);
+        }
+
+        // Ek aur custom method jo 2 parameters leta hai
+        constructorWithTwoParams(x, name) {
+          console.log("Parameter Raised Constructor");
+          console.log("Name -> " + name + " And Age -> " + x);
+        }
+      }
+
+      // Object banaya gaya class A ka
+      // Isse default constructor call hoga (i.e., constructor())
+      const a = new A();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			txt="<b>Hare Krishna</b>";
+
+
+			$(".btn1").click(function(){
+				$("ul").after(txt);
+			});
+
+			
+			$(".btn2").click(function(){
+				$("ul").before(txt);
+			});
+			 
+		});
+
+	</script>
+</head>
+<body>
+<button class="btn1">btn1</button>
+<button class="btn2">btn2</button> <br>
+
+<ul style="color: red">
+	<li>Jai Shri Ram</li>
+	<li>Jai Shri Ram</li>
+	<li>Jai Shri Ram</li>
+	<li>Jai Shri Ram</li>
+</ul>
+
+</body>
+</html>

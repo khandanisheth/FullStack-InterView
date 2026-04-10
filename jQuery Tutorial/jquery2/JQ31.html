@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+
+			txt="Jai Shri Krishna ";
+
+			$(".btn1").click(function(){
+				$("p").append(txt);
+			});
+			
+			$(".btn2").click(function(){
+				$("p").prepend(txt);
+			});
+			 
+		});
+
+	</script>
+</head>
+<body>
+<button class="btn1">btn1</button>
+<button class="btn2">btn2</button>
+
+<p>hello jaipur  </p>
+
+</body>
+</html>

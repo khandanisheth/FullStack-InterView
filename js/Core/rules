@@ -1,0 +1,229 @@
+1️⃣ Implicit Type Coercion
+| Point        | Description                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| Definition   | JavaScript automatically ek data type ko dusre me convert kar deta hai |
+| Kab hota hai | Different data types ke sath operation me                              |
+| Example      | `"2" + 3 → "23"`                                                       |
+
+2️⃣ Operators & Coercion Rules
+| Operator | Coercion Type   | Example    | Output |
+| -------- | --------------- | ---------- | ------ |
+| `+`      | Number → String | `"2" + 3`  | `"23"` |
+| `-`      | String → Number | `"5" - 2`  | `3`    |
+| `*`      | String → Number | `"4" * 2`  | `8`    |
+| `/`      | String → Number | `"10" / 2` | `5`    |
+
+3️⃣ Truthy & Falsy Values
+| Type   | Values                                         |
+| ------ | ---------------------------------------------- |
+| Falsy  | `false`, `0`, `""`, `null`, `undefined`, `NaN` |
+| Truthy | Falsy ke alawa sab kuch                        |
+
+
+4️⃣ Logical Operators (&&, ||)
+| Operator | Rule               | Example  | Output              |    |   |     |      |
+| -------- | ------------------ | -------- | ------------------- | -- | - | --- | ---- |
+| `        |                    | `        | First truthy return | `0 |   | 10` | `10` |
+| `&&`     | First falsy return | `5 && 0` | `0`                 |    |   |     |      |
+
+5️⃣ == vs ===
+
+| Operator | Type Conversion | Compare      |
+| -------- | --------------- | ------------ |
+| `==`     | Yes             | Value        |
+| `===`    | No              | Value + Type |
+6️⃣ Dynamically Typed Language
+| Point         | JavaScript              |
+| ------------- | ----------------------- |
+| Type checking | Run-time                |
+| Variable type | Fixed nahi hota         |
+| Example       | `var a = 10; a = "Hi";` |
+7️⃣ Static vs Dynamic Typing
+| Feature       | Static Typing | Dynamic Typing (JS) |
+| ------------- | ------------- | ------------------- |
+| Type decide   | Compile time  | Run time            |
+| Variable type | Fixed         | Changeable          |
+| Example       | Java          | JavaScript          |
+8️⃣ Pass By Value
+| Point     | Description               |
+| --------- | ------------------------- |
+| Data type | Primitive                 |
+| Memory    | New copy                  |
+| Effect    | Original change nahi hota |
+| Example   | `number`, `string`        |
+9️⃣ Pass By Reference
+| Point     | Description              |
+| --------- | ------------------------ |
+| Data type | Non-Primitive            |
+| Memory    | Same address             |
+| Effect    | Original change hota hai |
+| Example   | `object`, `array`        |
+🔟 Pass by Value vs Reference
+| Feature       | Pass By Value | Pass By Reference |
+| ------------- | ------------- | ----------------- |
+| Data type     | Primitive     | Object / Array    |
+| Memory        | New           | Same              |
+| Change effect | No            | Yes               |
+1️⃣1️⃣ if–else ke andar behavior
+| Data Type | if–else me result                  |
+| --------- | ---------------------------------- |
+| Primitive | Value copy                         |
+| Object    | Reference copy                     |
+| Rule      | if–else behavior change nahi karta |
+🧠 Interview Golden Rules Table
+| Rule No | Rule                     |
+| ------- | ------------------------ |
+| 1       | JS dynamically typed hai |
+| 2       | `+` string banata hai    |
+| 3       | `==` coercion karta hai  |
+| 4       | Primitive → value copy   |
+| 5       | Object → reference copy  |
+
+
+
+
+
+📘 JavaScript Interview Notes (Quick Revision)
+1️⃣ Implicit Type Coercion
+✅ Definition
+
+Implicit Type Coercion JavaScript ka feature hai jisme engine automatically ek data type ko dusre data type me convert kar deta hai jab different types ke operands ke sath operation hota hai.
+
+🔹 Types of Coercion
+Type	Operator / Place
+String Coercion	+
+Number Coercion	-, *, /
+Boolean Coercion	if, &&, `
+Equality Coercion	==
+🔹 Examples
+"2" + 3      // "23"
+"5" - 2      // 3
+if (0) {}    // false
+5 == "5"     // true
+
+🗣 Interview Line
+
+JavaScript automatically converts data types during operations; this behavior is called implicit type coercion.
+
+2️⃣ Dynamically Typed Language
+✅ Definition
+
+JavaScript ek dynamically typed language hai jisme variable ka type run-time par decide hota hai, compile-time par nahi.
+
+🔹 Example
+var a = 10;
+a = "Hello";
+
+🔹 Static vs Dynamic Typing
+Feature	Static	Dynamic
+Type checking	Compile time	Run time
+Variable type	Fixed	Changeable
+Example	Java	JavaScript
+🗣 Interview Line
+
+JavaScript is dynamically typed because variables are not bound to any specific data type.
+
+3️⃣ Truthy & Falsy Values
+❌ Falsy Values
+false, 0, "", null, undefined, NaN
+
+✔ Truthy
+
+👉 Falsy ke alawa sab kuch
+
+🔹 Example
+if ("hello") console.log("yes"); // runs
+if (0) console.log("no");        // not run
+
+🗣 Interview Line
+
+In JavaScript, all values except falsy values are treated as truthy in boolean context.
+
+4️⃣ Logical Operators (&&, ||)
+🔹 Rules
+Operator	Return
+`	
+&&	First falsy value
+🔹 Example
+5 || 10      // 5
+0 || 10      // 10
+5 && 10      // 10
+0 && 10      // 0
+
+🗣 Interview Line
+
+Logical operators in JavaScript return operands, not boolean values.
+
+5️⃣ == vs ===
+🔹 Difference Table
+Operator	Type Conversion	Comparison
+==	Yes	Value only
+===	No	Value + Type
+🔹 Example
+5 == "5"    // true
+5 === "5"   // false
+
+🗣 Interview Line
+
+== performs type coercion, while === checks both value and type.
+
+6️⃣ Pass By Value
+✅ Definition
+
+Primitive data types me value copy hoti hai, memory location share nahi hota.
+
+🔹 Example
+var a = 10;
+var b = a;
+b = 20;
+
+console.log(a); // 10
+
+🗣 Interview Line
+
+Primitive data types in JavaScript are passed by value.
+
+7️⃣ Pass By Reference
+✅ Definition
+
+Non-primitive data types me reference (address) copy hota hai.
+
+🔹 Example
+var obj1 = { x: 1 };
+var obj2 = obj1;
+
+obj2.x = 5;
+console.log(obj1.x); // 5
+
+🗣 Interview Line
+
+Objects and arrays are passed by reference in JavaScript.
+
+8️⃣ if–else me Pass by Value vs Reference
+🔹 Primitive
+var a = 5;
+if (true) {
+  var b = a;
+  b = 10;
+}
+console.log(a); // 5
+
+🔹 Object
+var obj = { a: 5 };
+if (true) {
+  var temp = obj;
+  temp.a = 10;
+}
+console.log(obj.a); // 10
+
+🗣 Interview Line
+
+if–else blocks do not affect pass by value or reference behavior; it depends on the data type.
+
+🧠 Final 5 Golden Rules (Yaad Rakhna)
+
+1️⃣ JavaScript dynamically typed hai
+2️⃣ + string banata hai
+3️⃣ == coercion karta hai
+4️⃣ Primitive → value copy
+5️⃣ Object → reference copy

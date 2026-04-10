@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Data</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .user-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Fetched Users from API</h2>
+    <div id="users"></div>
+
+    <script>
+      const url = `https://jsonplaceholder.typicode.com/users`;
+      const container = document.getElementById("users");
+
+      const dataFetch = () => {
+        for (let i = 1; i <= 10; i++) {
+          setTimeout(() => {
+            fetch(`${url}/${i}`)
+              .then((res) => res.json())
+              .then((data) => {
+                const userHTML = `
+                <div class="user-card">
+                  <h4>User ID: ${data.id}</h4>
+                  <p><strong>Name:</strong> ${data.name}</p>
+                  <p><strong>Username:</strong> ${data.username}</p>
+                  <p><strong>Street:</strong> ${data.address.street}</p>
+                </div>
+              `;
+                container.innerHTML += userHTML;
+              })
+              .catch((err) => {
+                console.log("Error:", err);
+              });
+          }, 1000);
+        }
+      };
+
+      dataFetch();
+    </script>
+  </body>
+</html>
+
+<!-- 
+| Feature         | `dataFetch(id)`                           | `dataFetch()` loop version                    |
+| --------------- | ----------------------------------------- | --------------------------------------------- |
+| Purpose         | Ek user fetch karke chaining me use karna | Sab users ek sath fetch karna                 |
+| `return` ka use | ✅ Zaroori hai (chaining ke liye)          | ❌ Zaroori nahi (kyunki chaining nahi ho rahi) |
+| Result          | Controlled, step-by-step fetching         | Fast, parallel fetching                       |
+| Use case        | `.then()` ke sath chain karna             | UI update karna parallel                      |
+ -->

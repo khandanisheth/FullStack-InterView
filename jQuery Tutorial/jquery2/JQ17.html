@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$(".btnClick").on(
+				{
+				  
+				mouseenter:function()
+				{
+				   $("tr:even").hide();	
+				},
+
+				mouseleave:function()
+				{
+				    $("tr:even").show();	
+				},
+
+				click:function()
+				{
+				    $("tr:odd").hide();	
+				},
+
+				dblclick:function()
+				{
+				    $("tr:odd").show();	
+				}
+
+			});
+			
+		});
+
+	</script>
+</head>
+<body>
+<button class="btnClick">Click</button>
+
+<table border="1" width="400" id="tbl1">
+	<tr>
+		<td>0Name</td>
+		<td>City</td>
+	</tr>
+	<tr>
+		<td>1Name</td>
+		<td>City</td>
+	</tr>
+	<tr>
+		<td>2Name</td>
+		<td>City</td>
+	</tr>
+	<tr>
+		<td>3Name</td>
+		<td>City</td>
+	</tr>
+	<tr>
+		<td>4Name</td>
+		<td>City</td>
+	</tr>
+</table>
+</body>
+</html>

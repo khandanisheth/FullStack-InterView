@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function divide(a, b) {
+        try {
+          return a / b;
+        } catch (e) {
+          console.error(e.stack); // Print the stack trace
+          return -1;
+        }
+      }
+
+      let arr1 = [10, 20, 30, 40, 50];
+      let arr2 = [2, 5, 0, 10, 0]; // Some elements are zero
+
+      for (let i = 0; i < arr1.length; i++) {
+        let result = divide(arr1[i], arr2[i]);
+        console.log("Result: " + result);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Employee {
+        constructor(id, salary, name) {
+          this.id = id;
+          this.salary = salary;
+          this.name = name;
+        }
+
+        printDetails() {
+          console.log("My id is " + this.id);
+          console.log("and my name is " + this.name);
+        }
+
+        getSalary() {
+          return this.salary;
+        }
+      }
+
+      // Object creation (instantiating)
+      console.log("This is our custom class");
+
+      const harry = new Employee(12, 34, "CodeWithHarry");
+      const john = new Employee(17, 12, "John Khandelwal");
+
+      // Printing the Attributes
+      harry.printDetails();
+      john.printDetails();
+
+      const salary = john.getSalary();
+      console.log(salary);
+
+      // You can also access individual properties like this:
+      // console.log(harry.id);
+      // console.log(harry.name);
+    </script>
+  </body>
+</html>

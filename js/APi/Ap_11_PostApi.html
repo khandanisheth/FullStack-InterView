@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .post {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      h3 {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📘 Total Calculator (a + b + c)</h1>
+    <div class="container"></div>
+    <script>
+      // const apiUrl = "https://jsonplaceholder.typicode.com/posts";/
+      const apiUrl = "http://localhost:8001/add";
+      //  const container = document.querySelector(".container");
+
+      let container = document.querySelector(".container");
+      let FatchGet = async () => {
+        const dataToSend = {
+          a: 50,
+          b: 100,
+          c: 15,
+        };
+
+        let dataSend = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(dataToSend),
+        });
+        let result = await dataSend.json();
+        container.innerHTML = `
+          <div class="post">
+            <h3>Result:</h3>
+            <p>Total: ${result.total}</p>
+          </div>
+          `;
+        console.log("Response:", result);
+      };
+      FatchGet();
+      // FatchGet();
+    </script>
+  </body>
+</html>
+
+<!-- 
+| Feature                             | Purpose                                         |
+| ----------------------------------- | ----------------------------------------------- |
+| `fetch(..., {method: "POST", ...})` | Server ko new data bhejna                       |
+| `JSON.stringify()`                  | JavaScript object ko JSON me convert karna      |
+| `headers: Content-Type`             | Server ko batana ki data kis format me jaa raha |
+| `await fetch` + `await .json()`     | Async style se response read karna              |
+ -->

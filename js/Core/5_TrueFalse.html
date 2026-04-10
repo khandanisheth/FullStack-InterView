@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Truthy or Falsy Checker</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        background: #f0f0f0;
+      }
+      input,
+      button {
+        padding: 0.5rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+      .result {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JavaScript Truthy / Falsy Checker</h2>
+    <p>नीचे कोई भी value डालें (जैसे: "", 0, false, null, undefined, "hello", [], {}, etc.):</p>
+    <input id="inputValue" placeholder="Type a value..." />
+    <button onclick="checkValue()">Check</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+      function checkValue() {
+        const input = document.getElementById("inputValue").value;
+        // Try to evaluate common types
+        let value;
+        try {
+          value = eval(input);
+        } catch {
+          value = input; // Fallback to string if eval fails
+        }
+
+        const isTruthy = !!value;
+        document.getElementById("result").textContent = `Value: ${input} → This is ${isTruthy ? "TRUTHY ✅" : "FALSY ❌"} in JavaScript.`;
+      }
+    </script>
+  </body>
+</html>

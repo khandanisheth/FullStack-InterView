@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS 3D Transforms Example</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box {
+      width: 120px;
+      height: 120px;
+      background-color: #2196f3;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 10px;
+    }
+
+    /* 1️⃣ rotateX(angle) → X-axis ke around ghoomaata hai */
+    .rotateX:hover {
+      transform: rotateX(180deg);
+    }
+
+    /* 2️⃣ rotateY(angle) → Y-axis ke around ghoomaata hai */
+    .rotateY:hover {
+      transform: rotateY(180deg);
+    }
+
+    /* 3️⃣ rotateZ(angle) → Z-axis ke around ghoomaata hai (2D me bhi hota hai) */
+    .rotateZ:hover {
+      transform: rotateZ(180deg);
+    }
+
+    /* 4️⃣ rotate3d(x, y, z, angle) → Custom axis ke around ghoomaata hai */
+    .rotate3d:hover {
+      transform: rotate3d(1, 1, 0, 180deg);
+    }
+
+    /* 5️⃣ translate3d(x, y, z) → Element ko 3D space me move karta hai */
+    .translate3d:hover {
+      transform: translate3d(50px, 50px, 50px);
+    }
+
+    /* 6️⃣ scale3d(x, y, z) → Element ko 3D me scale karta hai */
+    .scale3d:hover {
+      transform: scale3d(1.5, 1.5, 1.5);
+    }
+
+    /* 7️⃣ perspective → Depth effect ke liye use hota hai */
+    .perspective-container {
+      perspective: 600px; /* jitna kam value, utna zyada depth effect */
+    }
+
+    .perspective-box {
+      width: 120px;
+      height: 120px;
+      background-color: #4caf50;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 10px;
+    }
+
+    .perspective-box:hover {
+      transform: rotateY(180deg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box rotateX">rotateX</div>
+  <div class="box rotateY">rotateY</div>
+  <div class="box rotateZ">rotateZ</div>
+  <div class="box rotate3d">rotate3d</div>
+  <div class="box translate3d">translate3d</div>
+  <div class="box scale3d">scale3d</div>
+
+  <!-- 3D Perspective Example -->
+  <div class="perspective-container">
+    <div class="perspective-box">Perspective</div>
+  </div>
+
+</body>
+</html>

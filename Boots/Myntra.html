@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub - Modern E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: rgba(236, 72, 153, 0.2);
+        }
+        
+        .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .sticky-header {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .filter-panel {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .filter-panel.open {
+            transform: translateX(0);
+        }
+        
+        .modal {
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .zoom-container {
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        
+        .zoom-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .zoom-container:hover .zoom-image {
+            transform: scale(1.2);
+        }
+        
+        .notification {
+            transform: translateY(-100px);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Notification Bar -->
+    <div id="notification" class="notification fixed top-0 left-0 right-0 bg-gradient-to-r from-pink-500 to-orange-500 text-white text-center py-2 text-sm z-50">
+        🎉 Mega Sale! Up to 70% OFF on Fashion Items | Free Shipping Above ₹999
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="sticky top-8 z-40 bg-white shadow-sm border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shopping-bag text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">FashionHub</span>
+                </div>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search for products, brands and more..." 
+                               class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Navigation Icons -->
+                <div class="flex items-center space-x-6">
+                    <button class="hidden md:flex items-center space-x-1 text-gray-700 hover:text-pink-500">
+                        <i class="fas fa-user"></i>
+                        <span class="text-sm">Profile</span>
+                    </button>
+                    <button class="relative text-gray-700 hover:text-pink-500">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="relative text-gray-700 hover:text-pink-500">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                    </button>
+                    <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="md:hidden pb-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." 
+                           class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Fashion Forward</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Discover the latest trends in fashion & lifestyle</p>
+            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                Shop Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories Carousel -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-female text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Women</span>
+                </div>
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-male text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Men</span>
+                </div>
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-child text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Kids</span>
+                </div>
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-gem text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Accessories</span>
+                </div>
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-running text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Sports</span>
+                </div>
+                <div class="category-card text-center cursor-pointer">
+                    <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700">Beauty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Listing Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Trending Products</h2>
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleFilters()" class="md:hidden bg-gray-200 px-4 py-2 rounded-lg">
+                        <i class="fas fa-filter mr-2"></i>Filters
+                    </button>
+                    <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <option>Sort by Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                        <option>Customer Rating</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex gap-8">
+                <!-- Filter Panel -->
+                <div id="filterPanel" class="filter-panel fixed md:relative top-0 left-0 h-full md:h-auto w-80 md:w-64 bg-white md:bg-transparent shadow-lg md:shadow-none z-30 p-6 md:p-0">
+                    <div class="flex justify-between items-center mb-6 md:hidden">
+                        <h3 class="text-lg font-semibold">Filters</h3>
+                        <button onclick="toggleFilters()" class="text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Price Filter -->
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-800">Price Range</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">Under ₹500</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">₹500 - ₹1000</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">₹1000 - ₹2000</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">Above ₹2000</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Brand Filter -->
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-800">Brand</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">Nike</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">Adidas</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">Zara</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 text-pink-500">
+                                    <span class="text-sm">H&M</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Size Filter -->
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-800">Size</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:border-pink-500 hover:text-pink-500">XS</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:border-pink-500 hover:text-pink-500">S</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:border-pink-500 hover:text-pink-500">M</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:border-pink-500 hover:text-pink-500">L</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:border-pink-500 hover:text-pink-500">XL</button>
+                            </div>
+                        </div>
+
+                        <!-- Color Filter -->
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-800">Color</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="w-8 h-8 bg-red-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-blue-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-yellow-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-purple-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-black rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        <!-- Product Card 1 -->
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer group" onclick="openProductDetail('Elegant Summer Dress', '₹999', '👗', 'Women\'s Fashion', 4.5, 124, '₹1999', '50% OFF')">
+                            <div class="zoom-container relative">
+                                <div class="zoom-image w-full h-64 bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
+                                    <div class="text-6xl">👗</div>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button onclick="event.stopPropagation(); toggleWishlist(this)" class="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-pink-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-pink-500 transition-colors"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                                    50% OFF
+                                </div>
+                                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="w-full bg-white bg-opacity-90 text-gray-800 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-100 transition-all">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-1 line-clamp-1">Elegant Summer Dress</h3>
+                                <p class="text-sm text-gray-600 mb-3">Women's Fashion</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-2">(124 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">₹999</span>
+                                        <span class="text-sm text-gray-500 line-through ml-2">₹1999</span>
+                                    </div>
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium hover:shadow-lg transition-shadow">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="openProductDetail('Classic Formal Shirt', '₹1299', '👔', 'Men\'s Fashion', 4.0, 89)">
+                            <div class="zoom-container relative">
+                                <div class="zoom-image w-full h-64 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                                    <div class="text-6xl">👔</div>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button onclick="event.stopPropagation(); toggleWishlist(this)" class="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-pink-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-pink-500 transition-colors"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="w-full bg-white bg-opacity-90 text-gray-800 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-100 transition-all">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-1 line-clamp-1">Classic Formal Shirt</h3>
+                                <p class="text-sm text-gray-600 mb-3">Men's Fashion</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-2">(89 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">₹1299</span>
+                                    </div>
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium hover:shadow-lg transition-shadow">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer group" onclick="openProductDetail('Sports Running Shoes', '₹2499', '👟', 'Footwear', 5.0, 256, null, 'NEW')">
+                            <div class="zoom-container relative">
+                                <div class="zoom-image w-full h-64 bg-gradient-to-br from-green-100 to-teal-100 flex items-center justify-center">
+                                    <div class="text-6xl">👟</div>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button onclick="event.stopPropagation(); toggleWishlist(this)" class="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-pink-50 transition-colors">
+                                        <i class="fas fa-heart text-pink-500 transition-colors"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                                    NEW
+                                </div>
+                                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="w-full bg-white bg-opacity-90 text-gray-800 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-100 transition-all">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-1 line-clamp-1">Sports Running Shoes</h3>
+                                <p class="text-sm text-gray-600 mb-3">Footwear</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-2">(256 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">₹2499</span>
+                                    </div>
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium hover:shadow-lg transition-shadow">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer group" onclick="openProductDetail('Designer Handbag', '₹1799', '👜', 'Accessories', 4.5, 67, '₹2499', 'TRENDING')">
+                            <div class="zoom-container relative">
+                                <div class="zoom-image w-full h-64 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                                    <div class="text-6xl">👜</div>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button onclick="event.stopPropagation(); toggleWishlist(this)" class="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-pink-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-pink-500 transition-colors"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 bg-orange-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                                    TRENDING
+                                </div>
+                                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="w-full bg-white bg-opacity-90 text-gray-800 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-100 transition-all">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-1 line-clamp-1">Designer Handbag</h3>
+                                <p class="text-sm text-gray-600 mb-3">Accessories</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-2">(67 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">₹1799</span>
+                                        <span class="text-sm text-gray-500 line-through ml-2">₹2499</span>
+                                    </div>
+                                    <button onclick="event.stopPropagation(); quickAddToCart(this)" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium hover:shadow-lg transition-shadow">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-12">
+                        <button class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-shadow">
+                            Load More Products
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center p-6 border-b">
+                <h2 class="text-2xl font-bold text-gray-800">Product Details</h2>
+                <button onclick="closeProductDetail()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Product Images -->
+                    <div>
+                        <div class="zoom-container mb-4">
+                            <div class="zoom-image w-full h-96 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg flex items-center justify-center">
+                                <div class="text-8xl">👗</div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-100 to-purple-100 rounded border-2 border-pink-500 flex items-center justify-center cursor-pointer">
+                                <div class="text-2xl">👗</div>
+                            </div>
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-200 to-purple-200 rounded border cursor-pointer flex items-center justify-center">
+                                <div class="text-2xl">👗</div>
+                            </div>
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-300 to-purple-300 rounded border cursor-pointer flex items-center justify-center">
+                                <div class="text-2xl">👗</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Info -->
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">Elegant Summer Dress</h1>
+                        <p class="text-gray-600 mb-4">Women's Fashion • Brand: FashionHub</p>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(124 reviews)</span>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <span class="text-3xl font-bold text-gray-800">₹999</span>
+                            <span class="text-xl text-gray-500 line-through ml-3">₹1999</span>
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm ml-3">50% OFF</span>
+                        </div>
+                        
+                        <!-- Size Selection -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold mb-3">Size</h3>
+                            <div class="flex space-x-2">
+                                <button class="px-4 py-2 border border-gray-300 rounded hover:border-pink-500 hover:text-pink-500">XS</button>
+                                <button class="px-4 py-2 border border-pink-500 bg-pink-50 text-pink-500 rounded">S</button>
+                                <button class="px-4 py-2 border border-gray-300 rounded hover:border-pink-500 hover:text-pink-500">M</button>
+                                <button class="px-4 py-2 border border-gray-300 rounded hover:border-pink-500 hover:text-pink-500">L</button>
+                                <button class="px-4 py-2 border border-gray-300 rounded hover:border-pink-500 hover:text-pink-500">XL</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Color Selection -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold mb-3">Color</h3>
+                            <div class="flex space-x-2">
+                                <div class="w-8 h-8 bg-pink-500 rounded-full cursor-pointer border-2 border-pink-500"></div>
+                                <div class="w-8 h-8 bg-blue-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                                <div class="w-8 h-8 bg-purple-500 rounded-full cursor-pointer border-2 border-transparent hover:border-gray-400"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold mb-3">Quantity</h3>
+                            <div class="flex items-center space-x-3">
+                                <button class="w-10 h-10 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">-</button>
+                                <span class="text-lg font-semibold">1</span>
+                                <button class="w-10 h-10 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">+</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4 mb-6">
+                            <button onclick="addToCart()" class="flex-1 bg-gradient-to-r from-pink-500 to-orange-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                            </button>
+                            <button class="px-6 py-3 border border-pink-500 text-pink-500 rounded-lg font-semibold hover:bg-pink-50">
+                                <i class="fas fa-heart mr-2"></i>Wishlist
+                            </button>
+                        </div>
+                        
+                        <!-- Product Description -->
+                        <div class="border-t pt-6">
+                            <h3 class="font-semibold mb-3">Product Description</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                This elegant summer dress is perfect for any occasion. Made from high-quality fabric with a comfortable fit, 
+                                it features a beautiful design that's both stylish and versatile. Perfect for casual outings or special events.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reviews Section -->
+                <div class="border-t mt-8 pt-8">
+                    <h3 class="text-xl font-bold mb-6">Customer Reviews</h3>
+                    <div class="space-y-4">
+                        <div class="border-b pb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="font-semibold ml-3">Priya S.</span>
+                                <span class="text-gray-500 text-sm ml-2">• 2 days ago</span>
+                            </div>
+                            <p class="text-gray-600">Amazing quality and perfect fit! The fabric is soft and comfortable. Highly recommended!</p>
+                        </div>
+                        <div class="border-b pb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="font-semibold ml-3">Rahul M.</span>
+                                <span class="text-gray-500 text-sm ml-2">• 1 week ago</span>
+                            </div>
+                            <p class="text-gray-600">Good product overall. Fast delivery and nice packaging. Value for money!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-orange-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">FashionHub</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your ultimate destination for fashion and lifestyle products.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-white">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Women's Fashion</a></li>
+                        <li><a href="#" class="hover:text-white">Men's Fashion</a></li>
+                        <li><a href="#" class="hover:text-white">Kids Wear</a></li>
+                        <li><a href="#" class="hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Customer Service</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Track Order</a></li>
+                        <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-white">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 FashionHub. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
+            }
+        });
+
+        // Show notification on page load
+        window.addEventListener('load', function() {
+            const notification = document.getElementById('notification');
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 1000);
+        });
+
+        // Toggle mobile filters
+        function toggleFilters() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('open');
+        }
+
+        // Open product detail modal with dynamic data
+        function openProductDetail(name, price, emoji, category, rating, reviews, originalPrice = null, badge = null) {
+            const modal = document.getElementById('productModal');
+            
+            // Update modal content
+            modal.querySelector('h1').textContent = name;
+            modal.querySelector('.text-gray-600').textContent = category + ' • Brand: FashionHub';
+            modal.querySelector('.text-3xl.font-bold').textContent = price;
+            
+            // Update original price if exists
+            const originalPriceEl = modal.querySelector('.line-through');
+            if (originalPrice) {
+                originalPriceEl.textContent = originalPrice;
+                originalPriceEl.style.display = 'inline';
+            } else {
+                originalPriceEl.style.display = 'none';
+            }
+            
+            // Update badge if exists
+            const badgeEl = modal.querySelector('.bg-red-100');
+            if (badge) {
+                badgeEl.textContent = badge;
+                badgeEl.style.display = 'inline';
+            } else {
+                badgeEl.style.display = 'none';
+            }
+            
+            // Update emoji
+            modal.querySelectorAll('.text-8xl, .text-2xl').forEach(el => {
+                el.textContent = emoji;
+            });
+            
+            // Update rating
+            const stars = modal.querySelectorAll('.fa-star, .fa-star-half-alt');
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            
+            stars.forEach((star, index) => {
+                if (index < fullStars) {
+                    star.className = 'fas fa-star';
+                } else if (index === fullStars && hasHalfStar) {
+                    star.className = 'fas fa-star-half-alt';
+                } else {
+                    star.className = 'far fa-star';
+                }
+            });
+            
+            // Update reviews count
+            modal.querySelector('.text-gray-600.ml-2').textContent = `(${reviews} reviews)`;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close product detail modal
+        function closeProductDetail() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add to cart function
+        function addToCart() {
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = '<i class="fas fa-check mr-2"></i>Added to cart successfully!';
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Hide notification
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+            
+            // Update cart count
+            const cartCount = document.querySelector('.fa-shopping-cart').nextElementSibling;
+            cartCount.textContent = parseInt(cartCount.textContent) + 1;
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductDetail();
+            }
+        });
+
+        // Close filter panel when clicking outside (mobile)
+        document.addEventListener('click', function(e) {
+            const filterPanel = document.getElementById('filterPanel');
+            const filterButton = e.target.closest('button');
+            
+            if (!filterPanel.contains(e.target) && (!filterButton || !filterButton.textContent.includes('Filters'))) {
+                filterPanel.classList.remove('open');
+            }
+        });
+
+        // Toggle wishlist function
+        function toggleWishlist(button) {
+            const icon = button.querySelector('i');
+            const isWishlisted = icon.classList.contains('text-pink-500');
+            
+            if (isWishlisted) {
+                icon.classList.remove('text-pink-500');
+                icon.classList.add('text-gray-400');
+                showNotification('Removed from wishlist', 'info');
+            } else {
+                icon.classList.remove('text-gray-400');
+                icon.classList.add('text-pink-500');
+                showNotification('Added to wishlist ❤️', 'success');
+            }
+        }
+
+        // Quick add to cart function
+        function quickAddToCart(button) {
+            showNotification('Added to cart! 🛒', 'success');
+            
+            // Update cart count
+            const cartCount = document.querySelector('.fa-shopping-cart').nextElementSibling;
+            cartCount.textContent = parseInt(cartCount.textContent) + 1;
+            
+            // Add visual feedback
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        // Show notification function
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-blue-500';
+            notification.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Hide notification
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Smooth scrolling for category clicks
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const productsSection = document.querySelector('.py-12:has(.grid)');
+                if (productsSection) {
+                    productsSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b6a3a0e6c83b34',t:'MTc1NzI1MjY0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

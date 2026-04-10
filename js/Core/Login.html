@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Validator</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 30px;
+        background: #f0f0f0;
+      }
+      input {
+        padding: 10px;
+        margin: 10px 0;
+        width: 300px;
+      }
+      button {
+        padding: 10px 20px;
+      }
+      #dd {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Login Form</h2>
+    <input type="text" id="username" placeholder="Enter Username" /><br />
+    <input type="password" id="password" placeholder="Enter Password" /><br />
+    <button onclick="submit()">Login</button>
+
+    <div id="dd"></div>
+
+    <script>
+      function submit() {
+        let ua = 0,
+          la = 0,
+          n = 0,
+          sy = 0,
+          inv = 0;
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+        const msg = document.getElementById("dd");
+
+        msg.innerHTML = "";
+
+        // 1. Length check
+        if (pass.length < 6 || pass.length > 18) {
+          msg.innerHTML = "❌ Password length must be between 6 to 18 characters.";
+          return;
+        }
+
+        // 2. First char must be a letter
+        const firstChar = pass.charCodeAt(0);
+        if (!((firstChar >= 65 && firstChar <= 90) || (firstChar >= 97 && firstChar <= 122))) {
+          msg.innerHTML = "❌ First character must be an alphabet (A-Z or a-z)."; // sabhi letter ko capital or small me check kar raha hai kar raha hai
+          return;
+        }
+
+        // 3. Loop through all characters
+        for (let i = 0; i < pass.length; i++) {
+          const ch = pass.charCodeAt(i);
+          if (
+            !(
+              (
+                (ch >= 65 && ch <= 90) || // A-Z
+                (ch >= 97 && ch <= 122) || // a-z
+                (ch >= 48 && ch <= 57) || // 0-9
+                ch === 36 || // es ka matlab hai $
+                ch === 35 || // ess ka matlab hai #
+                ch === 64
+              ) // es ka matlab hai @
+            ) // $, #, @
+          ) {
+            inv = 1;
+            break;
+          }
+
+          if (ch >= 65 && ch <= 90) ua = 1; // Uppercase
+          else if (ch >= 97 && ch <= 122) la = 1; // Lowercase
+          else if (ch >= 48 && ch <= 57) n = 1; // Number
+          else if (ch === 36 || ch === 35 || ch === 64) sy = 1; // $, #, @
+        }
+
+        if (inv) {
+          msg.innerHTML = "❌ Only A-Z, a-z, 0-9, and $, #, @ are allowed.";
+          return;
+        }
+
+        if (!ua) {
+          msg.innerHTML = "❌ Password must contain at least one uppercase letter.";
+          return;
+        }
+
+        if (!la) {
+          msg.innerHTML = "❌ Password must contain at least one lowercase letter.";
+          return;
+        }
+
+        if (!n) {
+          msg.innerHTML = "❌ Password must contain at least one number.";
+          return;
+        }
+
+        if (!sy) {
+          msg.innerHTML = "❌ Password must contain at least one special symbol ($, #, @).";
+          return;
+        }
+
+        // Final login check
+        if (user === "Danish" && pass === "Aa1@#$") {
+          alert("✅ Successfully Logged In!");
+          msg.style.color = "green";
+          msg.innerHTML = "Login Successful!";
+        } else {
+          msg.innerHTML = "❌ Invalid Username or Password!";
+        }
+      }
+    </script>
+  </body>
+</html>

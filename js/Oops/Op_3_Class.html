@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Car naam ki ek class banayi gayi hai
+      class Car {
+        // constructor ek special method hota hai jo object create hote hi call hota hai
+        // yahan constructor 2 parameters le raha hai: brand aur year
+        constructor(brand, year) {
+          // this.brand aur this.year se object ke andar properties set ki ja rahi hain
+          this.brand = brand;
+          this.year = year;
+        }
+        // showInfo ek method hai jo car ka brand aur year console me print karega
+        showInfo() {
+          console.log(`Brand: ${this.brand}, Year: ${this.year}`);
+        }
+      }
+
+      // Car class ka ek object banaya gaya hai jiska brand "Toyota" aur year 2020 hai
+      const c1 = new Car("Toyota", 2020);
+
+      // showInfo method ko call kiya gaya hai jisse car ki information print hogi
+      c1.showInfo(); // Output: Brand: Toyota, Year: 2020
+    </script>
+  </body>
+</html>

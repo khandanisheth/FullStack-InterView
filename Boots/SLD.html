@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Slider with native HTML</title>
+  </head>
+
+  <body>
+    <style>
+      #slider > ul > .item {
+        list-style-type: none;
+        float: left;
+        width: 50px;
+        overflow: hidden;
+        transition: 3s all ease;
+      }
+
+      #slider > ul > .item:hover {
+        width: 100%;
+        border-radius: 10%;
+      }
+    </style>
+    <div id="slider">
+      <ul>
+        <li class="item">
+          <a href="#"><img src="../img/sf1.jpg" alt="A slider image" /></a>
+        </li>
+        <li class="item">
+          <a href="#"><img src="../img/sf2.jpg" alt="A slider image" /></a>
+        </li>
+        <li class="item">
+          <a href="#"><img src="../img/sf3.jpg" alt="A slider image" /></a>
+        </li>
+        <li class="item">
+          <a href="#"><img src="../img/ss1.jpg" alt="A slider image" /></a>
+        </li>
+        <li class="item">
+          <a href="#"><img src="../img/sf1.jpg" alt="A slider image" /></a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

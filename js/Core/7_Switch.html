@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let day = 3;
+
+      switch (day) {
+        case 1:
+          document.writeln("Monday<br>");
+          break;
+        case 2:
+          document.writeln("Tuesday<br>");
+          break;
+        case 3:
+          document.writeln("Wednesday<br>");
+          break;
+        case 4:
+          document.writeln("Thursday<br>");
+          break;
+        case 5:
+          document.writeln("Friday<br>");
+          break;
+        case 6:
+          document.writeln("Saturday<br>");
+          break;
+        case 7:
+          document.writeln("Sunday<br>");
+          break;
+        default:
+          document.writeln("Invalid Day Number!<br>");
+      }
+      let num1 = 20;
+      let num2 = 10;
+      let operator = "*";
+
+      switch (operator) {
+        case "+":
+          document.writeln(`Addition: ${num1 + num2}<br>`);
+          break;
+        case "-":
+          document.writeln(`Subtraction: ${num1 - num2}<br>`);
+          break;
+        case "*":
+          document.writeln(`Multiplication: ${num1 * num2}<br>`);
+          break;
+        case "/":
+          document.writeln(`Division: ${num1 / num2}<br>`);
+          break;
+        default:
+          document.writeln("Invalid Operator!<br>");
+      }
+
+      let grade = "B";
+
+      switch (grade) {
+        case "A":
+          document.writeln("Excellent!<br>");
+          break;
+        case "B":
+          document.writeln("Very Good!<br>");
+          break;
+        case "C":
+          document.writeln("Good!<br>");
+          break;
+        case "D":
+          document.writeln("Needs Improvement<br>");
+          break;
+        default:
+          document.writeln("Invalid Grade!<br>");
+      }
+
+      let choice = prompt("Enter a number between 1 to 5:");
+
+      switch (choice) {
+        case "1":
+          document.writeln("You selected: Paneer Butter Masala 🍛<br>");
+          break;
+        case "2":
+          document.writeln("You selected: Chicken Biryani 🍗<br>");
+          break;
+        case "3":
+          document.writeln("You selected: Cold Coffee ☕<br>");
+          break;
+        case "4":
+          document.writeln("You selected: Vanilla Ice Cream 🍦<br>");
+          break;
+        case "5":
+          document.writeln("You selected: Pizza 🍕<br>");
+          break;
+        default:
+          document.writeln("Invalid choice! Please enter 1 to 5 only.<br>");
+      }
+    </script>
+
+    <img src="img/switch.png" alt="" />
+    <img src="img/BreakstatementinCforloop-660x462.png" alt="" />
+  </body>
+</html>

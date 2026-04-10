@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Password Show Hide</title>
+    <link rel="stylesheet" href="style.css">
+
+<body>
+
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="togglePassword()">Show</button>
+
+
+
+
+        <h1 id="heading">Hello World</h1>
+        <button onclick="toggle(this)">Show New</button>
+    </div>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<!-- 🔹 innerText vs innerHTML vs textContent
+1️⃣ innerText ✅ (Most common)
+element.innerText = "Hello World";
+
+
+Kya karta hai?
+
+Sirf visible text change karta hai
+CSS (display:none) ko follow karta hai
+Line breaks & spacing ko respect karta hai
+Example
+<h1 id="h1"><span style="display:none">Hi</span>Hello</h1>
+document.getElementById("h1").innerText;
+// Output: Hello
+
+
+✅ Best for user-visible text
+2️⃣ textContent ⚡ (Fast & Clean)
+element.textContent = "Hello World";
+Kya karta hai?
+Pura text deta hai (hidden bhi)
+CSS ignore karta hai
+Sabse fast hota hai
+Example
+document.getElementById("h1").textContent;
+// Output: HiHello
+
+
+✅ Best for logic, comparison, performance
+3️⃣ innerHTML 🚨 (HTML ke sath kaam karta hai)
+element.innerHTML = "<b>Hello</b> World";
+Kya karta hai?
+HTML tags ko render karta hai
+New elements add kar sakta hai
+❌ Unsafe agar user input ho (XSS risk)
+Example
+h1.innerHTML = "<span style='color:red'>Hello</span>";
+
+🧠 Clear Comparison Table
+| Property      | HTML Tags | Hidden Text | Fast | Safe |
+| ------------- | --------- | ----------- | ---- | ---- |
+| `innerText`   | ❌        | ❌          | ❌   | ✅    |
+| `textContent` | ❌        | ✅          | ✅   | ✅    |
+| `innerHTML`   | ✅        | ✅          | ❌   | ❌    |  --> 

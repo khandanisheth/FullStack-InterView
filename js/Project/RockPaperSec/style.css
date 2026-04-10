@@ -1,0 +1,116 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container Box */
+.box {
+  background-color: #fff8e7;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 30px;
+}
+
+/* Title */
+.box h1 {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Options */
+.item {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.itemimg {
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid transparent;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.itemimg:hover {
+  transform: scale(1.05);
+  border-color: #ffb347;
+}
+
+.itemimg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Result Section */
+.result {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.result span {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #eee;
+  min-width: 100px;
+  text-align: center;
+}
+
+.result .win {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+}
+
+.result .lost {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: bold;
+}
+
+.result .draw {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+}
+
+/* Button */
+button {
+  background-color: #ffb347;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffa534;
+}

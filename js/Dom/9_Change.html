@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Change Example</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="title">Original Title</h2>
+    <p id="para">This is a paragraph.</p>
+    <img id="img" src="https://www.livemint.com/lm-img/img/2024/05/23/600x338/CRICKET-IND-IPL-T20-HYDERABAD-KOLKATA-95_1716427886047_1716427965399.jpg" alt="Placeholder" />
+    <br /><br />
+
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="changeAttribute()">Change Attribute</button>
+    <button onclick="toggleClass()">Toggle Class</button>
+    <button onclick="replaceHTML()">Replace HTML</button>
+
+    <div id="container" style="margin-top: 20px">
+      <p>Old content inside container.</p>
+    </div>
+
+    <script>
+      // 1. Change Text
+      function changeText() {
+        document.getElementById("title").innerText = "Updated Title";
+        document.getElementById("para").textContent =
+          "Paragraph has been updated.";
+      }
+
+      // 2. Change Style
+      function changeStyle() {
+        const para = document.getElementById("para");
+        para.style.color = "blue";
+        para.style.fontSize = "20px";
+        para.style.backgroundColor = "#f0f0f0";
+      }
+
+      // 3. Change Attribute
+      function changeAttribute() {
+        const img = document.getElementById("img");
+        img.setAttribute("src", "https://media.assettype.com/thequint%2F2023-06%2F55edccac-b463-4bd9-aee7-174a738e479a%2Fshah_rukh_khan_gets_dinner_delivery_at_mannat_from_swiggy_hours_after_he_replied_to_a_fan_read_on_01.jpg?rect=0%2C0%2C1120%2C630&auto=format%2Ccompress&fmt=webp&width=720");
+        img.setAttribute("alt", "Updated Image");
+      }
+
+      // 4. Toggle Class
+      function toggleClass() {
+        const title = document.getElementById("title");
+        title.classList.toggle("highlight");
+      }
+//       Toggle ka matlab hota hai:
+// 🔁 "On aur Off ke beech switch karna"
+// ya
+// 🔄 "Kisi cheez ko dikhana/chhupana, enable/disable karna, ya on/off karna"
+
+
+
+      // 5. Replace Inner HTML
+      function replaceHTML() {
+        const container = document.getElementById("container");
+        container.innerHTML =
+          "<h3>New content inside container</h3><p>This was replaced using innerHTML.</p>";
+      }
+    </script>
+  </body>
+</html>

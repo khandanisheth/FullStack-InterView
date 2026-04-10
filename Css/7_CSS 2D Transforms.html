@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS 2D Transforms Example</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #4caf50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px;
+      transition: 0.5s;
+    }
+
+    /* 1️⃣ translate(x, y) → Move element on x and y axis */
+    .translate:hover {
+      transform: translate(50px, 50px);
+    }
+
+    /* 2️⃣ rotate(angle) → Rotate element by given angle */
+    .rotate:hover {
+      transform: rotate(360deg);
+    }
+
+    /* 3️⃣ scaleX(factor) → Stretch or shrink horizontally */
+    .scaleX:hover {
+      transform: scaleX(1.5);
+    }
+
+    /* 4️⃣ scaleY(factor) → Stretch or shrink vertically */
+    .scaleY:hover {
+      transform: scaleY(1.5);
+    }
+
+    /* 5️⃣ scale(x, y) → Stretch or shrink both axes */
+    .scale:hover {
+      transform: scale(1.5, 0.5);
+    }
+
+    /* 6️⃣ skewX(angle) → Skew element horizontally */
+    .skewX:hover {
+      transform: skewX(30deg);
+    }
+
+    /* 7️⃣ skewY(angle) → Skew element vertically */
+    .skewY:hover {
+      transform: skewY(30deg);
+    }
+
+    /* 8️⃣ skew(xAngle, yAngle) → Skew both axes */
+    .skew:hover {
+      transform: skew(20deg, 10deg);
+    }
+
+    /* 9️⃣ matrix(a, b, c, d, e, f) → Combined transform in matrix form */
+    .matrix:hover {
+      transform: matrix(1, 0.5, -0.5, 1, 30, 20);
+      /* a = scaleX, b = skewY, c = skewX, d = scaleY, e = translateX, f = translateY */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box translate">Translate</div>
+  <div class="box rotate">Rotate</div>
+  <div class="box scaleX">ScaleX</div>
+  <div class="box scaleY">ScaleY</div>
+  <div class="box scale">Scale</div>
+  <div class="box skewX">SkewX</div>
+  <div class="box skewY">SkewY</div>
+  <div class="box skew">Skew</div>
+  <div class="box matrix">Matrix</div>
+
+</body>
+</html>
+
+
+
+<!-- 
+
+Function                 | Kya Karta Hai                                    | Example
+
+translate(x, y)          | Element ko x aur y axis par move karta hai.      | translate(50px, 50px)
+rotate(angle)            | Element ko given angle se ghoomaata hai.         | rotate(45deg)
+scaleX(factor)           | Sirf width ko scale karta hai.                   | scaleX(1.5)
+scaleY(factor)           | Sirf height ko scale karta hai.                  | scaleY(1.5)
+scale(x, y)              | Dono axis ko scale karta hai.                    | scale(1.5, 0.5)
+skewX(angle)             | X-axis ke along tilt karta hai.                  | skewX(30deg)
+skewY(angle)             | Y-axis ke along tilt karta hai.                  | skewY(30deg)
+skew(x, y)               | Dono axis ko tilt karta hai.                     | skew(20deg, 10deg)
+matrix(a, b, c, d, e, f) | Ek combined transform function.                  | matrix(1, 0.5, -0.5, 1, 30, 20)
+
+
+-->

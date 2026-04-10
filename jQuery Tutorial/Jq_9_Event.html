@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery Key & Focus Events</title>
+
+    <!-- ✅ jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // 🔹 Key Down: Jab key dabayi jati hai (pehla moment)
+        $("#txtName").keydown(function () {
+          $("#txtName").css("background-color", "lightblue");
+        });
+
+        // 🔹 Key Press: Jab key character produce karti hai (a-z, 0-9, etc.)
+        $("#txtName").keypress(function () {
+          $("#txtName").css("background-color", "yellow");
+        });
+
+        // 🔹 Key Up: Jab key chhodi jati hai
+        $("#txtName").keyup(function () {
+          $("#txtName").css("background-color", "lightgreen");
+        });
+
+        // 🔹 Focus: Jab input box par cursor aata hai
+        $("#txtName").focus(function () {
+          $("#txtName").css("border", "2px solid green");
+        });
+
+        // 🔹 Blur: Jab input box se cursor bahar chala jata hai
+        $("#txtName").blur(function () {
+          $("#txtName").css("border", "2px solid red");
+        });
+      });
+    </script>
+
+    <!-- Styling for better look -->
+    <style>
+      body {
+        font-family: Arial;
+        padding: 30px;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>jQuery Key & Focus Events Demo</h3>
+    <input type="text" id="txtName" placeholder="Type something here..." />
+    <br /><br />
+    <button class="btnClick">Click</button>
+  </body>
+</html>
+
+
+
+<!-- 
+
+_____________________________________________________________________________
+| Event      | Effect                                                        |
+|------------|---------------------------------------------------------------|
+| `keydown`  | Input ka background **light blue** ho jata hai                |
+| `keypress` | Background **yellow** ho jata hai (character keys only)       |
+| `keyup`    | Background **light green** ho jata hai                        |
+| `focus`    | Border **green** ho jata hai jab cursor input me aata hai     |
+| `blur`     | Border **red** ho jata hai jab cursor input se bahar jata hai |
+|____________|_______________________________________________________________|
+
+
+-->

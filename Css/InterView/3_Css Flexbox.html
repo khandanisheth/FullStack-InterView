@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Flexbox with Comments & Colors</title>
+
+    <!-- =====================================================
+       CSS FLEXBOX COMPLETE DEMO
+       - Proper comments
+       - Different colors
+       - Content written to understand clearly
+       ===================================================== -->
+
+    <style>
+      /* -----------------------------------------------------
+       FLEX CONTAINER
+       display: flex → div ko flex container banata hai
+       ----------------------------------------------------- */
+      .flex-container {
+        display: flex; /* flexbox enable */
+        flex-direction: row; /* items left → right */
+        justify-content: space-between; /* main-axis alignment */
+        align-items: center; /* cross-axis alignment */
+        background-color: #222; /* dark background */
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      /* -----------------------------------------------------
+       FLEX ITEMS (Common styles)
+       ----------------------------------------------------- */
+      .item {
+        color: white; /* text color */
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        font-size: 18px;
+        flex: 1; /* equal width */
+      }
+
+      /* -----------------------------------------------------
+       DIFFERENT COLORS FOR EACH ITEM
+       ----------------------------------------------------- */
+      .item1 {
+        background-color: red; /* Item 1 → Red */
+      }
+
+      .item2 {
+        background-color: blue; /* Item 2 → Blue */
+      }
+
+      .item3 {
+        background-color: green; /* Item 3 → Green */
+      }
+
+      /* -----------------------------------------------------
+       COLUMN FLEX EXAMPLE
+       flex-direction: column
+       ----------------------------------------------------- */
+      .flex-column {
+        display: flex;
+        flex-direction: column; /* top → bottom */
+        justify-content: center;
+        align-items: stretch;
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .col-item {
+        background-color: orange;
+        margin: 5px;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      /* -----------------------------------------------------
+       FLEX WRAP + RESPONSIVE EXAMPLE
+       ----------------------------------------------------- */
+      .flex-wrap {
+        display: flex;
+        flex-wrap: wrap; /* items next line me ja sakte hain */
+        justify-content: space-around;
+        background-color: purple;
+        padding: 20px;
+      }
+
+      .wrap-item {
+        background-color: yellow;
+        color: black;
+        padding: 20px;
+        margin: 10px;
+        flex: 1 1 200px; /* responsive size */
+        text-align: center;
+      }
+
+      /* -----------------------------------------------------
+       MEDIA QUERY (Responsive)
+       Screen chhoti ho to column ban jayega
+       ----------------------------------------------------- */
+      @media (max-width: 600px) {
+        .flex-container {
+          flex-direction: column; /* mobile view */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= ROW FLEXBOX ================= -->
+    <h2 style="color: red">Flexbox Row Example (Main Axis)</h2>
+
+    <div class="flex-container">
+      <div class="item item1">Item 1<br />Red Box</div>
+      <div class="item item2">Item 2<br />Blue Box</div>
+      <div class="item item3">Item 3<br />Green Box</div>
+    </div>
+
+    <!-- ================= COLUMN FLEXBOX ================= -->
+    <h2 style="color: orange">Flexbox Column Example</h2>
+
+    <div class="flex-column">
+      <div class="col-item">Column Item A</div>
+      <div class="col-item">Column Item B</div>
+      <div class="col-item">Column Item C</div>
+    </div>
+
+    <!-- ================= FLEX WRAP ================= -->
+    <h2 style="color: purple">Flex Wrap & Responsive Example</h2>
+
+    <div class="flex-wrap">
+      <div class="wrap-item">Box 1</div>
+      <div class="wrap-item">Box 2</div>
+      <div class="wrap-item">Box 3</div>
+      <div class="wrap-item">Box 4</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$(".btn1").click(function()
+			{
+				alert($("p").css("height"));
+			});
+
+
+			$(".btn2").click(function()
+			{
+				$("p").css("color","yellow");
+			});
+
+		});
+	</script>
+</head>
+<body>
+<button class="btn1">Get</button>
+
+<button class="btn2">Set</button> <br>
+
+<p style="color:red">Jai Shri Ram </p>
+
+</body>
+</html>

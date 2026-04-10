@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/Style/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  </head>
+  <body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <!-- Left: Logo -->
+        <a href="index.html" class="logo d-flex align-items-center">
+          <i class="fa-solid fa-utensils"></i>
+          <h1 class="sitename">NiceRestaurant</h1>
+        </a>
+
+        <!-- Center: Navigation -->
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#book-a-table">Book a Table</a></li>
+            <li><a href="#chefs">Chefs</a></li>
+            <li><a href="#events">Events</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Dropdown <span>^</span></span> <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li class="dropdown">
+                  <a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="#">Deep Dropdown 1</a></li>
+                    <li><a href="#">Deep Dropdown 2</a></li>
+                    <li><a href="#">Deep Dropdown 3</a></li>
+                    <li><a href="#">Deep Dropdown 4</a></li>
+                    <li><a href="#">Deep Dropdown 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+              </ul>
+            </li>
+            <a href="#contact" class="active">Contact</a>
+          </ul>
+        </nav>
+
+        <!-- Right: Optional Button -->
+        <a class="btn-getstarted d-none d-sm-block" href="#book-a-table">Book a Table</a>
+      </div>
+    </header>
+    <main class="main">
+      <section id="hero" class="hero section">
+        <div class="container-fluid hero-container aos-init aos-animate">
+          <div class="row g-0 align-items-center">
+            <div class="col-lg-6 col-md-3 content-col">
+              <div class="content-wrapper">
+                <div class="status-badge">Reservations Open</div>
+                <h2>Savor the Moment, One Bite at a Time</h2>
+                <p>
+                  Discover a journey of flavors at our exquisite restaurant. Immerse yourself in a delightful dining
+                  experience crafted with passion and precision.
+                </p>
+
+                <div class="opening-hours" data-aos="fade-up" data-aos-delay="500">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>Open Daily: 11am - 10pm</span>
+                </div>
+
+                <div class="btn-group">
+                  <a href="#book-a-table" class="btn btn-book">Book a Table</a>
+                  <a href="#menu" class="btn btn-menu">Explore Our Menu</a>
+                </div>
+
+                <div class="social-links">
+                  <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-3 swiper-col">
+              <!-- Slider main container -->
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="img-container">
+                      <img src="assets/img/restaurant/misc-square-1.webp" alt="Slide 1" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="img-container">
+                      <img src="assets/img/restaurant/misc-square-2.webp" alt="Slide 1" />
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="img-container">
+                      <img src="assets/img/restaurant/misc-square-3.webp" alt="Slide 1" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Arrows -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about section">
+        <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+          <div class="row align-items-center gy-4 aos-init aos-animate">
+            <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="about-content">
+                <h3>Our Culinary Journey</h3>
+                <p class="fst-italic subhead">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+                  tristique.
+                </p>
+                <p style="line-height: 1.8; text-align: justify; font-size: 18px">
+                  Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                  Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risustristique pos
+                  uere. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </p>
+                <div class="chef-signature mt-4">
+                  <div class="row align-items-center">
+                    <div class="col-auto"><img src="assets/img/restaurant/chef-1.webp" alt="" /></div>
+                    <div class="col">
+                      <p class="chef-message mb-2">
+                        "Cooking is a language through which all the following properties may be expressed: harmony,
+                        creativity, happiness, beauty, poetry, complexity, magic, humor, provocation and culture."
+                      </p>
+                      <p class="chef-name">Executive Chef</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="about-image-wrapper">
+                <img src="assets/img/restaurant/showcase-2.webp" alt="A" class="img-fluid main-image shadow" />
+                <img src="assets/img/restaurant/showcase-4.webp" alt="A" class="img-fluid accent-image shadow" />
+                <span class="d-flex align-items-center justify-content-center text-center">Est. 2005</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5 pt-4 features-section">
+            <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-award"></i></div>
+                <h4>Award Winning</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-heart"></i></div>
+                <h4>Cooked with Love</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-egg-fried"></i></div>
+                <h4>Fresh Ingredients</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+              <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-people"></i></div>
+                <h4>Expert Team</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-lg-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="stats-container">
+                <div class="stat-item">
+                  <span class="stat-number">15+</span>
+                  <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">9</span>
+                  <p class="stat-label">Expert Chefs</p>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">5</span>
+                  <p class="stat-label">Culinary Awards</p>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">15000+</span>
+                  <p class="stat-label">Happy Customers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section menu">
+        <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+          <h2>Menu</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div>
+
+        <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+
+        </div>
+      </section>
+    </main>
+
+
+
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
+    <script src="assets/Js/script.js"></script>
+    <!-- Swiper JS -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Swiper Initialization -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper", {
+          loop: true, // Infinite loop
+          pagination: {
+            el: ".swiper-pagination",
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          scrollbar: {
+            el: ".swiper-scrollbar",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

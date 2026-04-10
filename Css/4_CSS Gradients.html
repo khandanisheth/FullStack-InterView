@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Body ka basic style — background color aur text center */
+body {
+  background-color: #333;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+/* Sab box ka common style */
+.box {
+  width: 250px;
+  height: 150px;
+  margin: 20px auto;
+  color: white;
+  line-height: 150px; /* text vertical center karne ke liye */
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+/* Pehla box — Linear Gradient */
+.linear {
+  /* Linear gradient left se right do colors ke beech */
+  background: linear-gradient(to right, #ff7e5f, #7b88fe);
+}
+
+/* Dusra box — Radial Gradient */
+.radial {
+  /* Radial gradient center se gol gol color change */
+  background: radial-gradient(circle, #05dd34, #0072ff);
+}
+
+/* Teesra box — Conic Gradient */
+.conic {
+  /* Conic gradient 360 degree ghuma hua color */
+  background: conic-gradient(red, yellow, green, blue, red);
+}
+</style>
+</head>
+<body>
+
+<h1 style="color:white;">3 Types of CSS Gradients in Boxes</h1>
+
+<!-- Box 1: Linear Gradient -->
+<div class="box linear">Linear Gradient</div>
+
+<!-- Box 2: Radial Gradient -->
+<div class="box radial">Radial Gradient</div>
+
+<!-- Box 3: Conic Gradient -->
+<div class="box conic">Conic Gradient</div>
+
+</body>
+</html>

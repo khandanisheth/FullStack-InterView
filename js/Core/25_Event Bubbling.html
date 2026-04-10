@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Bubbling Demo</title>
+
+    <style>
+      .grandparent {
+        padding: 40px;
+        border: 2px solid red;
+      }
+      .parent {
+        padding: 30px;
+        border: 2px solid blue;
+      }
+      .child {
+        padding: 20px;
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Event Bubbling Example</h2>
+
+    <!-- DOM STRUCTURE -->
+    <div class="grandparent" id="grandparent">
+      Grandparent
+      <div class="parent" id="parent">
+        Parent
+        <div class="child" id="child">Child</div>
+      </div>
+    </div>
+
+    <script>
+      // Elements ko select kar rahe hain
+      const grandparent = document.getElementById("grandparent");
+      const parent = document.getElementById("parent");
+      const child = document.getElementById("child");
+
+      /* ==============================
+       ❌ WITHOUT EVENT BUBBLING
+       ============================== */
+      /*
+    child.addEventListener("click", function (e) {
+      e.stopPropagation(); // event yahin ruk jayega
+      console.log("Child Clicked");
+    });
+
+    parent.addEventListener("click", function (e) {
+      e.stopPropagation(); // upar nahi jayega
+      console.log("Parent Clicked");
+    });
+
+    grandparent.addEventListener("click", function (e) {
+      e.stopPropagation();
+      console.log("Grandparent Clicked");
+    });
+    */
+
+      // 👉 RESULT:
+      // Child click → sirf "Child Clicked"
+      // Parent click → sirf "Parent Clicked"
+
+      /* ==============================
+       ✅ WITH EVENT BUBBLING
+       ============================== */
+
+      child.addEventListener("click", function () {
+        console.log("Child Clicked");
+      });
+
+      parent.addEventListener("click", function () {
+        console.log("Parent Clicked");
+      });
+
+      grandparent.addEventListener("click", function () {
+        console.log("Grandparent Clicked");
+      });
+
+      // 👉 RESULT:
+      // Child click →
+      // Child Clicked
+      // Parent Clicked
+      // Grandparent Clicked
+    </script>
+  </body>
+</html>

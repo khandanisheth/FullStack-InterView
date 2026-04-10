@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Important for responsive behaviour -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Responsive Grid Example</title>
+
+    <!-- ================= BOOTSTRAP 5 CDN =================
+       Bootstrap ka CSS file load kiya gaya hai
+       Isse grid system aur ready classes milti hain
+  ====================================================== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      /* ---------------------------------------------------
+       BOX COMMON STYLE
+       Sab boxes same height, center text aur spacing
+    --------------------------------------------------- */
+      .box {
+        color: white; /* text color */
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 8px;
+      }
+
+      /* Different colors for boxes */
+      .c1 {
+        background-color: #e74c3c;
+      } /* red */
+      .c2 {
+        background-color: #3498db;
+      } /* blue */
+      .c3 {
+        background-color: #2ecc71;
+      } /* green */
+      .c4 {
+        background-color: #f39c12;
+      } /* orange */
+      .c5 {
+        background-color: #9b59b6;
+      } /* purple */
+      .c6 {
+        background-color: #1abc9c;
+      } /* teal */
+    </style>
+  </head>
+  <body>
+    <!-- ================= CONTAINER =================
+       container = responsive fixed-width layout
+  ----------------------------------------------- -->
+    <div class="container my-4">
+      <h2 class="text-center mb-4">Bootstrap Responsive Grid Demo</h2>
+      <p class="text-center">XL = 12 boxes | LG = 6 boxes | MD = 3 boxes | SM = 1 box per row</p>
+
+      <!-- ================= ROW =================
+         row Bootstrap grid ka horizontal container hota hai
+    ------------------------------------------- -->
+      <div class="row g-3">
+        <!-- ================= BOX 1 =================
+           col-xl-1  → XL screen par 12 boxes per row
+           col-lg-2  → LG screen par 6 boxes per row
+           col-md-4  → MD screen par 3 boxes per row
+           col-sm-12 → SM screen par 1 box per row
+      --------------------------------------------- -->
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c1">Box 1</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c2">Box 2</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c3">Box 3</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c4">Box 4</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c5">Box 5</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c6">Box 6</div></div>
+
+        <!-- Repeat same pattern to show XL = 12 boxes -->
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c1">Box 7</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c2">Box 8</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c3">Box 9</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c4">Box 10</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c5">Box 11</div></div>
+        <div class="col-xl-1 col-lg-2 col-md-4 col-sm-12"><div class="box c6">Box 12</div></div>
+      </div>
+    </div>
+  </body>
+</html>

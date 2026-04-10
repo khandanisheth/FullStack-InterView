@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Ek div element jise hide kiya gaya hai using display: none -->
+    <div id="demo" style="display: none">
+      Hello <b>Danish</b>!
+      <div>Hello innerHTML</div>
+    </div>
+
+    <script>
+      // 'demo' ID se element ko select kar rahe hain
+      let el = document.getElementById("demo");
+
+      // Tag name check kar rahe hain (output: "DIV")
+      console.log("tagName:", el.tagName);
+
+      // innerText hidden hone ki wajah se blank aayega (display: none elements ka visible text nahi aata)
+      console.log("innerText:", el.innerText); // ➤ ""
+
+      // innerHTML pura HTML content return karega (tags ke sath)
+      console.log("innerHTML:", el.innerHTML);
+      // ➤ "Hello <b>Danish</b>!\n<div>Hello innerHTML</div>"
+
+      // textContent pura plain text return karega (even if hidden hai)
+      console.log("textContent:", el.textContent);
+      // ➤ "Hello Danish! Hello innerHTML"
+
+      // document.writeln se HTML document me print karega
+      document.writeln("tagName:", el.tagName); // ➤ DIV
+      document.writeln("innerText:", el.innerText); // ➤ ""
+      document.writeln("innerHTML:", el.innerHTML); // ➤ tags ke sath HTML
+      document.writeln("textContent:", el.textContent); // ➤ plain text
+    </script>
+
+    <h3>👨‍💻 Source Element:</h3>
+    <!-- Ek <p> tag jiska id="source" hai -->
+    <p id="source">
+      <!-- Is <p> ke andar style tag bhi hai -->
+      <style>
+        #source {
+          color: red;
+        }
+        #text {
+          text-transform: uppercase;
+        }
+      </style>
+
+      <!-- Ek span jisme text uppercase ho raha hai -->
+      <span id="text">
+        Take a look at<br />
+        how this text<br />
+        is interpreted below.
+      </span>
+
+      <!-- Ek aur span jo hidden hai -->
+      <span style="display: none">HIDDEN TEXT</span>
+    </p>
+
+    <script>
+      // p#source ke andar ke content ko 3 tariko se get kiya ja raha hai
+
+      const innerTextl = document.getElementById("source").innerText;
+      // innerText sirf visible text return karta hai (hidden aur style tags ko skip karta hai)
+      const innerHTMLl = document.getElementById("source").innerHTML;
+      // innerHTML pure HTML structure ko return karta hai (style tag, spans, br etc.)
+      const textContentl = document.getElementById("source").textContent;
+      // textContent pure plain text return karta hai (including hidden text and style tag content)
+      // Document me likhna:
+      document.writeln("</br>" + "inner Text => " + innerTextl + "</br> </br>");
+      document.writeln("</br>" + "inner HTML => " + innerHTMLl + "</br></br>");
+      document.writeln("</br>" + "Text Contentl =>" + textContentl + "</br>");
+
+      // Console me bhi same output dikha rahe hain
+      console.log("inner Text => " + innerTextl);
+      console.log("inner HTML => " + innerHTMLl);
+      console.log("Text Contentl =>" + textContentl);
+    </script>
+  </body>
+</html>

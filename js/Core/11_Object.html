@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Objects Example</title>
+  </head>
+  <body>
+    <script>
+      // --- Simple Object ---
+      var person = {
+        name: "dk",
+        age: 23,
+        mono: "892040",
+        add: function () {
+          document.writeln("Address: TodaBhim<br>");
+          document.writeln("Inside function, name: " + this.name + "<br>"); // 'this' is used here to refer to person.name
+        },
+      };
+
+      // Accessing properties
+      console.log("Person Object:", person);
+      document.writeln("Name: " + person.name + "<br>");
+      document.writeln("Age: " + person.age + "<br>");
+      document.writeln("Age (again): " + person["age"] + "<br>");
+      person.add();
+      document.writeln("Mobile: " + person.mono + "<br>");
+      document.writeln("Again Name: " + person["name"] + "<br><br>");
+
+      // Modifying Object Properties
+      person.name = "Danish";
+      document.writeln("Modified Name: " + person.name + "<br><br>");
+
+      // Adding a new property
+      person.color = "Blue";
+      document.writeln("Added Color: " + person.color + "<br><br>");
+
+      // Removing property
+      delete person.color;
+      document.writeln("After Deleting Color: " + person.color + "<br><br>");
+
+      // Property existence check
+      document.writeln("'color' in person: " + ("color" in person) + "<br>"); // output: false
+      document.writeln("HasOwnProperty 'color': " + person.hasOwnProperty("color") + "<br><br>"); // output: false
+
+
+      // Iterating through object properties
+      document.writeln("<b>Iterating over person object:</b><br>");
+      for (let key in person) {
+        document.writeln(key + ": " + person[key] + "<br>"); // Accessing value using bracket notation
+      }
+
+      // Object length
+      document.writeln("<br>Total properties in person: " + Object.keys(person).length + "<br><br>"); // output: 4
+
+      // --- Object using new keyword ---
+      let bike2 = new Object();
+      bike2.name = "TVS Apache";
+      bike2.weight = "150kg";
+      bike2.color = "White";
+      bike2.max_speed = "110 to 160 km/h";
+      bike2.start = function () {
+        return "Bike start";
+      };
+
+      document.writeln("<b>Bike Info:</b><br>");
+      document.writeln("Bike Name: " + bike2.name + "<br>");
+      document.writeln("Start Message: " + bike2.start() + "<br>");
+      document.writeln("Again Bike Name: " + bike2["name"] + "<br>");
+    </script>
+  </body>
+</html>

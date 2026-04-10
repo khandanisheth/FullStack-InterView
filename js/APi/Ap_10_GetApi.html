@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .post {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      h3 {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📘 All Posts</h1>
+    <div class="container"></div>
+    <script>
+      const api = "https://jsonplaceholder.typicode.com/posts";
+      let container = document.querySelector(".container");
+      let FatchGet = async () => {
+        let res = await fetch(api);
+        let data = await res.json();
+        data.forEach((box) => {
+          let div = document.createElement("div");
+          div.className = "post";
+          if (box.id % 2 == 0) {
+            div.innerHTML = `
+                <h3>${box.id}. ${box.title}</h3>
+                <p>${box.body}</p>
+            `;
+          }
+          container.appendChild(div);
+        });
+      };
+      FatchGet();
+    </script>
+  </body>
+</html>

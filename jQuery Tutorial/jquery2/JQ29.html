@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$(".btn1").click(function(){
+				$("p").text("Jai jai Shri Ram");	
+			});
+			$(".btn2").click(function(){
+				$("p").html("<b>Jai Shri Ram</b>");	
+			});
+			$(".btn3").click(function(){
+				$("#txtName").val("Jai Shri Ram");	
+			});
+		});
+
+	</script>
+</head>
+<body>
+<button class="btn1">text</button>
+<button class="btn2">html</button>
+<button class="btn3">value</button>
+
+<input type="text" id="txtName">
+<p style="background-color: red;width: 100px;height:100px; border: 10px dotted green;position: absolute;"><i>Jai</i> <b>Shri</b> <u>Ram</u></p>
+</body>
+</html>

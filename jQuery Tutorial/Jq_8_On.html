@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery .on() Events Example</title>
+
+    <!-- ✅ Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- ✅ jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // ✅ Multiple events handled using .on() function
+        $(".btnClick").on({
+          mouseenter: function () {
+            $("tr:even").hide(); // Even rows hide on mouse enter
+          },
+          mouseleave: function () {
+            $("tr:even").show(); // Even rows show on mouse leave
+          },
+          click: function () {
+            $("tr:odd").hide(); // Odd rows hide on click
+          },
+          dblclick: function () {
+            $("tr:odd").show(); // Odd rows show on double-click
+          },
+        });
+      });
+    </script>
+  </head>
+  <body class="bg-light p-4">
+    <!-- ✅ Styled Button with Bootstrap -->
+    <button class="btn btn-primary btnClick mb-4">Hover, Click & Double-Click Me</button>
+
+    <!-- ✅ Bootstrap Table -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" id="tbl1">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0Name</td>
+            <td>City0</td>
+          </tr>
+          <tr>
+            <td>1Name</td>
+            <td>City1</td>
+          </tr>
+          <tr>
+            <td>2Name</td>
+            <td>City2</td>
+          </tr>
+          <tr>
+            <td>3Name</td>
+            <td>City3</td>
+          </tr>
+          <tr>
+            <td>4Name</td>
+            <td>City4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

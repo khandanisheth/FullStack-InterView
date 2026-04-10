@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Operators Example</title>
+  </head>
+  <body>
+    <script>
+      // ========== 1️⃣ Arithmetic Operators ==========
+      var a = 10,
+        b = 3;
+      document.write("<h3>Arithmetic Operators</h3>");
+      document.write("a + b = " + (a + b) + "<br>"); // Addition
+      document.write("a - b = " + (a - b) + "<br>"); // Subtraction
+      document.write("a * b = " + a * b + "<br>"); // Multiplication
+      document.write("a / b = " + a / b + "<br>"); // Division
+      document.write("a % b = " + (a % b) + "<br>"); // Modulus
+      document.write("a ** b = " + a ** b + "<br>"); // Exponentiation ya power
+
+      // ========== 2️⃣ Assignment Operators ==========
+      document.write("<h3>Assignment Operators</h3>");
+      var x = 5;
+      x += 3;
+      document.write("x += 3 => " + x + "<br>"); // x = x + 3
+      x -= 2;
+      document.write("x -= 2 => " + x + "<br>"); // x = x - 2
+      x *= 2;
+      document.write("x *= 2 => " + x + "<br>"); // x = x * 2
+      x /= 2;
+      document.write("x /= 2 => " + x + "<br>"); // x = x / 2
+      x %= 3;
+      document.write("x %= 3 => " + x + "<br>"); // x = x % 3
+
+      // ========== 3️⃣ Comparison Operators ==========
+      document.write("<h3>Comparison Operators</h3>");
+      var p = 10,
+        q = 20;
+      document.write("p == q : " + (p == q) + "<br>"); // Equal to --- Output false
+      document.write("p != q : " + (p != q) + "<br>"); // Not equal to --- Output true
+      document.write("p > q  : " + (p > q) + "<br>"); // Greater than --- Output false
+      document.write("p < q  : " + (p < q) + "<br>"); // Less than ---  Output true
+      document.write("p >= 10 : " + (p >= 10) + "<br>"); //  Greater than or equal to ---   Output true
+      document.write("p <= 10 : " + (p <= 10) + "<br>"); //  Less than or equal to ---  Output true
+      document.write("p === 10 : " + (p === 10) + "<br>"); // Check value & typeof --- Output true
+      document.write("p === '10' : " + (p === "10") + "<br>"); // Check value & Typeof --- Output false
+
+      // ========== 4️⃣ Logical Operators ==========
+      document.write("<h3>Logical Operators</h3>");
+      var m = true,
+        n = false;
+      document.write("m && n : " + (m && n) + "<br>"); // AND Operator --- Output false
+      document.write("m || n : " + (m || n) + "<br>"); //    OR Operator  --- Output true
+      document.write("!m : " + !m + "<br>"); // NOT Operator  --- Output false
+
+      // ========== 5️⃣ String Operator ==========
+      document.write("<h3>String Operator</h3>");
+      var str1 = "Hello ",
+        str2 = "Danish";
+      var result = str1 + str2;
+      document.write("Concatenation: " + result + "<br>"); // Output: Hello Danish
+
+      // ========== 6️⃣ Type Operators ==========
+
+      document.write("<h3>Type Operators</h3>");
+      var num = 100;
+      document.write("typeof num : " + typeof num + "<br>"); // Output: Number
+      document.write("typeof str1 : " + typeof str1 + "<br>"); // Output: String
+      document.write("typeof str1 : " + (str1 instanceof String) + "<br>"); // Output: false
+
+      // ========== 7️⃣ Ternary Operator ==========
+
+      document.write("<h3>Ternary Operator</h3>");
+      var age = 18;
+      var eligibility = age >= 18 ? "Eligible" : "Not Eligible"; // condition ? value if true : value if false
+      document.write("Voting Eligibility: " + eligibility + "<br>"); // Output: Eligible
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const div = document.createElement("div");
+      div.className = "foo";
+
+      // our starting state: <div class="foo"></div>
+      console.log(div.outerHTML);
+
+      // use the classList API to remove and add classes
+      div.classList.remove("foo");
+      div.classList.add("another-class");
+      div.style.color = "red";
+      div.style.border = "2px solid black";
+      div.style.height = "100px";
+      div.style.width = "100px";
+      // body me add karna zaroori hai
+      document.body.append(div);
+      // <div class="another-class"></div>
+      console.log(div.outerHTML);
+
+      // if visible is set remove it, otherwise add it
+      div.classList.toggle("visible");
+
+      // add/remove visible, depending on test conditional, i less than 10
+      for (let i = 0; i < 10; i++) {
+        div.classList.toggle("visible", i < 10); // ✅ Now i is defined
+      }
+
+      // false
+      console.log(div.classList.contains("foo"));
+
+      // add or remove multiple classes
+      div.classList.add("foo", "bar", "baz");
+      div.classList.remove("foo", "bar", "baz");
+
+      // add or remove multiple classes using spread syntax
+      const cls = ["foo", "bar"];
+      div.classList.add(...cls);
+      //div.classList.remove(...cls);
+
+      // replace class "foo" with class "bar"
+      div.classList.replace("foo", "bar");
+    </script>
+  </body>
+</html>

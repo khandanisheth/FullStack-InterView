@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function testFunction() {
+        try {
+          // Code that might throw an error
+          let num = 10;
+          console.log("Before throwing an error");
+          // Here we are manually throwing an error for demonstration
+          if (num > 5) {
+            throw new Error("Number is too large!");
+          }
+          console.log("This line will not be executed if an error is thrown above");
+        } catch (error) {
+          if (1) {
+            // This block runs if there is an error in the try block
+            console.log("Error caught: " + error.message); // "Number is too large!"
+          } else {
+            
+          }
+        } finally {
+          // This block will always run, even if there is an error
+          console.log("Finally block executed!");
+        }
+      }
+      // Calling the function
+      testFunction();
+    </script>
+  </body>
+</html>

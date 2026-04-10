@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling Example</title>
+  </head>
+  <body>
+    <!-- Without stopPropagation -->
+    <div
+      style="height: 200px; width: 200px; text-align: center; background-color: aqua; margin-bottom: 20px"
+      onclick="alert('This does NOT use stopPropagation')"
+    >
+      This is Event Bubbling
+      <br />
+      <button type="button" id="btn">Submit</button>
+    </div>
+
+    <!-- With stopPropagation -->
+    <div style="height: 200px; width: 200px; text-align: center; background-color: rgb(31, 94, 94); color: white" onclick="alert('This USES stopPropagation')">
+      This is Event Bubbling with stopPropagation
+      <br />
+      <button type="button" id="btn1">Submit</button>
+    </div>
+
+    <!-- Link Button -->
+    <button>
+      <a href="http://127.0.0.1:5501/js/ex/Dom/12_Events.html"> Click Page</a>
+    </button>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      let btn1 = document.querySelector("#btn1");
+      let a = document.querySelector("a");
+      // Without stopPropagation
+      btn.addEventListener("click", () => {
+        alert("Btn Clicked (No stopPropagation)");
+      });
+
+      // With stopPropagation
+      btn1.addEventListener("click", (eve) => {
+        alert("Btn Clicked (With stopPropagation)");
+        eve.stopPropagation(); // Stops bubbling
+      });
+
+      a.addEventListener("click", (eve) => {
+        eve.preventDefault();
+        alert("This Are Do not Open Because Use (preventDefault()) ");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+/* Box for text-overflow */
+.overflow-box {
+  width: 200px;
+  height: 50px;
+  border: 2px solid #333;
+  overflow: hidden; /* Box se bahar jane wala content chup jayega */
+  white-space: nowrap; /* Ek hi line me rakhega */
+  text-overflow: ellipsis; /* ... lag jayega extra text pe */
+  margin-bottom: 30px;
+}
+
+.overflow-box:hover{
+    overflow: visible;
+}
+
+/* Box for word-wrap */
+.wrap-box {
+  width: 200px;
+  border: 2px solid #333;
+  word-wrap: break-word; /* Long word toot jayega */
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+/* Box for line breaking rules */
+.line-break-box {
+  width: 250px;
+  border: 2px solid #333;
+  padding: 10px;
+  line-break: anywhere; /* Jahaan jagah mile wahin break kar dega */
+  word-break: break-all; /* Words bhi toot sakte hain */
+  margin-bottom: 30px;
+}
+
+/* Box for writing mode */
+.writing-mode-box {
+  width: 100px;
+  height: 150px;
+  border: 2px solid #333;
+  writing-mode: vertical-rl; /* Text ko vertical right se left karega */
+  text-align: center;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>CSS Text Overflow, Word Wrap, Line Breaking, and Writing Modes Example</h2>
+
+<!-- Text Overflow Example -->
+<div class="overflow-box">
+  Yeh ek lamba text hai jo box se bahar jayega.
+</div>
+
+<!-- Word Wrap Example -->
+<div class="wrap-box">
+  ThisIsAnExtremelyLongWordThatWillBreakBecauseOfWordWrap
+</div>
+
+<!-- Line Breaking Rules Example -->
+<div class="line-break-box">
+  Yeh text bohot lamba hai isliye line-break aur word-break laga hai.
+</div>
+
+<!-- Writing Mode Example -->
+<div class="writing-mode-box">
+  Vertical Text
+</div>
+
+</body>
+</html>

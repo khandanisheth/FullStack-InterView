@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Yeh browser ke page par text likhta hai, bina line break ke
+      document.write("First Ek Line ME <br>");
+      // Yeh bhi page par likhta hai, lekin writeln ke baad line break deta hai
+      document.writeln("Line /n Break keliye"); // NOTE: yaha "/n" kaam nahi karega, "\n" hota hai ya <br> use karo
+      // Yeh browser ke developer console me message print karta hai
+      console.log("This are used to Console Print ke liye");
+      // Yeh ek alert box show karega screen par
+      alert("Alert Box Simple");
+      // Yeh bhi ek alert box show karega
+      window.alert("Window Alert ");
+      // Yeh user se input lega prompt box me aur us value ko variable 'x' me store karega
+      var x = prompt("Enter Value ->");
+      // Yeh ek confirmation dialog show karega, jisme OK ya Cancel hoga
+      confirm("This Are used to Confrim Message ke liye ");
+      // confirm() ka return value:
+      // agar user OK dabata hai → true return karega
+      // agar Cancel dabata hai → false return karega
+      var check = confirm("Are you sure?");
+      console.log(check); // OK → true, Cancel → false
+      console.log("Simple Text");
+      console.warn("This is a Warning");
+      console.error("This is an Error");
+    </script>
+  </body>
+</html>

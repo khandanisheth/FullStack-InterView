@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Example 1: Basic Try-Catch
+      try {
+        let x = 10;
+        let y = 0;
+
+        // अगर y = 0 है, तो manually error throw करेंगे
+        if (y === 0) {
+          throw new Error("Division by zero is not allowed");
+        }
+
+        let result = x / y;
+        console.log("Result:", result);
+      } catch (error) {
+        // Error handle करने के लिए catch block
+        console.error("Caught an exception:");
+        console.error(error.message); // सिर्फ message दिखाएगा
+        console.error(error.stack); // Stack trace भी दिखाएगा
+      }
+
+      //Example 2: finally का इस्तेमाल
+
+      function divide(a, b) {
+        try {
+          if (b === 0) {
+            throw new Error("Cannot divide by zero");
+          }
+          return a / b;
+        } catch (e) {
+          console.error("Error:", e.message);
+          return null;
+        } finally {
+          console.log("Cleanup code runs here. (Always runs)");
+        }
+      }
+
+      let result = divide(10, 0);
+      console.log("Final Result:", result);
+
+      //
+
+      // Example 3: Custom Throwing Based on Conditions
+      function checkAge(age) {
+        try {
+          if (age < 18) {
+            throw new Error("You must be at least 18 years old.");
+          }
+          console.log("Access granted.");
+        } catch (e) {
+          console.warn("Access denied:", e.message);
+        }
+      }
+
+      checkAge(151); // Output: Access denied: You must be at least 18 years old.
+
+      //  Example 4: Syntax Error Handling
+      try {
+        eval("alert('Hello"); // Invalid JS syntax (missing quote)
+      } catch (e) {
+        console.log("Syntax Error Caught:", e.message);
+      }
+
+      //  Example 5: TypeError Example
+      try {
+        let obj = null;
+        obj.name = "Test"; // Null object पे property set करेंगे, error आएगा
+      } catch (e) {
+        console.log("TypeError:", e.message);
+      }
+    </script>
+  </body>
+</html>

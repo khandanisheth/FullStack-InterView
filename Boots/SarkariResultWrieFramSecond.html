@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SarkariJobs Portal - Wireframe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .wireframe-box {
+        border: 2px dashed #6b7280;
+        background: #f9fafb;
+        transition: all 0.3s ease;
+      }
+      .wireframe-box:hover {
+        border-color: #3b82f6;
+        background: #eff6ff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .content-placeholder {
+        background: repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 10px, #f3f4f6 10px, #f3f4f6 20px);
+        border-radius: 4px;
+      }
+      .ad-space {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border: 2px dashed #22c55e;
+        transition: all 0.3s ease;
+      }
+      .ad-space:hover {
+        border-color: #16a34a;
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+      }
+      .premium-section {
+        background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+        border: 2px solid #f59e0b;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b-2 border-blue-600">
+      <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <div class="wireframe-box h-12 w-48 flex items-center justify-center">
+            <span class="text-sm font-medium text-gray-600">LOGO</span>
+          </div>
+          <nav class="hidden md:flex space-x-6">
+            <div class="wireframe-box h-8 w-16 flex items-center justify-center">
+              <span class="text-xs text-gray-600">Home</span>
+            </div>
+            <div class="wireframe-box h-8 w-16 flex items-center justify-center">
+              <span class="text-xs text-gray-600">Jobs</span>
+            </div>
+            <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+              <span class="text-xs text-gray-600">Results</span>
+            </div>
+            <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+              <span class="text-xs text-gray-600">Admit Card</span>
+            </div>
+            <div class="wireframe-box h-8 w-16 flex items-center justify-center">
+              <span class="text-xs text-gray-600">News</span>
+            </div>
+          </nav>
+          <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+            <span class="text-xs text-gray-600">Search</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center">
+          <span class="bg-yellow-400 text-red-600 px-3 py-1 text-sm font-bold mr-4">BREAKING</span>
+          <div class="wireframe-box bg-red-500 h-6 flex-1 flex items-center justify-center">
+            <span class="text-xs text-white">Latest Government Job Updates Ticker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Banner Ad -->
+    <div class="bg-gray-100 py-4">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="ad-space h-24 rounded-lg flex items-center justify-center relative">
+          <span class="text-sm font-medium text-green-600">Google Ads - Top Banner (728x90)</span>
+          <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <!-- Main Content Area -->
+        <div class="lg:col-span-3">
+          <!-- Hero Section -->
+          <div class="wireframe-box h-48 mb-6 flex items-center justify-center">
+            <div class="text-center">
+              <div class="content-placeholder h-8 w-64 mx-auto mb-4"></div>
+              <div class="content-placeholder h-4 w-48 mx-auto mb-2"></div>
+              <div class="content-placeholder h-4 w-56 mx-auto"></div>
+            </div>
+          </div>
+
+          <!-- Quick Links Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="wireframe-box h-24 flex flex-col items-center justify-center">
+              <div class="content-placeholder h-8 w-8 mb-2 rounded"></div>
+              <span class="text-xs text-gray-600">Latest Jobs</span>
+            </div>
+            <div class="wireframe-box h-24 flex flex-col items-center justify-center">
+              <div class="content-placeholder h-8 w-8 mb-2 rounded"></div>
+              <span class="text-xs text-gray-600">Results</span>
+            </div>
+            <div class="wireframe-box h-24 flex flex-col items-center justify-center">
+              <div class="content-placeholder h-8 w-8 mb-2 rounded"></div>
+              <span class="text-xs text-gray-600">Admit Cards</span>
+            </div>
+            <div class="wireframe-box h-24 flex flex-col items-center justify-center">
+              <div class="content-placeholder h-8 w-8 mb-2 rounded"></div>
+              <span class="text-xs text-gray-600">Syllabus</span>
+            </div>
+          </div>
+
+          <!-- Latest Jobs Section -->
+          <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6 py-4">
+              <h2 class="text-lg font-semibold text-gray-800">Latest Government Jobs</h2>
+            </div>
+            <div class="p-6">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                  <div class="flex-1">
+                    <div class="content-placeholder h-4 w-64 mb-2"></div>
+                    <div class="content-placeholder h-3 w-32"></div>
+                  </div>
+                  <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+                    <span class="text-xs text-gray-600">Apply</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                  <div class="flex-1">
+                    <div class="content-placeholder h-4 w-56 mb-2"></div>
+                    <div class="content-placeholder h-3 w-28"></div>
+                  </div>
+                  <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+                    <span class="text-xs text-gray-600">Apply</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                  <div class="flex-1">
+                    <div class="content-placeholder h-4 w-72 mb-2"></div>
+                    <div class="content-placeholder h-3 w-36"></div>
+                  </div>
+                  <div class="wireframe-box h-8 w-20 flex items-center justify-center">
+                    <span class="text-xs text-gray-600">Apply</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- In-Content Ad -->
+          <div class="ad-space h-32 mb-6 rounded-lg flex items-center justify-center relative">
+            <div class="text-center">
+              <span class="text-sm font-medium text-green-600">Google Ads - In-Content</span>
+              <div class="text-xs text-green-500 mt-1">Leaderboard (728x90)</div>
+            </div>
+            <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+          </div>
+
+          <!-- Results Section -->
+          <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6 py-4">
+              <h2 class="text-lg font-semibold text-gray-800">Latest Results</h2>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="wireframe-box h-32 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="content-placeholder h-4 w-32 mx-auto mb-2"></div>
+                    <div class="content-placeholder h-3 w-24 mx-auto"></div>
+                  </div>
+                </div>
+                <div class="wireframe-box h-32 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="content-placeholder h-4 w-28 mx-auto mb-2"></div>
+                    <div class="content-placeholder h-3 w-20 mx-auto"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Content Ad -->
+          <div class="ad-space h-40 mb-6 rounded-lg flex items-center justify-center relative">
+            <div class="text-center">
+              <span class="text-sm font-medium text-green-600">Google Ads - Content Bottom</span>
+              <div class="text-xs text-green-500 mt-1">Large Rectangle (336x280)</div>
+            </div>
+            <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Search Widget -->
+          <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-4 py-3">
+              <h3 class="font-semibold text-gray-800">Job Search</h3>
+            </div>
+            <div class="p-4 space-y-3">
+              <div class="wireframe-box h-10 flex items-center justify-center">
+                <span class="text-xs text-gray-600">Search Input</span>
+              </div>
+              <div class="wireframe-box h-10 flex items-center justify-center">
+                <span class="text-xs text-gray-600">Category Dropdown</span>
+              </div>
+              <div class="wireframe-box h-8 w-full flex items-center justify-center bg-blue-100">
+                <span class="text-xs text-blue-600">Search Button</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popular Categories -->
+          <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-4 py-3">
+              <h3 class="font-semibold text-gray-800">Popular Categories</h3>
+            </div>
+            <div class="p-4">
+              <div class="space-y-2">
+                <div class="wireframe-box h-8 flex items-center justify-between px-3">
+                  <span class="text-xs text-gray-600">Railway Jobs</span>
+                  <span class="text-xs text-gray-500">(25)</span>
+                </div>
+                <div class="wireframe-box h-8 flex items-center justify-between px-3">
+                  <span class="text-xs text-gray-600">Banking</span>
+                  <span class="text-xs text-gray-500">(18)</span>
+                </div>
+                <div class="wireframe-box h-8 flex items-center justify-between px-3">
+                  <span class="text-xs text-gray-600">SSC</span>
+                  <span class="text-xs text-gray-500">(32)</span>
+                </div>
+                <div class="wireframe-box h-8 flex items-center justify-between px-3">
+                  <span class="text-xs text-gray-600">UPSC</span>
+                  <span class="text-xs text-gray-500">(12)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Ads - Sidebar -->
+          <div class="ad-space h-64 mb-6 rounded-lg flex items-center justify-center relative">
+            <div class="text-center">
+              <span class="text-sm font-medium text-green-600">Google Ads</span>
+              <div class="text-xs text-green-500 mt-1">Rectangle (300x250)</div>
+            </div>
+            <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+          </div>
+
+          <!-- Google Ads - Skyscraper -->
+          <div class="ad-space h-80 mb-6 rounded-lg flex items-center justify-center relative">
+            <div class="text-center">
+              <span class="text-sm font-medium text-green-600">Google Ads</span>
+              <div class="text-xs text-green-500 mt-1">Skyscraper (160x600)</div>
+            </div>
+            <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+          </div>
+
+          <!-- Quick Updates -->
+          <div class="bg-white rounded-lg shadow-sm border">
+            <div class="border-b px-4 py-3">
+              <h3 class="font-semibold text-gray-800">Quick Updates</h3>
+            </div>
+            <div class="p-4">
+              <div class="space-y-3">
+                <div class="wireframe-box h-16 flex items-center justify-center">
+                  <span class="text-xs text-gray-600">Update Item 1</span>
+                </div>
+                <div class="wireframe-box h-16 flex items-center justify-center">
+                  <span class="text-xs text-gray-600">Update Item 2</span>
+                </div>
+                <div class="wireframe-box h-16 flex items-center justify-center">
+                  <span class="text-xs text-gray-600">Update Item 3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Ad -->
+    <div class="bg-gray-100 py-4">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="ad-space h-32 rounded-lg flex items-center justify-center relative">
+          <div class="text-center">
+            <span class="text-sm font-medium text-green-600">Google Ads - Footer</span>
+            <div class="text-xs text-green-500 mt-1">Leaderboard (728x90)</div>
+          </div>
+          <div class="absolute top-1 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded">Advertisement</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-0">
+      <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="wireframe-box h-32 flex items-center justify-center">
+            <span class="text-xs text-gray-300">About Section</span>
+          </div>
+          <div class="wireframe-box h-32 flex items-center justify-center">
+            <span class="text-xs text-gray-300">Quick Links</span>
+          </div>
+          <div class="wireframe-box h-32 flex items-center justify-center">
+            <span class="text-xs text-gray-300">Categories</span>
+          </div>
+          <div class="wireframe-box h-32 flex items-center justify-center">
+            <span class="text-xs text-gray-300">Contact Info</span>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-6 pt-6 text-center">
+          <div class="wireframe-box h-8 flex items-center justify-center">
+            <span class="text-xs text-gray-400">Copyright & Social Links</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'981ff5b893444826',t:'MTc1ODM1NzAxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener) document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState && ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

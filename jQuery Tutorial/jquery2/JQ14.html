@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".btnHide").click(function () {
+          $("tr:even").hide();
+        });
+
+        $(".btnShow").click(function () {
+          $("tr:even").show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button class="btnHide">Hide</button>
+    <button class="btnShow">Show</button>
+
+    <table border="1" width="400">
+      <tr>
+        <td>0Name</td>
+        <td>City</td>
+      </tr>
+      <tr>
+        <td>1Name</td>
+        <td>City</td>
+      </tr>
+      <tr>
+        <td>2Name</td>
+        <td>City</td>
+      </tr>
+      <tr>
+        <td>3Name</td>
+        <td>City</td>
+      </tr>
+      <tr>
+        <td>4Name</td>
+        <td>City</td>
+      </tr>
+    </table>
+  </body>
+</html>

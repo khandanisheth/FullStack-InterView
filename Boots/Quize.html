@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Biology Quiz 🧬</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 50%, #1e3a8a 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating microscopic cells animation */
+        .floating-cells {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cell {
+            position: absolute;
+            font-size: 20px;
+            animation: float 8s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .progress-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .plant-progress {
+            font-size: 3rem;
+            transition: all 0.5s ease;
+        }
+
+        .score-display {
+            text-align: right;
+        }
+
+        .difficulty-selector {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .difficulty-btn {
+            background: rgba(34, 197, 94, 0.8);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-btn:hover {
+            background: rgba(34, 197, 94, 1);
+            transform: translateY(-2px);
+        }
+
+        .difficulty-btn.active {
+            background: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: #60a5fa;
+            background: rgba(96, 165, 250, 0.2);
+        }
+
+        .option.correct {
+            border-color: #34d399;
+            background: rgba(52, 211, 153, 0.2);
+        }
+
+        .option.incorrect {
+            border-color: #f87171;
+            background: rgba(248, 113, 113, 0.2);
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #10b981, #059669);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .completion-screen {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #92400e;
+            padding: 20px;
+            border-radius: 50%;
+            font-size: 4rem;
+            margin: 20px auto;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .floating-leaves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 30px;
+            animation: leafFall 3s ease-in-out infinite;
+        }
+
+        @keyframes leafFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(400px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .feedback {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .feedback.correct {
+            background: rgba(52, 211, 153, 0.2);
+            border: 1px solid #34d399;
+        }
+
+        .feedback.incorrect {
+            background: rgba(248, 113, 113, 0.2);
+            border: 1px solid #f87171;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .difficulty-btn {
+                margin: 5px;
+                padding: 10px 20px;
+            }
+            
+            .progress-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating microscopic cells background -->
+    <div class="floating-cells" id="floatingCells"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">🧬 Biology Quiz Adventure 🌱</h1>
+            <p class="subtitle">Test your knowledge of cells, plants, and animals!</p>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <div>
+                <div class="plant-progress" id="plantProgress">🌱</div>
+                <p>Your Growing Plant</p>
+            </div>
+            <div class="score-display">
+                <div style="font-size: 1.5rem;" id="scoreDisplay">Score: 0/0</div>
+                <div style="font-size: 1rem; opacity: 0.8;" id="progressText">Question 0 of 0</div>
+            </div>
+        </div>
+
+        <!-- Difficulty Selector -->
+        <div class="difficulty-selector" id="difficultySelector">
+            <h3 style="margin-bottom: 20px;">Choose Your Difficulty Level 🎯</h3>
+            <button class="difficulty-btn active" onclick="selectDifficulty('easy')">🌱 Easy</button>
+            <button class="difficulty-btn" onclick="selectDifficulty('medium')">🌿 Medium</button>
+            <button class="difficulty-btn" onclick="selectDifficulty('hard')">🌳 Hard</button>
+            <div style="margin-top: 20px;">
+                <button class="btn" onclick="startQuiz()">Start Quiz! 🚀</button>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container hidden" id="quizContainer">
+            <div class="question" id="questionText"></div>
+            <div class="options" id="optionsContainer"></div>
+            <div class="feedback hidden" id="feedback"></div>
+            <div class="quiz-controls">
+                <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Next Question ➡️</button>
+                <div id="questionCounter"></div>
+            </div>
+        </div>
+
+        <!-- Completion Screen -->
+        <div class="completion-screen hidden" id="completionScreen">
+            <div class="floating-leaves" id="floatingLeaves"></div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">🎉 Congratulations! 🎉</h2>
+            <div class="badge">🔬🧪🧬</div>
+            <h3 style="font-size: 2rem; margin: 20px 0;">Junior Biologist Badge Earned!</h3>
+            <div style="font-size: 1.5rem; margin: 20px 0;" id="finalScore"></div>
+            <div style="font-size: 1.2rem; margin: 20px 0;" id="finalMessage"></div>
+            <button class="btn" onclick="restartQuiz()" style="margin-top: 20px;">Take Quiz Again 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data organized by difficulty
+        const quizData = {
+            easy: [
+                {
+                    question: "🦠 What is the basic unit of life?",
+                    options: ["Cell", "Atom", "Molecule", "Tissue"],
+                    correct: 0,
+                    explanation: "Great job! 🦠 Cells are indeed the basic building blocks of all living things!"
+                },
+                {
+                    question: "🌱 What do plants need to make their own food through photosynthesis?",
+                    options: ["Sunlight and water", "Only water", "Only sunlight", "Soil only"],
+                    correct: 0,
+                    explanation: "Excellent! 🌱 Plants use sunlight, water, and carbon dioxide to make food!"
+                },
+                {
+                    question: "🐕 Which group do dogs belong to?",
+                    options: ["Mammals", "Birds", "Fish", "Reptiles"],
+                    correct: 0,
+                    explanation: "Perfect! 🐕 Dogs are mammals because they have fur and feed milk to their babies!"
+                },
+                {
+                    question: "🧫 What part of the cell controls what goes in and out?",
+                    options: ["Cell membrane", "Nucleus", "Cytoplasm", "Mitochondria"],
+                    correct: 0,
+                    explanation: "Well done! 🧫 The cell membrane acts like a gatekeeper for the cell!"
+                },
+                {
+                    question: "🌿 What gas do plants take in during photosynthesis?",
+                    options: ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+                    correct: 0,
+                    explanation: "Amazing! 🌿 Plants breathe in carbon dioxide and breathe out oxygen!"
+                }
+            ],
+            medium: [
+                {
+                    question: "🔬 What organelle is known as the 'powerhouse of the cell'?",
+                    options: ["Mitochondria", "Nucleus", "Ribosome", "Vacuole"],
+                    correct: 0,
+                    explanation: "Excellent! 🔬 Mitochondria produce energy (ATP) for the cell to use!"
+                },
+                {
+                    question: "🧬 What is the green pigment in plants that captures sunlight?",
+                    options: ["Chlorophyll", "Carotene", "Melanin", "Hemoglobin"],
+                    correct: 0,
+                    explanation: "Great work! 🧬 Chlorophyll is what makes plants green and captures light energy!"
+                },
+                {
+                    question: "🦠 Which kingdom includes organisms like mushrooms and yeast?",
+                    options: ["Fungi", "Plant", "Animal", "Bacteria"],
+                    correct: 0,
+                    explanation: "Perfect! 🦠 Fungi are decomposers that break down dead organic matter!"
+                },
+                {
+                    question: "🧫 What structure in plant cells provides support and protection?",
+                    options: ["Cell wall", "Cell membrane", "Cytoplasm", "Nucleus"],
+                    correct: 0,
+                    explanation: "Well done! 🧫 The cell wall gives plant cells their rigid structure!"
+                },
+                {
+                    question: "🌱 What are the tiny pores on leaves called that allow gas exchange?",
+                    options: ["Stomata", "Chloroplasts", "Vacuoles", "Ribosomes"],
+                    correct: 0,
+                    explanation: "Fantastic! 🌱 Stomata open and close to control gas exchange in plants!"
+                }
+            ],
+            hard: [
+                {
+                    question: "🧬 In which organelle does photosynthesis occur in plant cells?",
+                    options: ["Chloroplasts", "Mitochondria", "Nucleus", "Endoplasmic reticulum"],
+                    correct: 0,
+                    explanation: "Outstanding! 🧬 Chloroplasts contain chlorophyll and are the sites of photosynthesis!"
+                },
+                {
+                    question: "🔬 What is the scientific classification order from largest to smallest?",
+                    options: ["Kingdom, Phylum, Class, Order, Family, Genus, Species", "Species, Genus, Family, Order, Class, Phylum, Kingdom", "Kingdom, Class, Phylum, Family, Order, Genus, Species", "Phylum, Kingdom, Order, Class, Family, Species, Genus"],
+                    correct: 0,
+                    explanation: "Brilliant! 🔬 Remember: King Philip Came Over For Good Soup!"
+                },
+                {
+                    question: "🦠 What process do cells use to divide and create identical copies?",
+                    options: ["Mitosis", "Meiosis", "Osmosis", "Diffusion"],
+                    correct: 0,
+                    explanation: "Excellent! 🦠 Mitosis creates two identical diploid cells for growth and repair!"
+                },
+                {
+                    question: "🧫 What is the liquid part of blood called that carries nutrients?",
+                    options: ["Plasma", "Serum", "Lymph", "Cytoplasm"],
+                    correct: 0,
+                    explanation: "Perfect! 🧫 Plasma makes up about 55% of blood and carries dissolved substances!"
+                },
+                {
+                    question: "🌿 What is the process called when plants lose water through their leaves?",
+                    options: ["Transpiration", "Respiration", "Photosynthesis", "Germination"],
+                    correct: 0,
+                    explanation: "Amazing! 🌿 Transpiration helps plants cool down and transport nutrients!"
+                }
+            ]
+        };
+
+        let currentDifficulty = 'easy';
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+        let quizStarted = false;
+
+        // Initialize floating cells
+        function createFloatingCells() {
+            const container = document.getElementById('floatingCells');
+            const cellEmojis = ['🔬', '🦠', '🧫', '🧬'];
+            
+            for (let i = 0; i < 15; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.textContent = cellEmojis[Math.floor(Math.random() * cellEmojis.length)];
+                cell.style.left = Math.random() * 100 + '%';
+                cell.style.animationDelay = Math.random() * 8 + 's';
+                cell.style.animationDuration = (8 + Math.random() * 4) + 's';
+                container.appendChild(cell);
+            }
+        }
+
+        function selectDifficulty(difficulty) {
+            currentDifficulty = difficulty;
+            document.querySelectorAll('.difficulty-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function startQuiz() {
+            quizStarted = true;
+            currentQuestions = [...quizData[currentDifficulty]];
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            document.getElementById('difficultySelector').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            
+            updateProgress();
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = currentQuestions[currentQuestionIndex];
+            document.getElementById('questionText').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('nextBtn').disabled = true;
+            selectedAnswer = null;
+            
+            updateProgress();
+        }
+
+        function selectOption(index) {
+            selectedAnswer = index;
+            document.querySelectorAll('.option').forEach((opt, i) => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                if (i === index) {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            checkAnswer();
+        }
+
+        function checkAnswer() {
+            const question = currentQuestions[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            const feedback = document.getElementById('feedback');
+            
+            if (selectedAnswer === question.correct) {
+                score++;
+                options[selectedAnswer].classList.add('correct');
+                feedback.textContent = question.explanation;
+                feedback.className = 'feedback correct';
+                updatePlantProgress();
+            } else {
+                options[selectedAnswer].classList.add('incorrect');
+                options[question.correct].classList.add('correct');
+                feedback.textContent = `Not quite! The correct answer is: ${question.options[question.correct]}. ${question.explanation}`;
+                feedback.className = 'feedback incorrect';
+            }
+            
+            feedback.classList.remove('hidden');
+            document.getElementById('nextBtn').disabled = false;
+            
+            // Disable all options
+            options.forEach(opt => opt.onclick = null);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex >= currentQuestions.length) {
+                showCompletion();
+            } else {
+                showQuestion();
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('scoreDisplay').textContent = `Score: ${score}/${currentQuestions.length}`;
+            document.getElementById('progressText').textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+        }
+
+        function updatePlantProgress() {
+            const plantElement = document.getElementById('plantProgress');
+            const progressPercentage = score / currentQuestions.length;
+            
+            if (progressPercentage <= 0.33) {
+                plantElement.textContent = '🌱';
+            } else if (progressPercentage <= 0.66) {
+                plantElement.textContent = '🌿';
+            } else {
+                plantElement.textContent = '🌳';
+            }
+        }
+
+        function showCompletion() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('completionScreen').classList.remove('hidden');
+            
+            const percentage = Math.round((score / currentQuestions.length) * 100);
+            document.getElementById('finalScore').textContent = `Final Score: ${score}/${currentQuestions.length} (${percentage}%)`;
+            
+            let message = '';
+            if (percentage >= 90) {
+                message = "🌟 Outstanding! You're a true biology expert! 🌟";
+            } else if (percentage >= 70) {
+                message = "🎉 Great job! You have a solid understanding of biology! 🎉";
+            } else if (percentage >= 50) {
+                message = "👍 Good effort! Keep studying to improve your biology knowledge! 👍";
+            } else {
+                message = "📚 Keep learning! Biology is fascinating - try again! 📚";
+            }
+            
+            document.getElementById('finalMessage').textContent = message;
+            
+            // Create floating leaves animation
+            createFloatingLeaves();
+        }
+
+        function createFloatingLeaves() {
+            const container = document.getElementById('floatingLeaves');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 20; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                leaf.textContent = '🍃';
+                leaf.style.left = Math.random() * 100 + '%';
+                leaf.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(leaf);
+            }
+        }
+
+        function restartQuiz() {
+            document.getElementById('completionScreen').classList.add('hidden');
+            document.getElementById('difficultySelector').classList.remove('hidden');
+            document.getElementById('plantProgress').textContent = '🌱';
+            quizStarted = false;
+        }
+
+        // Initialize the quiz
+        createFloatingCells();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b7cf5263e7a6dc',t:'MTc1NzI2NDkyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Functions with Explanation</title>
+  </head>
+  <body>
+    <script>
+      var name = "Hello";
+      var coaching = "-Sun- Shine Pvt.ltd";
+      name[0] = "ss";
+
+      // charAt(index) => Diye gaye index pe kaunsa character hai, wo dega
+      document.write("<b>charAt(1) => " + name.charAt(1) + "</b> <br>"); //  output: e
+
+      // charCodeAt(index) => Diye gaye index pe jo character hai, uska Unicode value dega
+      document.write("<b>charCodeAt(1) => " + name.charCodeAt(1) + "</b> <br>"); //output: 101
+
+      // length => String ki total length dega
+      document.write("<b>Length => " + name.length + "</b> <br>"); // output: 5
+
+      // replace(oldValue, newValue) => String ke andar ek part ko naya value se replace karega
+      document.write("<b>Replace => " + name.replace("He", "Code") + "</b> <br>"); // output: Code llo
+
+      // slice(start, end) => String ke ek hissa ko cut karke dega (start se end-1 tak)  yha -2 ka matlab hai length se 2 position pe
+      document.write("<b>Slice (2,-2) => " + coaching.slice(2, -2) + "</b> <br>"); // output: Sun- Shine Pvt.
+
+      // split(separator, limit) => String ko split karega, separator ke hisab se, aur limit tak matlab he ke string ko array me convert karega
+      document.write("<b>Split (-) => " + coaching.split("-") + "</b> <br>"); // output: ,Sun, Shine Pvt.ltd
+      document.write("<b>Split (3 characters) => " + coaching.split("", 3) + "</b> <br>"); // output: S,u,n
+
+      // concat(value) => String ke saath doosri string jod dega
+      document.write("<b>Concat => " + name.concat(coaching) + "</b> <br>");
+
+      // toUpperCase() => String ke saare characters ko capital letters me kar dega
+      document.write("<b>To Upper Case => " + coaching.toUpperCase() + "</b> <br>");
+
+      // toLowerCase() => String ke saare characters ko small letters me kar dega
+      document.write("<b>To Lower Case => " + coaching.toLowerCase() + "</b> <br>");
+
+      // substring(start, end) => String ka ek part dega (start se end-1 tak)
+      document.write("<b>Substring (0,5) => " + coaching.substring(0, 5) + "</b> <br>");
+
+      // substring(start) => Start se lekar end tak pura string dega
+      document.write("<b>Substring (5) => " + coaching.substring(5) + "</b> <br>");
+
+      // substr(start, length) => Start se lekar kitne character chahiye, wo dega
+      document.write("<b>Substr (0,5) => " + coaching.substr(0, 5) + "</b> <br>");
+
+      // indexOf(value) => String me value ka pehla index dega (milne par), agar na mile to -1
+      document.write("<b>Index Of 'Shine' => " + coaching.indexOf("Shine") + "</b> <br>"); // output: 5
+
+      // lastIndexOf(value) => String me value ka last index dega (milne par), agar na mile to -1
+      document.write("<b>Last Index Of 'n' => " + coaching.lastIndexOf("n") + "</b> <br>"); //   output: 7
+
+      // includes(value) => Check karega ki string me wo value hai ya nahi (true/false)
+      document.write("<b>Includes 'Shine' => " + coaching.includes("Shine") + "</b> <br>");
+
+      // startsWith(value) => Check karega ki string uss value se start hoti hai ya nahi (true/false)
+      document.write("<b>Starts With '-Sun' => " + coaching.startsWith("-Sun") + "</b> <br>");
+
+      // endsWith(value) => Check karega ki string uss value se end hoti hai ya nahi (true/false)
+      document.write("<b>Ends With 'ltd' => " + coaching.endsWith("ltd") + "</b> <br>");
+
+      // trim() => String ke aage aur peeche ke extra space hata dega matlab he ki ye leading aur trailing spaces ko remove karega
+      var extraSpace = "  Learn JavaScript  ";
+      document.write("<b>Trim => '" + extraSpace.trim() + "'</b> <br>");
+    </script>
+  </body>
+</html>

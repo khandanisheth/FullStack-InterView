@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Submit Event - jQuery</title>
+
+    <!-- ✅ Bootstrap CDN for Styling (Optional) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- ✅ jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // 🔸 Form submit hone par event trigger hoga
+        $("form").submit(function (e) {
+          // 🔸 Input field ka background yellow kar dena
+          $("#txtName").css("background-color", "yellow");
+
+          // 🔸 Form ka default submit behavior rokna (page reload na ho)
+          e.preventDefault();
+
+          // 🔸 User ko alert dikhana
+          alert("Form submitted!");
+
+          // Optional: You can add validation or AJAX call here
+        });
+      });
+    </script>
+
+    <!-- ✅ Styling -->
+    <style>
+      body {
+        padding: 40px;
+        font-family: Arial;
+      }
+
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>jQuery Form Submit Example</h3>
+
+    <form method="post">
+      <input type="text" id="txtName" placeholder="Enter your name" class="form-control mb-2" />
+      <input type="submit" value="Submit" id="btnSubmit" class="btn btn-primary" />
+    </form>
+  </body>
+</html>

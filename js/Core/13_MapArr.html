@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <body>
+    <script>
+      let cities = ["Jaipur", "Delhi", "Mumbai", "Kolkata"];
+
+      cities.forEach(function (city, i, str) {
+        document.writeln(i + ": " + city + "<br>"); //   output: 0: Jaipur
+      });
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      arr.map((arr, i, str) => {
+        document.writeln(arr * arr + "<br>");// 1 4 9 16 25 36 49 64 81
+        // document.writeln(str[i]);
+      });
+
+      cities.map((cities) => {
+        console.log(cities.toUpperCase());//    JAIPUR DELHI MUMBAI KOLKATA
+      });
+
+      var arrr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var y = arrr.map((x) => {
+        return x * x;
+      });
+      document.writeln(y);//    1,4,9,16,25,36,49,64,81
+    </script>
+  </body>
+</html>

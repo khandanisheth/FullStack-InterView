@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function testVar() {
+        console.log(x); // undefined (dibba bana, par andar khali)
+        var x = 10;
+        console.log(x); // 10
+        var x = 20; // phir se wahi naam use kar sakte ho
+        console.log(x); // 20
+        var x = 30; //
+        console.log(x);
+      }
+      testVar();
+      console.log(x); // 20 // undefined (dibba bana, par andar khali)
+
+      // let
+      //console.log(a); // error: dabba abhi tak open nahi hua
+      let a = 5;
+      console.log(a); // 5
+      a = 15; // andar ki value badli
+      console.log(a); // 15
+      //let a = 20;   // error: ek hi naam ka dabba dobara nahi bana sakte
+
+      // const
+      const PI = 3.14;
+      console.log(PI); // 3.14
+      //PI = 3.1416;   // error: andar ki value nahi badal sakte
+      // const PI = 3; // error: dobara dabba nahi bana sakte
+
+      var x = 1;
+      let y = 1;
+      const z = 1;
+
+      x++;
+      y++;
+      // z++; kyo ki ye const he es liye es ki value change nhi hogi
+      console.log(x);
+      console.log(y);
+      console.log(z);
+
+      x++;
+      y++;
+      console.log(x);
+      console.log(y);
+      var x = 1; // kyo ye global level
+      // let y=1; kyo ki ye block level he
+      {
+        let y = 4;
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+✅ Important Rule:
+
+Keyword	Scope	||  Block respect karta hai?	        ||        Redeclare Allowed?
+
+var	            ||    Function/Global	                ||        ❌ Nahi karta	✅ Haan
+
+let	Block	    ||    ✅ Karta hai	                  ||         ❌ Nahi
+
+const	Block	||    ✅ Karta hai	                  ||         ❌ Nahi 
+
+
+
+
+
+
+
+
+
+Feature	        var	                  let	                const
+Scope	        Function/Global	      Block	              Block
+Redeclare in    same scope	✅	     ❌	                ❌
+Must declare    before use	❌	     ✅	                ✅
+Hoisting	    ✅ (with undefined)	 ✅ (TDZ)	        ✅ (TDZ)
+Binds to this	✅	                  ❌	                ❌
+-->

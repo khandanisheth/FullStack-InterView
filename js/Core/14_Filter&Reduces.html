@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numbers = [1, 2, 3, 4, 5, 6];
+
+      // filter() => ek naya array banata hai jisme wo elements hote hain jo condition ko satisfy karte hain
+      // Yahan hum even numbers chahte hain (jo 2 se divisible hain)
+      let evens = numbers.filter(function (num) {
+        return num % 2 === 0;
+      });
+
+      console.log(evens); // Output: [2, 4, 6]
+
+      let people = [
+        { name: "Rahul", age: 17 },
+        { name: "Amit", age: 22 },
+        { name: "Priya", age: 15 },
+        { name: "Sana", age: 19 },
+      ];
+
+      // map() => array ke har element pe function apply karta hai aur naya array banata hai
+      // Yahan hum log har person ka index aur unka naam-age document par likh rahe hain
+      people.map((value, index) => {
+        document.writeln(index + ". " + value.name + " - Age: " + value.age + "<br>");
+        // 0. Rahul - Age: 17 1. Amit - Age: 22 2. Priya - Age: 15 3. Sana - Age: 19
+      });
+
+      // filter() => ab adults filter kar rahe hain jinka age 18 ya usse zyada hai
+      let adults = people.filter((p) => p.age >= 18);
+      console.log(adults);//output: [{ name: "Amit", age: 22 }, { name: "Sana", age: 19 }]
+      // Output: [{ name: "Amit", age: 22 }, { name: "Sana", age: 19 }]
+
+      let numad = [1, 2, 3, 4, 5];
+
+      // reduce() => array ke elements ko ek single value mein convert karta hai
+      // Yahan sab numbers ka sum nikal rahe hain
+      let sum = numad.reduce(function (total, num) {
+        return total + num;
+      });
+      console.log(sum); // Output: 15
+
+      let fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+
+      // reduce() ka dusra example, yahan fruit ke counts nikal rahe hain
+      // acc (accumulator) mein fruit ka naam key banake uske count ko add kar rahe hain
+      let count = fruits.reduce(function (acc, fruit) {
+        acc[fruit] = (acc[fruit] || 0) + 1; // agar pehle se count nahi hai to 0 se start karo
+        return acc;
+      });
+      console.log(count);
+      // Output: { apple: 3, banana: 2, orange: 1 }
+    </script>
+  </body>
+</html>
+
+<!--  Summary:
+filter(): Array ko filter karta hai, sirf wo elements nikalta hai jo condition milti   karte hain.
+
+map(): Har element ko transform karta hai aur naya array banata hai.
+
+reduce(): Array ke elements ko combine karke ek single value (jaise sum, product, object) return karta hai.-->

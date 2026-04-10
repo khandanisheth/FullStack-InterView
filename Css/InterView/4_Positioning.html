@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Positioning Explained with Boxes</title>
+
+    <!-- =====================================================
+       CSS POSITIONING LIVE DEMO
+       Each box clearly shows:
+       - Which position is used
+       - How it behaves
+       - Comments explain area & reference
+       ===================================================== -->
+
+    <style>
+      /* ---------------- PAGE BASE STYLE ---------------- */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 2000px; /* scroll ke liye */
+      }
+
+      h2 {
+        margin: 20px;
+        color: #333;
+      }
+
+      /* ---------------- STATIC POSITION ----------------
+       Default position
+       - Normal document flow
+       - top/left ka effect nahi hota
+    --------------------------------------------------- */
+      .static-box {
+        border: 2px solid black;
+        padding: 15px;
+        margin: 20px;
+        background-color: #e0e0e0;
+        position: static; /* default */
+      }
+
+      /* ---------------- RELATIVE POSITION ----------------
+       Reference: its own original position
+       - Space reserved rahta hai
+       - top/left se move hota hai
+    ----------------------------------------------------- */
+      .relative-box {
+        position: relative;
+        top: 20px; /* niche move */
+        left: 30px; /* right move */
+        background-color: #ffcccb;
+        border: 2px solid red;
+        padding: 15px;
+        margin: 20px;
+      }
+
+      /* ---------------- CONTAINER FOR ABSOLUTE ------------
+       position: relative → absolute child ka reference
+    ----------------------------------------------------- */
+      .container {
+        position: relative; /* reference banaya */
+        width: 350px;
+        height: 200px;
+        border: 3px dashed blue;
+        margin: 40px 20px;
+        padding: 10px;
+        background-color: #f0f8ff;
+      }
+
+      /* ---------------- ABSOLUTE POSITION ----------------
+       Reference: nearest non-static parent (.container)
+       - Document flow se bahar
+       - Space reserve nahi hota
+    ----------------------------------------------------- */
+      .absolute-box {
+        position: absolute;
+        top: 50px; /* container ke top se */
+        left: 60px; /* container ke left se */
+        background-color: #ffc0cb;
+        border: 2px solid purple;
+        padding: 15px;
+      }
+
+      /* ---------------- FIXED POSITION ----------------
+       Reference: viewport (screen)
+       - Scroll hone par bhi same jagah
+       - Document flow se bahar
+    -------------------------------------------------- */
+      .fixed-box {
+        position: fixed;
+        top: 10px; /* screen ke top se */
+        right: 10px; /* screen ke right se */
+        background-color: #90ee90;
+        border: 2px solid green;
+        padding: 15px;
+        z-index: 1000;
+      }
+
+      /* ---------------- STICKY POSITION ----------------
+       - Pehle relative
+       - Scroll par fixed ho jata hai
+       - Apne parent ke andar kaam karta hai
+    -------------------------------------------------- */
+      .sticky-box {
+        position: sticky;
+        top: 0; /* jab top touch kare tab chipak jaaye */
+        background-color: #ffff99;
+        border: 2px solid orange;
+        padding: 15px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1️⃣ Static Position</h2>
+    <div class="static-box">
+      <b>Position: STATIC</b><br />
+      • Default position<br />
+      • Normal document flow<br />
+      • top / left work nahi karta
+    </div>
+
+    <h2>2️⃣ Relative Position</h2>
+    <div class="relative-box">
+      <b>Position: RELATIVE</b><br />
+      • Apni original jagah se move<br />
+      • Space reserve rahta hai<br />
+      • top: 20px, left: 30px
+    </div>
+
+    <h2>3️⃣ Absolute Position</h2>
+    <div class="container">
+      <b>Parent Container</b><br />
+      position: relative (reference)
+
+      <div class="absolute-box">
+        <b>Position: ABSOLUTE</b><br />
+        • Parent ke relative<br />
+        • Flow se bahar<br />
+        • top: 50px, left: 60px
+      </div>
+    </div>
+
+    <h2>4️⃣ Sticky Position</h2>
+    <div class="sticky-box">
+      <b>Position: STICKY</b><br />
+      • Scroll par chipak jaata hai<br />
+      • top: 0
+    </div>
+
+    <p style="margin: 20px">Scroll down to see sticky effect</p>
+
+    <!-- Extra content for scroll -->
+    <div style="height: 600px"></div>
+
+    <h2>5️⃣ Fixed Position</h2>
+    <p style="margin: 20px">Scroll page — fixed box hamesha screen par rahega</p>
+
+    <div class="fixed-box">
+      <b>Position: FIXED</b><br />
+      • Viewport ke relative<br />
+      • Scroll par move nahi karta
+    </div>
+  </body>
+</html>

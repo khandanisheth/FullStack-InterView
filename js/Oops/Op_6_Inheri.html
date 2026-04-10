@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Parent class
+      class One {
+        print_geek() {
+          console.log("Geeks");
+        }
+      }
+
+      // Child class (inherits from One)
+      class Two extends One {
+        print_for() {
+          console.log("for");
+        }
+      }
+
+      // Main (like main function in Java)
+      const g = new Two();
+      g.print_geek(); // From parent class
+      g.print_for(); // From child class
+      g.print_geek(); // Again from parent
+    </script>
+  </body>
+</html>

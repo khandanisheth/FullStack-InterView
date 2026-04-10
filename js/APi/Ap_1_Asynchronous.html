@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Synchronously print "1"
+      console.log("1");
+
+      // Synchronously print "2"
+      console.log("2");
+
+      // Ek function banaya jiska naam 'data' hai
+      // Is function me ek message console me print hoga
+      const data = () => {
+        console.log("This Data Are Asynchronous Settimeout Use");
+      };
+
+      // Ye asynchronous function call hai
+      // Isme 'data' function ko 1000 milliseconds (1 second) ke baad call kiya jayega
+      setTimeout(data, 1000);
+
+      // Direct anonymous function ko setTimeout me pass kiya gaya hai
+      // Ye 4000 milliseconds (4 seconds) ke baad chalega
+      setTimeout(() => {
+        console.log("This Data Are Asynchronous Settimeout Direct Use");
+      }, 4000);
+
+      // Synchronously print "3"
+      console.log("3");
+
+      // Synchronously print "4"
+      console.log("4");
+    </script>
+  </body>
+</html>
+<!-- Explanation Summary:
+console.log("1"), "2", "3", "4" → Synchronously chalte hain (line by line, bina delay).
+
+setTimeout(data, 1000) → Ye function background me schedule ho jaata hai aur 1 second baad chalti hai.
+
+setTimeout(()=>{}, 4000) → Ye bhi schedule hoti hai, lekin 4 seconds baad execute hoti hai.
+
+JavaScript event loop pehle saara synchronous code run karta hai, phir asynchronous tasks queue 
+me jaake execute hote hain -->

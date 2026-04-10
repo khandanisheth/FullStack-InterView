@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* ✅ Desktop Navbar (visible by default) */
+      .navbar {
+        background-color: #816060;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar ul li {
+        color: white;
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+
+      .navbar ul li:hover {
+        background-color: #444;
+      }
+
+      /* ❌ Sidebar Menu (only for mobile) */
+      .menu {
+        width: 70%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        background-color: yellow;
+        font-weight: 600;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+      }
+
+      .menu ul {
+        padding: 0;
+        margin-top: 60px;
+      }
+
+      .menu ul li {
+        list-style: none;
+        padding: 15px;
+        border-bottom: 1px solid #444;
+        cursor: pointer;
+      }
+
+      .menu ul li:hover {
+        background-color: #555;
+        color: white;
+      }
+
+      .activemenu {
+        left: 0%;
+      }
+
+      /* ☰ Button for mobile */
+      .togglemenu {
+        font-size: 28px;
+        background: none;
+        border: none;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        display: none;
+        z-index: 1100;
+        cursor: pointer;
+      }
+
+      /* ✅ Media Query for Small Screens */
+      @media (max-width: 768px) {
+        .navbar {
+          display: none; /* Hide navbar */
+        }
+
+        .togglemenu {
+          display: block; /* Show ☰ button */
+        }
+
+        .menu {
+          display: block;
+        }
+      }
+
+      /* ✅ Media Query for Large Screens */
+      @media (min-width: 769px) {
+        .menu {
+          display: none; /* Hide mobile sidebar */
+        }
+
+        .togglemenu {
+          display: none; /* Hide ☰ on large */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ☰ Toggle Button (only visible on small screen) -->
+    <button class="togglemenu">&#9776;</button>
+
+    <!-- ✅ Normal Navbar (only for desktop) -->
+    <div class="navbar">
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Contact</li>
+        <li>Gallery</li>
+        <li>Services</li>
+        <li>Other</li>
+        <li>Team</li>
+      </ul>
+    </div>
+
+    <!-- ❌ Sidebar Menu (mobile only) -->
+    <div id="menu" class="menu">
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Contact</li>
+        <li>Gallery</li>
+        <li>Services</li>
+        <li>Other</li>
+        <li>Team</li>
+      </ul>
+    </div>
+
+    <!-- JavaScript to Toggle Sidebar -->
+    <script>
+      const btn = document.querySelector(".togglemenu");
+      const menu = document.querySelector(".menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("activemenu");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Navbar Responsive</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar ul li {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .navbar ul li:hover {
+      background-color: #444;
+    }
+
+    .toggle-btn {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      display: none;
+      cursor: pointer;
+    }
+
+    /* 🟡 Small screen: Make it vertical and hidden initially */
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: none;
+      }
+
+      .navbar ul.active {
+        display: flex;
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <button class="toggle-btn">&#9776;</button>
+    <ul id="navMenu">
+      <li>Home</li>
+      <li>About Us</li>
+      <li>Contact</li>
+      <li>Gallery</li>
+      <li>Services</li>
+      <li>Other</li>
+      <li>Team</li>
+    </ul>
+  </div>
+
+  <script>
+    const btn = document.querySelector(".toggle-btn");
+    const menu = document.getElementById("navMenu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
+ -->

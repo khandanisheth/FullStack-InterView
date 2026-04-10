@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ==== Global Variable ====
+      var globalVar = "I am Global!";
+
+      function showGlobal() {
+        // function ke andar bhi globalVar access ho sakta hai
+        console.log(globalVar);
+      }
+
+      showGlobal(); // Output: I am Global!
+
+      // console.log(localVar);  // Error: localVar is not defined
+
+      function exampleFunction() {
+        // ==== Local Variable ====
+        var localVar = "I am Local!";
+        console.log(localVar);
+      }
+
+      exampleFunction(); // Output: I am Local!
+
+      // function ke bahar local variable access karoge to error aayega
+      // console.log(localVar); // ❌ Error: localVar is not defined
+
+      // ==== Example: Same Name Variable ====
+
+      var testVar = "Global Value";
+
+      function checkScope() {
+        var testVar = "Local Value"; // Yeh local hai is function ke liye
+        console.log("Inside Function: " + testVar);
+      }
+
+      checkScope(); // Output: Inside Function: Local Value
+      console.log("Outside Function: " + testVar); // Output: Outside Function: Global Value
+    </script>
+  </body>
+</html>

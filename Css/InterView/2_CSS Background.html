@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Background Properties with Comments</title>
+
+    <!-- ==================================================
+       CSS BACKGROUND PROPERTIES DEMO FILE
+       Each property is explained using comments
+       ================================================== -->
+
+    <style>
+      /* -----------------------------------------------
+       BODY BACKGROUND (SHORTHAND PROPERTY)
+       -----------------------------------------------
+       background-color     → lightblue
+       background-image     → image URL
+       background-repeat    → no-repeat (image repeat nahi hogi)
+       background-position  → center (image center me hogi)
+       background-attachment→ fixed (scroll par image fix rahegi)
+    ------------------------------------------------ */
+      body {
+        margin: 0;
+        height: 200vh; /* scroll test ke liye */
+        background: rgb(4, 89, 117) url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png") no-repeat center fixed;
+      }
+
+      /* -----------------------------------------------
+       background-color PROPERTY
+       Element ke piche color set karta hai
+    ----------------------------------------------- */
+      .bg-color {
+        background-color: orange; /* sirf color background */
+        padding: 20px;
+        margin: 20px;
+        color: white;
+      }
+
+      /* -----------------------------------------------
+       background-image PROPERTY
+       Element ke piche image lagata hai
+       Default: image repeat hoti hai
+    ----------------------------------------------- */
+      .bg-image {
+        background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png");
+        padding: 40px;
+        margin: 20px;
+      }
+
+      /* -----------------------------------------------
+       background-repeat PROPERTY
+       repeat-x → image sirf horizontally repeat hogi
+    ----------------------------------------------- */
+      .bg-repeat {
+        background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png");
+        background-repeat: repeat-x;
+        padding: 40px;
+        margin: 20px;
+      }
+
+      /* -----------------------------------------------
+       background-position PROPERTY
+       image ko center me place karta hai
+    ----------------------------------------------- */
+      .bg-position {
+        background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 60px;
+        margin: 20px;
+      }
+
+      /* -----------------------------------------------
+       background-attachment PROPERTY
+       fixed → scroll par image move nahi hogi
+    ----------------------------------------------- */
+      .bg-attachment {
+        background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 60px;
+        margin: 20px;
+      }
+
+      /* -----------------------------------------------
+       background-origin PROPERTY
+       padding-box → image padding se start hogi
+    ----------------------------------------------- */
+      .bg-origin {
+        background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190417124305/250.png");
+        background-repeat: no-repeat;
+        background-origin: padding-box;
+        border: 5px solid black;
+        padding: 30px;
+        margin: 20px;
+      }
+
+      /* -----------------------------------------------
+       background-clip PROPERTY
+       padding-box → background border ke andar tak hi rahega
+    ----------------------------------------------- */
+      .bg-clip {
+        background-color: lightgreen;
+        background-clip: padding-box;
+        border: 5px dashed black;
+        padding: 30px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- background-color example -->
+    <div class="bg-color">background-color example</div>
+
+    <!-- background-image example -->
+    <div class="bg-image">background-image example (default repeat)</div>
+
+    <!-- background-repeat example -->
+    <div class="bg-repeat">background-repeat: repeat-x example</div>
+
+    <!-- background-position example -->
+    <div class="bg-position">background-position: center example</div>
+
+    <!-- background-attachment example -->
+    <div class="bg-attachment">background-attachment: fixed example (scroll karo)</div>
+
+    <!-- background-origin example -->
+    <div class="bg-origin">background-origin example</div>
+
+    <!-- background-clip example -->
+    <div class="bg-clip">background-clip example</div>
+  </body>
+</html>

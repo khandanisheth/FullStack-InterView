@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: null,
+        age: null,
+
+        set setname(name) {
+          this.name = name;
+        },
+        set setage(age) {
+          this.age = age;
+        },
+
+        get getname() {
+          return this.name;
+        },
+        get getage() {
+          return this.age;
+        },
+      };
+
+      obj.setname(20);
+      obj.setage = 25;
+
+      document.writeln("Name: " + obj.getname + "<br>");
+      document.writeln("Age: " + obj.getage);
+      document.writeln("Age: " + obj.name);
+
+      let person = {
+        firstName: "Amit",
+        lastName: "Kumar",
+
+        get fullName() {
+          return this.firstName + " " + this.lastName;
+        },
+
+        set fullName(name) {
+          let parts = name.split(" ");
+          this.firstName = parts[0];
+          this.lastName = parts[1];
+        },
+      };
+
+      document.writeln("Full Name: " + person.fullName + "<br>");
+
+      person.fullName = "Ravi Verma"; // using setter
+
+      document.writeln("Updated Full Name: " + person.fullName + "<br>");
+      document.writeln("First Name: " + person.firstName + "<br>");
+      document.writeln("Last Name: " + person.lastName + "<br>");
+    </script>
+  </body>
+</html>

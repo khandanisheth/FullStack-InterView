@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let promice = new Promise((resovle, reject) => {
+        console.log("Promice Is Use");
+        // resovle(123);
+        reject("some errror");
+      });
+      promice
+        .then((data) => {
+          console.log("This Is Resovle Promice", data);
+        })
+        .catch((err) => {
+          console.log("This Is Reject Promice", err);
+        });
+
+      function getData(dataid, callback) {
+        return new Promise((resovle, reject) => {
+          setTimeout(() => {
+            console.log(`This is ${dataid} Data User`);
+            resovle("Succes This Data");// agar sab kuch theek raha to ye chlega
+            // reject("Error Hai Bhai")// agar kuch error raha to ye chlega 
+            //  or reject hone ke bad kabhi bhi .then nahi chlega sidha .catch me chala jayega or 
+            // callback bhi nahi chlega kyunki promise reject ho chuka hai Agar promise resolve ho jata hai to callback chlega
+            if (callback) {
+              callback();//kya ye bas ek bar hi chlega ya har bar chlega batao na tum 
+            }
+          }, 2000);
+          console.log("Promise Is Pending");// ye kab chalega jab tak setTimeout ka time pura nahi hota
+        });
+      }
+
+      function see() {
+        console.log("show");
+      }
+
+      getData(1)
+        .then((res) => {
+          console.log(res);
+          return getData(2);
+        })
+        .then((res) => {
+          console.log(res);
+          return getData(3);
+        })
+        .then((res) => {
+          console.log(res);
+          return getData(4);
+        })
+        .then((res) => {
+          console.log(res);
+          return getData(5);
+        })
+        .then((res) => {
+          console.log(res);
+          see();
+        })
+        .catch((err) => {
+          console.log("This Is Error", err);
+        });
+    </script>
+  </body>
+</html>

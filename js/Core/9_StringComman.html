@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>String & Array Logic Practice</title>
+  </head>
+  <body>
+    <script>
+      /********************************************************
+   1️⃣ String me jo characters repeat ho rahe hain
+      unko sirf ek baar print karna
+      Example: programming → r g m
+  ********************************************************/
+
+      let str = "programming";
+      let printed = ""; // already printed characters ko store karega
+      for (let i of str) {
+        let count = 0;
+        // har character ka count nikal rahe hain
+        for (let j of str) {
+          if (i === j) {
+            count++;
+          }
+        }
+        // agar character 1 se zyada baar aaya
+        // aur pehle print nahi hua
+        if (count > 1 && !printed.includes(i)) {
+          document.write(i + " "); // output: r g m
+          printed += i; // taaki dobara print na ho
+        }
+      }
+
+      //     let str = "programming";
+      //   let freq = {};
+      //   let s="";
+
+      //   for (let ch of str) {
+      //     freq[ch] = (freq[ch] || 0) + 1;
+      //   }
+
+      //   for (let ch of str) {
+      //     if (freq[ch] === 2 && !s.includes(ch)) {
+      //       console.log(ch + " ");// output: r g m
+      //       s +=ch;
+      //     }
+      //   }
+
+      document.write("<br><br>");
+
+      /********************************************************
+   2️⃣ String me jo characters sirf ek hi baar aaye ho
+      unko print karna
+      Example: programming → p r o a i n
+  ********************************************************/
+
+      let strr = "programming";
+
+      for (let i of strr) {
+        let count = 0;
+        for (let j of strr) {
+          if (i === j) {
+            count++;
+          }
+        }
+
+        // sirf unique characters
+        if (count === 1) {
+          document.write(i + " "); // output: p r o a i n
+        }
+      }
+
+      document.write("<br><br>");
+
+      /********************************************************
+   3️⃣ String se duplicate characters hata kar
+      sirf unique characters rakhna
+      Example: programming → p r o g a m i n
+  ********************************************************/
+
+      let strrrr = "programming";
+      let result = "";
+
+      for (let ch of strrrr) {
+        // agar character pehle se result me nahi hai
+        if (!result.includes(ch)) {
+          result += ch;
+        }
+      }
+
+      document.write(result.split("").join(" ")); // output: p r o g a m i n
+      document.write("<br><br>");
+
+      /********************************************************
+   4️⃣ Do arrays me common elements nikalna
+      array1 = ["programming","language","java"]
+      array2 = ["coding","language","java","python"]
+      Output: language, java
+  ********************************************************/
+
+      let array1 = ["programming", "language", "java"];
+      let array2 = ["coding", "language", "java", "python"];
+      let common = [];
+
+      for (let i of array1) {
+        for (let j of array2) {
+          if (i === j) {
+            common.push(i);
+          }
+        }
+      }
+
+      document.write("Common Elements: " + common.join(", "));
+    </script>
+  </body>
+</html>

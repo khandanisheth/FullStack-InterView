@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate of Achievement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Crimson Text", serif;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .certificate {
+        width: 800px;
+        height: 600px;
+        background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+        border: 3px solid #1e3a8a;
+        border-radius: 8px;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .certificate::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 2px solid #d4af37;
+        border-radius: 4px;
+        pointer-events: none;
+      }
+
+      .certificate::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(30, 58, 138, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .header {
+        text-align: center;
+        padding: 40px 60px 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .logo-space {
+        position: absolute;
+        top: 30px;
+        left: 60px;
+        width: 80px;
+        height: 80px;
+        border: 2px dashed #d4af37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #6b7280;
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      .title {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: #4b5563;
+        font-style: italic;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        text-align: center;
+        padding: 0 60px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .presented-to {
+        font-size: 20px;
+        color: #374151;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .recipient-name {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        font-weight: 400;
+        color: #1e3a8a;
+        margin: 20px 0 30px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: 3px solid #d4af37;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+
+      .achievement-text {
+        font-size: 18px;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        z-index: 2;
+      }
+
+      .date-section {
+        text-align: left;
+      }
+
+      .date-label {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 5px;
+      }
+
+      .date-line {
+        width: 150px;
+        height: 2px;
+        background: #d4af37;
+        margin-bottom: 5px;
+      }
+
+      .date-placeholder {
+        font-size: 16px;
+        color: #374151;
+        font-weight: 600;
+      }
+
+      .signature-section {
+        text-align: right;
+      }
+
+      .signature-lines {
+        display: flex;
+        gap: 40px;
+      }
+
+      .signature-line {
+        text-align: center;
+      }
+
+      .signature-line .line {
+        width: 120px;
+        height: 2px;
+        background: #d4af37;
+        margin-bottom: 5px;
+      }
+
+      .signature-line .label {
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      .decorative-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .corner-ornament {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        opacity: 0.3;
+      }
+
+      .corner-ornament.top-right {
+        top: 30px;
+        right: 30px;
+        background: radial-gradient(circle, #d4af37 2px, transparent 2px);
+        background-size: 10px 10px;
+      }
+
+      .corner-ornament.bottom-left {
+        bottom: 30px;
+        left: 30px;
+        background: radial-gradient(circle, #1e3a8a 2px, transparent 2px);
+        background-size: 10px 10px;
+      }
+
+      .seal {
+        position: absolute;
+        bottom: 120px;
+        right: 80px;
+        width: 80px;
+        height: 80px;
+        border: 3px solid #d4af37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        font-size: 10px;
+        color: #d4af37;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+
+        .certificate {
+          box-shadow: none;
+          page-break-inside: avoid;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .certificate {
+          width: 95vw;
+          height: auto;
+          min-height: 600px;
+        }
+
+        .header,
+        .content,
+        .footer {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        .logo-space {
+          left: 30px;
+        }
+
+        .recipient-name {
+          font-size: 36px;
+        }
+
+        .title {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="certificate">
+      <div class="decorative-elements">
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+      </div>
+
+      <div class="logo-space">Organization<br />Logo</div>
+
+      <div class="header">
+        <h1 class="title">Certificate of Achievement</h1>
+        <p class="subtitle">Excellence in Performance and Dedication</p>
+      </div>
+
+      <div class="content">
+        <p class="presented-to">This certificate is proudly presented to</p>
+
+        <div class="recipient-name">Mohammad Danish</div>
+
+        <p class="achievement-text">
+          Awarded for outstanding performance and dedication in demonstrating exceptional skills, commitment to excellence, and valuable contributions that
+          inspire others to achieve their best.
+        </p>
+      </div>
+
+      <div class="seal">OFFICIAL<br />SEAL</div>
+
+      <div class="footer">
+        <div class="date-section">
+          <div class="date-label">Date of Award</div>
+          <div class="date-line"></div>
+          <div class="date-placeholder">_____________</div>
+        </div>
+
+        <div class="signature-section">
+          <div class="signature-lines">
+            <div class="signature-line">
+              <div class="line"></div>
+              <div class="label">Director</div>
+            </div>
+            <div class="signature-line">
+              <div class="line"></div>
+              <div class="label">President</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'97b7c5b0a7fea6dc',t:'MTc1NzI2NDUzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener) document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState && ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

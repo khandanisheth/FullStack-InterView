@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let score = 85;
+
+      if (score >= 90) {
+        document.writeln("Grade: A+<br>");
+      } else if (score >= 80) {
+        document.writeln("Grade: A<br>");
+      } else if (score >= 70) {
+        document.writeln("Grade: B<br>");
+      } else if (score >= 60) {
+        document.writeln("Grade: C<br>");
+      } else {
+        document.writeln("Fail<br>");
+      }
+
+      document.write("Nested if _lese if<br>");
+      let age = 22;
+      let hasVoterID = true;
+
+      if (age >= 18) {
+        if (hasVoterID) {
+          document.writeln("You can vote.<br>");
+        } else {
+          document.writeln("Apply for Voter ID first.<br>");
+        }
+      } else {
+        document.writeln("You are underage.<br>");
+      }
+
+      let num = 5;
+      let result = num % 2 === 0 ? "Even" : "Odd";
+      document.writeln("Number is " + result + "<br>");
+    </script>
+
+    <img src="img/if.png" alt="" />
+  </body>
+</html>

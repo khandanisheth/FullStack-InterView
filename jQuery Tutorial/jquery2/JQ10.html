@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$(".btnHide").click(function(){
+				$("ul li:first").hide();	
+			});
+
+			$(".btnShow").click(function(){
+				$("ul li:first").show();	
+			});
+		});
+
+	</script>
+</head>
+<body>
+<button class="btnHide">Hide</button>
+<button class="btnShow">Show</button>
+<ul>
+	<li>1Jai Shri Ram</li>
+	<li>2Jai Shri Ram</li>
+	<li>3Jai Shri Ram</li>
+	<li>4Jai Shri Ram</li>
+</ul>
+
+<ul>
+	<li>1Jai Shri Ram</li>
+	<li>2Jai Shri Ram</li>
+	<li>3Jai Shri Ram</li>
+	<li>4Jai Shri Ram</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Viewport meta tag: makes layout responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Web Design - Media Queries</title>
+
+    <style>
+      /* =====================================================
+       BASE / DEFAULT STYLES (Desktop First)
+       These styles apply to all screen sizes by default
+       ===================================================== */
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5; /* light gray background */
+      }
+
+      /* Main container */
+      .container {
+        width: 80%; /* container width for large screens */
+        margin: 40px auto; /* center container */
+        padding: 20px;
+        background-color: white; /* default background */
+        border: 2px solid #333;
+        text-align: center;
+      }
+
+      /* Flexbox layout */
+      .box-wrapper {
+        display: flex; /* enable flexbox */
+        justify-content: space-between; /* space between items */
+        gap: 20px; /* gap between boxes */
+        margin-top: 20px;
+      }
+
+      /* Individual boxes */
+      .box {
+        flex: 1; /* all boxes equal width */
+        padding: 30px;
+        color: white;
+        font-size: 18px;
+      }
+
+      .box1 {
+        background-color: red;
+      }
+      .box2 {
+        background-color: green;
+      }
+      .box3 {
+        background-color: blue;
+      }
+
+      /* =====================================================
+       MEDIA QUERY 1: TABLETS
+       Applies when screen width is 768px or less
+       ===================================================== */
+
+      @media screen and (max-width: 768px) {
+        /* Container changes for tablet screens */
+        .container {
+          width: 90%; /* container becomes wider */
+          background-color: #1156a0; /* light blue background */
+        }
+
+        /* Boxes stack closer */
+        .box-wrapper {
+          gap: 10px; /* reduce space between boxes */
+        }
+      }
+
+      /* =====================================================
+       MEDIA QUERY 2: MOBILE DEVICES
+       Applies when screen width is 480px or less
+       ===================================================== */
+
+      @media screen and (max-width: 480px) {
+        /* Container style for mobile */
+        .container {
+          width: 95%; /* almost full width */
+          background-color: #f0f6ff; /* light red background */
+        }
+
+        /* Change flex direction to column */
+        .box-wrapper {
+          flex-direction: column; /* boxes stack vertically */
+        }
+
+        /* Box text size smaller for mobile */
+        .box {
+          font-size: 16px;
+        }
+      }
+
+      /* =====================================================
+       MEDIA QUERY 3: ORIENTATION
+       Applies when device is in landscape mode
+       ===================================================== */
+
+      @media screen and (orientation: landscape) {
+        /* Landscape orientation background change */
+        body {
+          background-color: #0f3d0f; /* light green background */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main responsive container -->
+    <div class="container">
+      <h2>Responsive Web Design using Media Queries</h2>
+      <p>
+        Resize the browser window or open on mobile to see changes.<br />
+        Colors, layout, and direction change based on screen size.
+      </p>
+
+      <!-- Flexbox wrapper -->
+      <div class="box-wrapper">
+        <div class="box box1">Box 1<br />Desktop: Row<br />Mobile: Column</div>
+        <div class="box box2">Box 2<br />Tablet & Mobile Responsive</div>
+        <div class="box box3">Box 3<br />Uses Media Queries</div>
+      </div>
+    </div>
+  </body>
+</html>
